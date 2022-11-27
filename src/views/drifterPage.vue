@@ -1,14 +1,13 @@
 <template>
-this is drifter
-  <get-started-button msg="Explore"></get-started-button>
+  <back-ground></back-ground>
+
 </template>
 
 <script>
-
-import GetStartedButton from "@/components/getStartedButton";
+import BackGround from "@/components/backGround";
 export default {
   name: "drifterPage",
-  components: {GetStartedButton}
+  components: {BackGround}
 }
 </script>
 

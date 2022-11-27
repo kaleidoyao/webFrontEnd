@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
  <div class="background">
    <div class="header">
-     <text class="logoLand">WasteLand</text>
+     <a href="/#" class="logoLand">WasteLand</a>
      <ul>
        <li><a href="/#/blog">Blog</a></li>
        <li><a href="/#/drifter">Drifter</a></li>
@@ -61,12 +61,13 @@ export default {
   color: black;
   font: 1000 30px 'Poppins';
   font-size: 2em;
+  text-decoration: none;
 }
 .header ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 50%;
+  margin-left: 40%;
 }
 .header ul li {
   list-style: none;
@@ -76,11 +77,13 @@ export default {
   text-decoration: none;
   padding: 6px 15px;
   color: black;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
   border-radius: 20px;
 }
 .header ul li a:hover,
 .header ul li a.active {
-  background: #036881;
+  background: #63a4e0;
   color: white;
 }
 

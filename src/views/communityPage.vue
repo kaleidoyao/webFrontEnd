@@ -13,10 +13,12 @@
     </div>
     <div class="section">
       <h2 id="text"><span>It's time for</span><br>Blogging</h2>
-      <img src="../assets/imgs/bird.png" id="bird">
+      <img src="../assets/imgs/birdLeft.png" id="birdLeft">
+      <img src="../assets/imgs/birdRight.png" id="birdRight">
       <img src="../assets/imgs/mountain.png" id="mountain">
       <img src="../assets/imgs/river.png" id="river">
       <img src="../assets/imgs/tree.png" id="tree">
+
       <get-started-button msg="Explore" id="button"></get-started-button>
     </div>
     <div class="community">
@@ -44,11 +46,13 @@ export default {
     move() {
       let text = document.getElementById('text');
       let button = document.getElementById('button');
-      let bird = document.getElementById('bird');
+      let birdLeft = document.getElementById('birdLeft');
+      let birdRight = document.getElementById('birdRight');
       let top = document.documentElement.scrollTop || document.body.scrollTop;
       text.style.top = 20+top*0.1 + '%';
       button.style.top = 50+top*0.1 + '%';
-      bird.style.right = top + 'px';
+      birdLeft.style.right = top + 'px';
+      birdRight.style.left = top + 'px';
     }
   },
   unmounted() {

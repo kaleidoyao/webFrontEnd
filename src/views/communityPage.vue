@@ -17,7 +17,7 @@
       <img src="../assets/imgs/mountain.png" id="mountain">
       <img src="../assets/imgs/river.png" id="river">
       <img src="../assets/imgs/tree.png" id="tree">
-      <a href="/#/login" id="button">Explore</a>
+      <get-started-button msg="Explore" id="button"></get-started-button>
     </div>
     <div class="community">
       <h2>WasteLand Intro</h2>
@@ -34,7 +34,9 @@
 </template>
 
 <script>
+import GetStartedButton from "@/components/getStartedButton";
 export default {
+  components: {GetStartedButton},
   mounted() {
     window.addEventListener('scroll', this.move);
   },
@@ -70,13 +72,15 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   padding: 20px 100px;
   display: flex;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 2;
 }
 #header .logoLand {
-  color: black;
+  color: #094b65;
   font: 1000 30px 'Poppins';
   font-size: 2em;
   text-decoration: none;
@@ -85,7 +89,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 100%;
+  margin-left: 470px;
 }
 #header ul li {
   list-style: none;
@@ -94,7 +98,8 @@ export default {
 #header ul li a {
   text-decoration: none;
   padding: 6px 15px;
-  color: black;
+  color: #094b65;
+  font-weight: 600;
   border-radius: 20px;
 }
 #header ul li a:hover,
@@ -132,19 +137,18 @@ export default {
 .section #button {
   position: absolute;
   top: 50%;
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 30px;
-  background: white;
-  color: #094b65;
-  border-radius: 40px;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 2px;
 }
 .community {
   position: relative;
   padding: 100px;
   background: #036881;
+}
+.community h2 {
+  font-size: 3em;
+  color: white;
+  margin-bottom: 10px;
+}
+.community p {
+  color: white;
 }
 </style>

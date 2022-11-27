@@ -1,12 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import loginPage from "../views/loginPage";
 import blogPage from "..//views/blogPage";
+import communityPage from "@/views/communityPage";
 
 const routes = [
   {
     path: '/',
-    name: 'loginPage',
-    component: loginPage
+    name: 'mainPage',
+    component: communityPage
   },
   {
     path: '/about',
@@ -22,9 +22,19 @@ const routes = [
     component: blogPage
   },
   {
-    path: '/community',
-    name: 'community',
-    component: () => import('../views/communityPage.vue')
+    path: '/login',
+    name: 'loginPage',
+    component: () => import('../views/loginPage.vue')
+  },
+  {
+    path: '/drifter',
+    name: 'drifterPage',
+    component: () => import('../views/drifterPage.vue')
+  },
+  {
+    path: '/capsule',
+    name: 'capsulePage',
+    component: () => import('../views/capsulePage.vue')
   }
 ]
 

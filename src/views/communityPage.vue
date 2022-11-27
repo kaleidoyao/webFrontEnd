@@ -3,12 +3,12 @@
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
   <div class="body">
     <div id="header">
-      <a href="/blog" class="logoLand">LAND</a>
+      <a href="/#" class="logoLand">WasteLand</a>
       <ul>
-        <li><a href="/blog">Home0</a></li>
-        <li><a href="/blog">Home1</a></li>
-        <li><a href="/blog">Home2</a></li>
-        <li><a href="/blog">Home3</a></li>
+        <li><a href="/#/blog">Blog</a></li>
+        <li><a href="/#/drifter">Drifter</a></li>
+        <li><a href="/#/capsule">Capsule</a></li>
+        <li><a href="/#/login">LOGIN</a></li>
       </ul>
     </div>
     <div class="section">
@@ -17,37 +17,18 @@
       <img src="../assets/imgs/mountain.png" id="mountain">
       <img src="../assets/imgs/river.png" id="river">
       <img src="../assets/imgs/tree.png" id="tree">
-      <a href="/blog" id="button">Explore</a>
+      <a href="/#/login" id="button">Explore</a>
     </div>
     <div class="community">
-      <h2>abcd</h2>
-      <p>IT之家讯 与现有的USB 3.0接口相比，USB 3.1标称的接口传输速率从5Gbps直接翻倍到了10Gbps。不过，在实际环境下，它能达到现有USB 3.0接口两倍的传输速度吗？外媒AnandTech为我们带来了实际的测试，一起来看看。
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        不过，由于目前还没有基于USB 3.1接口的外设，因此这次测试中AnandTech所使用的是ASMedia的USB 3.1测试开发板。它搭载了ASMedia的ASM1352R控制器，提供两个SATA 6Gbps接口，支持RAID 0阵列。测试过程中使用的开发板装有两块英特尔Intel 530 240GB固态硬盘，以达到最高性能。
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        测试平台方面，AnandTech采用了Intel的酷睿i7-5960X ES处理器(8核心、16线程、3.0GHz主频，动态睿频3.5GHz)；32GB DDR4-2133内存；华硕R7 240 2GB显存显卡；OCZ Vertex 3 256GB固态硬盘；1250W OCZ NX电源；主板为微星的MSI X99A Gaming 9 ACK，带有两个Type-A接口。它是从ASMedia提供的芯片扩展而来，使用PCI-E 2.0 x2通道，接口理论带宽为10Gbps。此外这块主板上还带有基于VIA芯片扩展而来的USB 3.0接口，用于与USB 3.1接口之间的对比。
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        从测试结果来看，USB 3.1接口的实际性能要比USB 3.0高出不少，连续读写速度在500MB/s到600MB/s左右，最高成绩甚至可以突破700MB/s。而USB 3.0接口方面，其连续读写速率大概在300MB/s到400MB/s左右。
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        虽然USB 3.1标称的接口理论速率是10Gbps，但是其还保留了部分带宽用以支持其他功能，因此其实际的有效带宽大约为7.2Gbps，理论传输速度应该可以达到900MB/s，因此AnandTech也认为，现在的USB 3.1接口还有很大的提升空间，至少应该达到800MB/s的水平。
-
-        什么是USB 3.1？USB 3.1是目前最新的USB传输接口规范，由USB-IF协会推出。除了编码方式改进、传输速率提升外，它还大幅提升了接口的供电能力，USB3.1接口有望同时为平板电脑等设备进行充电。其连接端接口采用Type-A、Type-B、Type-C三种类型。能够向下兼容USB 3.0和USB 2.0设备，还将提供USB 3.1 A/V影音传输，最高支持每秒30帧的4K视频画面输出，并同时支持声音传输。
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        68370daef67c1e13899ba8726eb94421.png
-
-        ▼以下是AnandTech带来的部分跑分数据。</p>
+      <h2>WasteLand Intro</h2>
+      <p>
+        Welcome to WasteLand!<br>
+        在这里分享你的奇思妙想！分享知识、经验，分享情感、人生体验，开垦这片无人荒原！<br>
+        在漂流瓶里埋下心事，随波逐流，流向远方……<br>
+        在时间胶囊里写下对未来自己的祝福，进行一场穿越时空的对话…… <br>
+        <br>
+        点击LOGIN，开启你的开荒之旅吧！
+      </p>
     </div>
   </div>
 </template>

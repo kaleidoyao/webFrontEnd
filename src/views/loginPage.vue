@@ -5,16 +5,16 @@
     <div class="container-box" ref="container-box">
       <div class="register-box hidden" ref="register-box">
         <h1>REGISTER</h1>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Your Password">
-        <input type="password" placeholder="Verify Password">
-        <button id="button"><span>Register</span></button>
+        <input type="text" placeholder="Username" v-on:input="inputRegisName">
+        <input type="password" placeholder="Your Password" v-on:input="inputRegisPass">
+        <input type="password" placeholder="Verify Password" v-on:input="inputRegisVerPass">
+        <button id="button" v-on:click="registerBT"><span>Register</span></button>
       </div>
       <div class="login-box" ref="login-box">
         <h1>LOGIN</h1>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Your Password">
-        <button id="button"><span>Login</span></button>
+        <input type="text" placeholder="Username" v-on:input="inputLogName">
+        <input type="password" placeholder="Your Password" v-on:input="inputLogPass">
+        <button id="button" v-on:click="loginBT"><span>Login</span></button>
       </div>
     </div>
     <div class="under-box left">
@@ -34,12 +34,101 @@
 </template>
 
 <script>
+import axios from "axios";
+import router from "@/router/index";
+
 export default {
+  created() {
+    this.regisName="";
+    this.regisPass="";
+    this.regisVerPass="";
+    this.logName="";
+    this.logPass="";
+  },
+  data(){
+    return{
+      regisName:"",
+      regisPass:"",
+      regisVerPass:"",
+      logName:"",
+      logPass:"",
+    }
+  },
   mounted() {
     this.$refs.login.addEventListener('click', this.displayRegister);
     this.$refs.register.addEventListener('click', this.displayLogin);
   },
   methods:{
+    inputRegisName(val){
+      let _this=this;
+      let regisName=_this.regisName;
+      let len=regisName.length;
+      if(val.data!=null) regisName=regisName+val.data;
+      else regisName=regisName.substring(0,len-1);
+      _this.regisName=regisName
+    },
+    inputRegisPass(val){
+      let _this=this;
+      let regisPass=_this.regisPass;
+      let len=regisPass.length;
+      if(val.data!=null) regisPass=regisPass+val.data;
+      else regisPass=regisPass.substring(0,len-1);
+      _this.regisPass=regisPass
+    },
+    inputRegisVerPass(val){
+      let _this=this;
+      let regisVerPass=_this.regisVerPass;
+      let len=regisVerPass.length;
+      if(val.data!=null) regisVerPass=regisVerPass+val.data;
+      else regisVerPass=regisVerPass.substring(0,len-1);
+      _this.regisVerPass=regisVerPass
+    },
+    inputLogName(val){
+      let _this=this;
+      let logName=_this.logName;
+      let len=logName.length;
+      if(val.data!=null) logName=logName+val.data;
+      else logName=logName.substring(0,len-1);
+      _this.logName=logName
+    },
+    inputLogPass(val){
+      let _this=this;
+      let logPass=_this.logPass;
+      let len=logPass.length;
+      if(val.data!=null) logPass=logPass+val.data;
+      else logPass=logPass.substring(0,len-1);
+      _this.logPass=logPass
+    },
+    registerBT(){
+      let _this=this
+      axios.get("http://localhost:8088/register",{
+        params: {
+          name: _this.regisName,
+          password: _this.regisPass,
+        }
+      }).then((response)=>{
+        let r = response.data;
+        console.log(r)
+      }).catch((error)=>{
+        console.log(error)
+      });
+      router.replace("/blog")
+    },
+    loginBT(){
+      let _this=this
+      axios.get("http://localhost:8088/login",{
+        params: {
+          logName:_this.logName,
+          logPass:_this.logPass,
+        }
+      }).then((response)=>{
+        console.log(response)
+      }).catch((error)=>{
+        console.log(error)
+      });
+      router.replace("/blog")
+    },
+
     displayRegister(){
       this.$refs["container-box"].style.transform = 'translateX(0%)';
       this.$refs["register-box"].classList.add('hidden');

@@ -1,6 +1,16 @@
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+  <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
  <div class="background">
-   <div class="header"></div>
+   <div class="header">
+     <text class="logoLand">WasteLand</text>
+     <ul>
+       <li><a href="/#/blog">Blog</a></li>
+       <li><a href="/#/drifter">Drifter</a></li>
+       <li><a href="/#/capsule">Capsule</a></li>
+       <li><a href="/#/login">LOGIN</a></li>
+     </ul>
+   </div>
    <div class="content">
      <span class="userContent"></span>
      <span class="blogContent">
@@ -40,9 +50,40 @@ export default {
   padding: 0;
 }
 .header {
-  height: 50px;
+  height: 10vh;
+  align-items: center;
+  display: flex;
   background-color: rgba(255,255,255,0.7);
+  padding: 10px 100px;
 }
+
+.header .logoLand {
+  color: black;
+  font: 1000 30px 'Poppins';
+  font-size: 2em;
+}
+.header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50%;
+}
+.header ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+.header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: black;
+  border-radius: 20px;
+}
+.header ul li a:hover,
+.header ul li a.active {
+  background: #036881;
+  color: white;
+}
+
 .content {
   display: flex;
   justify-content: center;

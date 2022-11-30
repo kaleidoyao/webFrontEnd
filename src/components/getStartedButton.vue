@@ -1,5 +1,5 @@
 <template>
-  <button class="learn-more">
+  <button class="learn-more" v-on:click="navigate">
     <span class="circle" aria-hidden="true">
       <span class="icon arrow"></span>
     </span>
@@ -8,10 +8,17 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   name: "getStartedButton",
   props: {
     msg: String
+  },
+  methods:{
+    navigate(){
+      router.replace("/login")
+    }
   }
 }
 </script>

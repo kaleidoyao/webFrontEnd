@@ -70,7 +70,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 40%;
+  margin-left: 50%;
 }
 .header ul li {
   list-style: none;

@@ -370,6 +370,9 @@ export default {
   box-sizing: border-box;
 }
 .body{
+  position: fixed;
+  top: 0;
+  z-index: -1;
   width: 100%;
   display: block;
   min-height: 100vh;

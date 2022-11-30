@@ -1,7 +1,8 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
- <div class="background">
+  <back-ground></back-ground>
+ <div class="body">
    <div class="header">
      <a href="/#" class="logoLand">WasteLand</a>
      <ul>
@@ -34,21 +35,24 @@
 </template>
 
 <script>
+import BackGround from "@/components/backGround";
 export default {
-  name: "blogPage"
+  name: "blogPage",
+  components: {BackGround}
 }
 </script>
 
 <style scoped>
-.background {
-  background-image: url("../assets/imgs/Blog_Background.jpg");
+.body {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background-size: cover;
   position: fixed;
+  top: 0;
   margin: 0;
   padding: 0;
 }
+
 .header {
   height: 10vh;
   align-items: center;
@@ -56,7 +60,6 @@ export default {
   background-color: rgba(255,255,255,0.7);
   padding: 10px 100px;
 }
-
 .header .logoLand {
   color: black;
   font: 1000 30px 'Poppins';

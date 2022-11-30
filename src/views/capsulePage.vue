@@ -1,13 +1,17 @@
 <template>
-this is capsule
+  <header-tag></header-tag>
 </template>
 
 <script>
+import HeaderTag from "@/components/headerTag";
 export default {
-  name: "capsulePage"
+  name: "capsulePage",
+  components: {HeaderTag}
 }
 </script>
 
 <style scoped>
+.body {
 
+}
 </style>

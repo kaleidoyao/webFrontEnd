@@ -1,23 +1,25 @@
 <template>
-
   <div class="container">
     <div class="whaleContainer">
       <div class="whalePos size1">
         <div class="whaleRotate size1">
-          <div class="whale"></div>
-          <div class="fin"></div>
+<!--          <div class="whale"></div>-->
+<!--          <div class="fin"></div>-->
+          <img src="../assets/imgs/bottle.png">
         </div>
       </div>
       <div class="whalePos size2">
         <div class="whaleRotate size2">
           <div class="whale"></div>
           <div class="fin"></div>
+          <img src="../assets/imgs/bottle.png">
         </div>
       </div>
       <div class="whalePos size3">
         <div class="whaleRotate size3">
           <div class="whale"></div>
           <div class="fin"></div>
+          <img src="../assets/imgs/bottle.png">
         </div>
       </div>
       <div class="whalePos size4">
@@ -63,7 +65,7 @@ export default {
 <style scoped>
 .container {
   position: relative;
-  width: 160px;
+  width: 20vw;
   height: 335px;
   background: linear-gradient(to bottom, #96C7CC 0%, #C3DDD8 30%, #C3DDD8 100%);
   border-radius: 100px;
@@ -677,7 +679,6 @@ export default {
 .cPos {
   position: relative;
   top: 30%;
-  left: calc(50% - 80px);
   z-index: 9;
   transform: translateY(0) scale(1);
   -webkit-animation-name: sunset;
@@ -749,7 +750,7 @@ export default {
 }
 .rocks .rock.one {
   top: 280px;
-  left: -30px;
+  left: -5%;
   width: 98px;
   height: 50px;
   -webkit-clip-path: polygon(0 0, 56% 10%, 80% 100%, 0% 100%);
@@ -758,8 +759,8 @@ export default {
   z-index: 2000;
 }
 .rocks .rock.two {
-  top: 295px;
-  left: 30px;
+  top: 290px;
+  left: 20%;
   width: 95px;
   height: 60px;
   -webkit-clip-path: polygon(0 15%, 20% 10%, 100% 70%, 100% 100%, 0% 100%);
@@ -768,8 +769,8 @@ export default {
   z-index: 1000;
 }
 .rocks .rock.three {
-  top: 300px;
-  left: 50px;
+  top: 285px;
+  left: 50%;
   width: 95px;
   height: 60px;
   -webkit-clip-path: polygon(0 60%, 60% 20%, 100% 12%, 100% 100%, 0 100%);
@@ -779,7 +780,7 @@ export default {
 }
 .rocks .rock.four {
   top: 255px;
-  left: 125px;
+  left: 75%;
   width: 60px;
   height: 65px;
   -webkit-clip-path: polygon(0 100%, 20% 45%, 100% 12%, 100% 100%, 0 100%);
@@ -1750,7 +1751,7 @@ export default {
 
 .triangleBar {
   width: 1000px;
-  height: 6px;
+  height: 7px;
   position: absolute;
   z-index: 1500;
   background: linear-gradient(to bottom, #E7F9F3, #F5FFF9);
@@ -1868,35 +1869,35 @@ export default {
 
 @-webkit-keyframes whaleMovementXLarge {
   0% {
-    transform: rotate(0) scale(0.35);
+    transform: rotate(0) scale(0.6);
   }
   100% {
-    transform: rotate(10deg) scale(0.35);
+    transform: rotate(10deg) scale(0.6);
   }
 }
 
 @keyframes whaleMovementXLarge {
   0% {
-    transform: rotate(0) scale(0.35);
+    transform: rotate(0) scale(0.6);
   }
   100% {
-    transform: rotate(10deg) scale(0.35);
+    transform: rotate(10deg) scale(0.6);
   }
 }
 @-webkit-keyframes whaleMovementLarge {
   0% {
-    transform: rotate(0) scale(0.25);
+    transform: rotate(0) scale(0.5);
   }
   100% {
-    transform: rotate(10deg) scale(0.25);
+    transform: rotate(10deg) scale(0.5);
   }
 }
 @keyframes whaleMovementLarge {
   0% {
-    transform: rotate(0) scale(0.25);
+    transform: rotate(0) scale(0.5);
   }
   100% {
-    transform: rotate(10deg) scale(0.25);
+    transform: rotate(10deg) scale(0.5);
   }
 }
 @-webkit-keyframes whaleMovementMedium {

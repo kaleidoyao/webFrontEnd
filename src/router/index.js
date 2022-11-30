@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import blogPage from "..//views/blogPage";
+import blogPage from "@/views/blogPage";
 import communityPage from "@/views/communityPage";
 
 const routes = [
@@ -31,10 +31,15 @@ const routes = [
     name: 'drifterPage',
     component: () => import('../views/drifterPage.vue')
   },
+  // {
+  //   path: '/capsule',
+  //   name: 'capsulePage',
+  //   component: () => import('../views/capsulePage1.vue')
+  // },
   {
-    path: '/capsule',
-    name: 'capsulePage',
-    component: () => import('../views/capsulePage.vue')
+    path: '/1',
+    name: '1',
+    component: () => import('../views/drifterPage(1)')
   }
 ]
 

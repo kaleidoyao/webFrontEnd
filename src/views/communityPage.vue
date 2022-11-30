@@ -51,8 +51,8 @@ export default {
       let top = document.documentElement.scrollTop || document.body.scrollTop;
       text.style.top = 20+top*0.1 + '%';
       button.style.top = 50+top*0.1 + '%';
-      birdLeft.style.right = top + 'px';
-      birdRight.style.left = top + 'px';
+      birdLeft.style.left = top + 'px';
+      birdRight.style.right = top + 'px';
     }
   },
   unmounted() {

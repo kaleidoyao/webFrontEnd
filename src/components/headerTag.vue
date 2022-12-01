@@ -18,11 +18,15 @@ export default {
 
 <style scoped>
 .header {
-  height: 10vh;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
   display: flex;
-  background-color: rgba(255,255,255,0.7);
-  padding: 10px 100px;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 2;
 }
 .header .logoLand {
   color: black;

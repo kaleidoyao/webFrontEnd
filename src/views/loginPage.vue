@@ -5,14 +5,14 @@
     <div class="container-box" ref="container-box">
       <div class="register-box hidden" ref="register-box">
         <h1>REGISTER</h1>
-        <input type="text" placeholder="Username" v-on:input="inputRegisName">
+        <input type="text" placeholder="Username" @blur="inputRegisName($event)">
         <input type="password" placeholder="Your Password" v-on:input="inputRegisPass">
         <input type="password" placeholder="Verify Password" v-on:input="inputRegisVerPass">
         <button id="button" v-on:click="registerBT"><span>Register</span></button>
       </div>
       <div class="login-box" ref="login-box">
         <h1>LOGIN</h1>
-        <input type="text" placeholder="Username" v-on:input="inputLogName">
+        <input type="text" placeholder="Username" @blur="inputLogName($event)">
         <input type="password" placeholder="Your Password" v-on:input="inputLogPass">
         <button id="button" v-on:click="loginBT"><span>Login</span></button>
       </div>
@@ -59,13 +59,10 @@ export default {
     this.$refs.register.addEventListener('click', this.displayLogin);
   },
   methods:{
-    inputRegisName(val){
+    inputRegisName(event){
       let _this=this;
-      let regisName=_this.regisName;
-      let len=regisName.length;
-      if(val.data!=null) regisName=regisName+val.data;
-      else regisName=regisName.substring(0,len-1);
-      _this.regisName=regisName
+      _this.regisName=event.target.value;
+      console.log(_this.regisName)
     },
     inputRegisPass(val){
       let _this=this;
@@ -83,13 +80,9 @@ export default {
       else regisVerPass=regisVerPass.substring(0,len-1);
       _this.regisVerPass=regisVerPass
     },
-    inputLogName(val){
+    inputLogName(event){
       let _this=this;
-      let logName=_this.logName;
-      let len=logName.length;
-      if(val.data!=null) logName=logName+val.data;
-      else logName=logName.substring(0,len-1);
-      _this.logName=logName
+      _this.logName=event.target.value;
     },
     inputLogPass(val){
       let _this=this;

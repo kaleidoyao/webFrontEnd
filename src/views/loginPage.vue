@@ -94,32 +94,46 @@ export default {
     },
     registerBT(){
       let _this=this
+      let result = true;
       axios.get("http://localhost:8088/register",{
         params: {
           name: _this.regisName,
           password: _this.regisPass,
         }
       }).then((response)=>{
-        let r = response.data;
-        console.log(r)
+        result = response.data;
+        console.log(result)
+        if(result){
+          router.replace("/blog")
+        }else{
+          console.log("user name already exists")
+        }
       }).catch((error)=>{
         console.log(error)
       });
-      router.replace("/blog")
+
     },
     loginBT(){
       let _this=this
+      let result = -1
       axios.get("http://localhost:8088/login",{
         params: {
           logName:_this.logName,
           logPass:_this.logPass,
         }
       }).then((response)=>{
-        console.log(response)
+        result = response.data
+        console.log(result)
+        if(result >= 0){
+          router.replace("/blog")
+        }else if(result === -1){
+          console.log("user doesn't exist")
+        }else if(result === -2){
+          console.log("wrong password")
+        }
       }).catch((error)=>{
         console.log(error)
       });
-      router.replace("/blog")
     },
 
     displayRegister(){

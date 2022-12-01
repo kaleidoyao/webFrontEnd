@@ -34,7 +34,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 40%;
+  margin-left: 45%;
 }
 .header ul li {
   list-style: none;

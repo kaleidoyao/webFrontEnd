@@ -3,29 +3,22 @@
     <div class="whaleContainer">
       <div class="whalePos size1">
         <div class="whaleRotate size1">
-<!--          <div class="whale"></div>-->
-<!--          <div class="fin"></div>-->
           <img src="../assets/imgs/bottle.png">
         </div>
       </div>
       <div class="whalePos size2">
         <div class="whaleRotate size2">
-          <div class="whale"></div>
-          <div class="fin"></div>
           <img src="../assets/imgs/bottle.png">
         </div>
       </div>
       <div class="whalePos size3">
         <div class="whaleRotate size3">
-          <div class="whale"></div>
-          <div class="fin"></div>
           <img src="../assets/imgs/bottle.png">
         </div>
       </div>
       <div class="whalePos size4">
         <div class="whaleRotate size4">
-          <div class="whale"></div>
-          <div class="fin"></div>
+          <img src="../assets/imgs/bottle.png">
         </div>
       </div>
     </div>
@@ -58,7 +51,7 @@
 
 <script>
 export default {
-  name: "ToDoList"
+  name: "drifterBottle"
 }
 </script>
 
@@ -68,8 +61,9 @@ export default {
   width: 20vw;
   height: 335px;
   background: linear-gradient(to bottom, #96C7CC 0%, #C3DDD8 30%, #C3DDD8 100%);
-  border-radius: 100px;
+  border-radius: 50px;
   overflow: hidden;
+  margin: auto;
 }
 
 .gradientContainer {
@@ -749,7 +743,7 @@ export default {
   position: absolute;
 }
 .rocks .rock.one {
-  top: 280px;
+  top: 285px;
   left: -5%;
   width: 98px;
   height: 50px;
@@ -779,8 +773,8 @@ export default {
   z-index: 3000;
 }
 .rocks .rock.four {
-  top: 255px;
-  left: 75%;
+  top: 265px;
+  left: 80%;
   width: 60px;
   height: 65px;
   -webkit-clip-path: polygon(0 100%, 20% 45%, 100% 12%, 100% 100%, 0 100%);
@@ -1802,7 +1796,7 @@ export default {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(380px);
+    transform: translateX(510px);
   }
 }
 
@@ -1811,7 +1805,7 @@ export default {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(380px);
+    transform: translateX(510px);
   }
 }
 .whalePos {
@@ -1845,6 +1839,9 @@ export default {
   animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .whaleRotate.size1 {
   transform: rotate(0) scale(0.35);
@@ -1902,34 +1899,34 @@ export default {
 }
 @-webkit-keyframes whaleMovementMedium {
   0% {
-    transform: rotate(0) scale(0.15);
+    transform: rotate(0) scale(0.4);
   }
   100% {
-    transform: rotate(10deg) scale(0.15);
+    transform: rotate(10deg) scale(0.4);
   }
 }
 @keyframes whaleMovementMedium {
   0% {
-    transform: rotate(0) scale(0.15);
+    transform: rotate(0) scale(0.4);
   }
   100% {
-    transform: rotate(10deg) scale(0.15);
+    transform: rotate(10deg) scale(0.4);
   }
 }
 @-webkit-keyframes whaleMovementSmall {
   0% {
-    transform: rotate(0) scale(0.1);
+    transform: rotate(0) scale(0.3);
   }
   100% {
-    transform: rotate(10deg) scale(0.1);
+    transform: rotate(10deg) scale(0.3);
   }
 }
 @keyframes whaleMovementSmall {
   0% {
-    transform: rotate(0) scale(0.1);
+    transform: rotate(0) scale(0.3);
   }
   100% {
-    transform: rotate(10deg) scale(0.1);
+    transform: rotate(10deg) scale(0.3);
   }
 }
 .whale {

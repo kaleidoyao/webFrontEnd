@@ -31,15 +31,10 @@ const routes = [
     name: 'drifterPage',
     component: () => import('../views/drifterPage.vue')
   },
-  // {
-  //   path: '/capsule',
-  //   name: 'capsulePage',
-  //   component: () => import('../views/capsulePage1.vue')
-  // },
   {
-    path: '/1',
-    name: '1',
-    component: () => import('../views/drifterPage(1)')
+    path: '/capsule',
+    name: 'capsulePage',
+    component: () => import('../views/capsulePage.vue')
   }
 ]
 

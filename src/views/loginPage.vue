@@ -100,7 +100,7 @@ export default {
       if(_this.regisPass !== _this.regisVerPass){
         ElMessageBox.confirm('两次输入密码不同，请重新输入！','提示',{
           confirmButtonText: '确定', //确定按钮的文本内容
-          closeOnClickModal: false, //是否可通过点击遮罩关闭
+          showCancelButton: false, //是否可通过点击遮罩关闭
           type: 'warning', //消息类型，用于显示图标
         }).then(() => {
 
@@ -119,7 +119,7 @@ export default {
           if(result){
             ElMessageBox.confirm('注册成功','提示',{
               confirmButtonText: '确定', //确定按钮的文本内容
-              closeOnClickModal: false, //是否可通过点击遮罩关闭
+              showCancelButton: false, //是否可通过点击遮罩关闭
               type: 'success', //消息类型，用于显示图标
             }).then(() => {
               router.replace("/blog")
@@ -130,7 +130,7 @@ export default {
             console.log("user name already exists")
             ElMessageBox.confirm('用户名已存在，请更改用户名','提示',{
               confirmButtonText: '确定', //确定按钮的文本内容
-              closeOnClickModal: false, //是否可通过点击遮罩关闭
+              showCancelButton: false, //是否可通过点击遮罩关闭
               type: 'warning', //消息类型，用于显示图标
             }).then(() => {
 
@@ -159,8 +159,26 @@ export default {
           router.replace("/blog")
         }else if(result === -1){
           console.log("user doesn't exist")
+          ElMessageBox.confirm('用户不存在，请先注册','提示',{
+            confirmButtonText: '确定', //确定按钮的文本内容
+            showCancelButton: false, //是否可通过点击遮罩关闭
+            type: 'warning', //消息类型，用于显示图标
+          }).then(() => {
+
+          }).catch(() => {
+
+          });
         }else if(result === -2){
           console.log("wrong password")
+          ElMessageBox.confirm('密码错误，请重新输入','提示',{
+            confirmButtonText: '确定', //确定按钮的文本内容
+            showCancelButton: false, //是否可通过点击遮罩关闭
+            type: 'warning', //消息类型，用于显示图标
+          }).then(() => {
+
+          }).catch(() => {
+
+          });
         }
       }).catch((error)=>{
         console.log(error)

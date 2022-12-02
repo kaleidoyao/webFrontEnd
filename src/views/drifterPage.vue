@@ -2,12 +2,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <back-ground></back-ground>
   <div class="body">
-    <header-tag></header-tag>
-    <div class="content">
+    <header-tag ref="header"></header-tag>
+    <div class="content" ref="content">
       <span class="driftBottleAndArrest">
         <drifter-bottle class="bottle"></drifter-bottle>
         <div>
           <a href=# class="arrest">点击捕获</a>
+          <bottle-button></bottle-button>
         </div>
       </span>
       <span class="blogContent">
@@ -40,11 +41,15 @@
 import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 import DrifterBottle from "@/components/drifterBottle";
+import BottleButton from "@/components/bottleButton";
 export default {
-  components: {DrifterBottle, HeaderTag, BackGround}
+  components: {BottleButton, DrifterBottle, HeaderTag, BackGround},
+  mounted() {
+    let height= this.$refs.header.$el.offsetHeight;
+    this.$refs["content"].style.marginTop = height + 'px';
+  }
 }
 </script>
-
 
 <style scoped>
 .body {
@@ -52,6 +57,10 @@ export default {
   min-height: 100vh;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+}
 .driftBottleAndArrest {
   background-color: rgba(255,255,255,0.3);
   border-radius: 15px;

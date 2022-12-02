@@ -1,5 +1,6 @@
 <template>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
+  <div class="body">
   <div id='cursor'></div>
   <ul class='tags-cloud'>
     <li class='tag'><span class='wrap'>HTML</span></li>
@@ -22,6 +23,7 @@
     <li class='tag'><span class='wrap'>Math</span></li>
   </ul>
   <button ref="button"></button>
+  </div>
 </template>
 
 <script>
@@ -140,13 +142,13 @@ class TagsCloud {
     cancelAnimationFrame(this.#frameRequestId);
   }
 }
+
 export default {
   mounted() {
     this.$refs.button.addEventListener('click', this.main);
   },
   methods: {
     main() {
-      console.log("yes")
       {
         const root = document.querySelector('.tags-cloud');
         const cloud = new TagsCloud(root);

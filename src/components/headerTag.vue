@@ -22,7 +22,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 100px;
+  padding: 15px 100px;
   display: flex;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
@@ -38,7 +38,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 45%;
+  margin-left: 40%;
 }
 .header ul li {
   list-style: none;

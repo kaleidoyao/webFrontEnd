@@ -1,6 +1,7 @@
 <template>
   <header-tag></header-tag>
-  <tag-cloud></tag-cloud>
+  <div class="content"><tag-cloud></tag-cloud></div>
+
 </template>
 
 <script>
@@ -13,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.body {
-
+.content {
+  margin-top: 200px;
 }
 </style>

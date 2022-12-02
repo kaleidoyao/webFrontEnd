@@ -3,8 +3,8 @@
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
   <back-ground></back-ground>
  <div class="body">
-   <header-tag></header-tag>
-   <div class="content">
+   <header-tag ref="header"></header-tag>
+   <div class="content" ref="content">
      <span class="userContent"></span>
      <span class="blogContent">
        <div class="blogList">
@@ -31,7 +31,11 @@ import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 export default {
   name: "blogPage",
-  components: {HeaderTag, BackGround}
+  components: {HeaderTag, BackGround},
+  mounted() {
+    let height= this.$refs.header.$el.offsetHeight;
+    this.$refs["content"].style.marginTop = height + 'px';
+  }
 }
 </script>
 

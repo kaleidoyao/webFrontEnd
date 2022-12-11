@@ -53,6 +53,7 @@ export default {
       regisVerPass:"",
       logName:"",
       logPass:"",
+      userid:0,
     }
   },
   mounted() {
@@ -116,12 +117,15 @@ export default {
         }).then((response)=>{
           result = response.data;
           console.log(result)
-          if(result){
+          if(result >= 0){
             ElMessageBox.confirm('注册成功','提示',{
               confirmButtonText: '确定', //确定按钮的文本内容
               showCancelButton: false, //是否可通过点击遮罩关闭
               type: 'success', //消息类型，用于显示图标
             }).then(() => {
+              _this.userid = result
+              console.log(_this.userid)
+              // console.log(getCurrentInstance().appContext.config.globalProperties.$usrname)
               router.replace("/blog")
             }).catch(() => {
 
@@ -156,6 +160,7 @@ export default {
         result = response.data
         console.log(result)
         if(result >= 0){
+          _this.userid = result
           router.replace("/blog")
         }else if(result === -1){
           console.log("user doesn't exist")

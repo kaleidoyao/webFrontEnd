@@ -2,10 +2,10 @@
   <div class="header">
     <a href="/#" class="logoLand">WasteLand</a>
     <ul>
+      <li><a href="/#/">Home</a></li>
       <li><a href="/#/blog">Blog</a></li>
-      <li><a href="/#/drifter">Drifter</a></li>
-      <li><a href="/#/capsule">Capsule</a></li>
-      <li><a href="/#/login">LOGIN</a></li>
+      <li><a href="/#/capsule">Mine</a></li>
+      <li><a href="/#/">About</a></li>
     </ul>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 40%;
+  margin-left: 45%;
 }
 .header ul li {
   list-style: none;

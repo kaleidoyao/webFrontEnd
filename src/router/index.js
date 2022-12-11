@@ -13,6 +13,11 @@ const routes = [
     component: () => import('../views/blogPage')
   },
   {
+    path: '/blog/write',
+    name: 'writeBlogPage',
+    component: () => import('../views/writeBlogPage.vue')
+  },
+  {
     path: '/login',
     name: 'loginPage',
     component: () => import('../views/loginPage.vue')
@@ -26,6 +31,11 @@ const routes = [
     path: '/capsule',
     name: 'capsulePage',
     component: () => import('../views/capsulePage.vue')
+  },
+  {
+    path: '/about',
+    name: 'aboutPage',
+    component: () => import('../views/aboutPage.vue')
   }
 ]
 

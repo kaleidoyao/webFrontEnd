@@ -2,17 +2,25 @@
   <div class="header">
     <a href="/#" class="logoLand">WasteLand</a>
     <ul>
-      <li><a href="/#/">Home</a></li>
-      <li><a href="/#/blog">Blog</a></li>
-      <li><a href="/#/capsule">Mine</a></li>
-      <li><a href="/#/">About</a></li>
+      <li><a href='/#/?id={{id}}'>Home</a></li>
+      <li><a href='/#/blog?id={{id}}'>Blog</a></li>
+      <li><a href='/#/mine?id={{id}}'>Mine</a></li>
+      <li><a href='/#/about?id={{id}}'>About</a></li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "headerTag"
+  name: "headerTag",
+  props:{
+    usrid: Number
+  },
+  data(){
+    return{
+      id: this.usrid
+    }
+  }
 }
 </script>
 

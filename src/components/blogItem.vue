@@ -8,12 +8,6 @@
           <h1 class="article-title">Dark House</h1>
           <p class="book__cover-exerpt">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae accusamus, numquam nihil dicta illum, atque deserunt quas quasi nulla, fugiat ipsum voluptas vel laudantium autem. Tempora veniam labore error dolores facere, nostrum suscipit modi.
-            <span class="social">
-              <i class="fa fa-facebook"></i>
-              <i class="fa fa-twitter"></i>
-              <i class="fa fa-linkedin"></i>
-              <i class="fa fa-instagram"></i>
-            </span>
           </p>
         </span>
       </div>

@@ -5,7 +5,16 @@
  <div class="body">
    <header-tag ref="header"></header-tag>
    <div class="content" ref="content">
-     <span class="userContent"></span>
+     <span class="userContent">
+       <div class="userCard">
+         <personal-info></personal-info>
+       </div>
+       <div class="gotoButton">
+         <goto-button msg="write blogs"></goto-button>
+         <goto-button msg="drifter bottle"></goto-button>
+         <goto-button msg="time capsule"></goto-button>
+       </div>
+     </span>
      <span class="blogContent">
        <div class="blogList">
          <div class="blogItem">
@@ -30,10 +39,12 @@
 import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 import router from "@/router/index";
+import PersonalInfo from "@/components/personalInfo";
+import GotoButton from "@/components/gotoButton";
 // import axios from "axios";
 export default {
   name: "blogPage",
-  components: {HeaderTag, BackGround},
+  components: {GotoButton, PersonalInfo, HeaderTag, BackGround},
   mounted() {
     console.log("1234567")
     let height= this.$refs.header.$el.offsetHeight;
@@ -66,10 +77,18 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 500px;
-  display: inline-block;
+  min-height: 85vh;
   vertical-align: top;
   margin: 5px;
+}
+.userCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20%;
+}
+.gotoButton {
+  margin-top: 20%;
 }
 .blogContent {
   background-color: rgba(255,255,255,0.3);
@@ -78,7 +97,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 70%;
-  height: 500px;
+  min-height: 85vh;
   display: inline-block;
   vertical-align: top;
   margin: 5px;

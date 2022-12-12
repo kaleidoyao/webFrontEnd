@@ -2,17 +2,44 @@
   <div class="header">
     <a href="/#" class="logoLand">WasteLand</a>
     <ul>
-      <li><a href="/#/">Home</a></li>
-      <li><a href="/#/blog">Blog</a></li>
-      <li><a href="/#/capsule">Mine</a></li>
-      <li><a href="/#/">About</a></li>
+      <li><a @click="toHome">Home</a></li>
+      <li><a @click="toBlog">Blog</a></li>
+      <li><a @click="toMine">Mine</a></li>
+      <li><a @click="toAbout">About</a></li>
     </ul>
   </div>
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
-  name: "headerTag"
+  name: "headerTag",
+  props:{
+    usrid: Number
+  },
+  methods:{
+    toHome(){
+      router.push({
+        name:"homePage",query:{id:this.usrid}
+      })
+    },
+    toBlog(){
+      router.push({
+        name:"blogPage",query:{id:this.usrid}
+      })
+    },
+    toMine(){
+      router.push({
+        name:"minePage",query:{id:this.usrid}
+      })
+    },
+    toAbout(){
+      router.push({
+        name:"aboutPage",query:{id:this.usrid}
+      })
+    }
+  }
 }
 </script>
 

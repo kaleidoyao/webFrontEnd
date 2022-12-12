@@ -17,6 +17,7 @@ import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
 import axios from "axios";
+import {ElMessageBox} from "element-plus";
 export default {
   name: "writeBlogPage",
   components: {BackGround, HeaderTag},
@@ -59,6 +60,18 @@ export default {
       }).then((response) => {
         result = response.data;
         console.log(result)
+        ElMessageBox.confirm('发表成功','提示',{
+          confirmButtonText: '确定', //确定按钮的文本内容
+          showCancelButton: false, //是否可通过点击遮罩关闭
+          type: 'success', //消息类型，用于显示图标
+        }).then(() => {
+          console.log(_this.userid)
+          router.push({
+            name:"blogPage",query:{id:_this.userid}
+          })
+        }).catch(() => {
+
+        });
       })
     }
   },

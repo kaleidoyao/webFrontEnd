@@ -8,9 +8,9 @@ const routes = [
     component: homePage
   },
   {
-    path: '/blog',
-    name: 'blogPage',
-    component: () => import('../views/blogPage')
+    path: '/mine',
+    name: 'minePage',
+    component: () => import('../views/minePage.vue')
   },
   {
     path: '/blog/write',
@@ -43,9 +43,9 @@ const routes = [
     component: () =>import('../views/blogDetail')
   },
   {
-    path: '/1',
-    name: '1',
-    component: () => import('../views/communityPage.vue')
+    path: '/blog',
+    name: 'blogPage',
+    component: () => import('../views/blogPage.vue')
   }
 ]
 

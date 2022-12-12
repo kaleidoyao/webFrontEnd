@@ -19,15 +19,26 @@
        <div class="blogList">
          <div class="blogItem">
            <span class="dot"></span>
-           <div class="blogTime">2022/11/20</div>
+           <div class="blogTime">2022/11/20
+             <button>Delete</button>
+           </div>
            <div class="blogDetail">
-             <h4>标题</h4>
+             <small-blog-item></small-blog-item>
            </div>
          </div>
          <div class="blogItem">
            <span class="dot"></span>
            <div class="blogTime">2022/11/21</div>
-           <div class="blogDetail"></div>
+           <div class="blogDetail">
+             <small-blog-item></small-blog-item>
+           </div>
+         </div>
+         <div class="blogItem">
+           <span class="dot"></span>
+           <div class="blogTime">2022/11/22</div>
+           <div class="blogDetail">
+             <small-blog-item></small-blog-item>
+           </div>
          </div>
        </div>
      </span>
@@ -41,10 +52,10 @@ import HeaderTag from "@/components/headerTag";
 import router from "@/router/index";
 import PersonalInfo from "@/components/personalInfo";
 import GotoButton from "@/components/gotoButton";
-// import axios from "axios";
+import SmallBlogItem from "@/components/smallBlogItem";
 export default {
   name: "blogPage",
-  components: {GotoButton, PersonalInfo, HeaderTag, BackGround},
+  components: {SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
   mounted() {
     console.log("1234567")
     let height= this.$refs.header.$el.offsetHeight;
@@ -105,6 +116,7 @@ export default {
 .blogList {
   width: 90%;
   margin-left: auto;
+  margin-bottom: 10px;
   border-left: 3px solid black;
 }
 .blogItem {
@@ -116,6 +128,10 @@ export default {
   margin-left: 20px;
   margin-bottom: 5px;
 }
+.blogTime button {
+  margin-left: 75%;
+
+}
 .dot {
   width: 10px;
   height: 10px;
@@ -126,19 +142,5 @@ export default {
   position: absolute;
   left: -8px;
   top: 50%;
-}
-.blogDetail {
-  background-color: rgba(255,255,255,0.7);
-  border-radius: 15px;
-  border-left: 2px solid rgba(255,255,255,0.7);
-  border-top: 2px solid rgba(255,255,255,0.7);
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-  height: 100px;
-  width: 75%;
-  margin-left: 10%;
-}
-.blogDetail h4 {
-  margin-top: 5px;
-  margin-left: 10px;
 }
 </style>

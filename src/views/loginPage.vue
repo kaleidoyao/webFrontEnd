@@ -126,7 +126,9 @@ export default {
               _this.userid = result
               console.log(_this.userid)
               // console.log(getCurrentInstance().appContext.config.globalProperties.$usrname)
-              router.replace("/blog")
+              router.push({
+                name:"blogPage",query:{id:_this.userid}
+              })
             }).catch(() => {
 
             });
@@ -202,8 +204,8 @@ export default {
     }
   },
   unmounted() {
-    this.$refs.login.removeEventListener('click',this.displayRegister);
-    this.$refs.register.removeEventListener('click', this.displayLogin);
+    // this.$refs['login'].removeEventListener('click',this.displayRegister);
+    // this.$refs['register'].removeEventListener('click', this.displayLogin);
   }
 }
 </script>

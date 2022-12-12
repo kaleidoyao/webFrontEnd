@@ -1,5 +1,5 @@
 <template>
-  <header-tag ref="header" usrid={{this.userid.valueOf()}}></header-tag>
+  <header-tag ref="header" :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div ref="content">
     <blog-item></blog-item>

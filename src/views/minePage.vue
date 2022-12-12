@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
   <back-ground></back-ground>
  <div class="body">
-   <header-tag ref="header" usrid={{this.userid.valueOf()}}></header-tag>
+   <header-tag ref="header" :usrid=userid></header-tag>
    <div class="content" ref="content">
      <span class="userContent"></span>
      <span class="blogContent">

@@ -29,12 +29,22 @@
 <script>
 import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
+import router from "@/router/index";
+// import axios from "axios";
 export default {
   name: "blogPage",
   components: {HeaderTag, BackGround},
   mounted() {
+    console.log("1234567")
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
+    this.userid = router.currentRoute.value.query.id;
+    console.log(this.userid);
+  },
+  data(){
+    return{
+      userid:0,
+    }
   }
 }
 </script>

@@ -3,7 +3,7 @@
   <header-tag ref="header"></header-tag>
   <div ref="content">
       <span class="messageAndAbstract">
-          <span><a href=#><img src="picture5.png"></a></span>
+          <span><a href=#><img src="picture5png"></a></span>
           <span><a href=#>名字</a></span>
           <ul>
               <li>博客缩略</li>

@@ -15,12 +15,23 @@
 <script>
 import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
+import router from "@/router";
 export default {
   name: "writeBlogPage",
   components: {BackGround, HeaderTag},
   mounted() {
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
+    this.userid = router.currentRoute.value.query.id;
+    console.log(this.userid);
+  },
+  data(){
+    return{
+      blogTitle:"",
+      blogContent:"",
+      userid:0,
+      date:""
+    }
   }
 }
 </script>

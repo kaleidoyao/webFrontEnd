@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <back-ground></back-ground>
   <div class="body">
@@ -19,11 +20,18 @@
       </span>
     </div>
   </div>
+=======
+  <header-tag></header-tag>
+  <back-ground></back-ground>
+  <div class="content"><tag-cloud></tag-cloud></div>
+
+>>>>>>> 547320cf3ff19d3a432d262ddf7a4b137629d8e4
 </template>
 
 <script>
 import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
+<<<<<<< HEAD
 import TimeCapsule from "@/components/timeCapsule";
 import PersonalInfo from "@/components/personalInfo";
 import CalendarItem from "@/components/calendarItem";
@@ -34,6 +42,13 @@ export default {
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
   }
+=======
+import TagCloud from "@/components/tagCloud";
+import BackGround from "@/components/backGround";
+export default {
+  name: "capsulePage",
+  components: {BackGround, TagCloud, HeaderTag}
+>>>>>>> 547320cf3ff19d3a432d262ddf7a4b137629d8e4
 }
 </script>
 

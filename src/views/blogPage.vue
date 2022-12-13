@@ -13,7 +13,7 @@ import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
 export default {
-  name: "communityPage",
+  name: "blogPage",
   components: {BackGround, HeaderTag, BlogItem},
   mounted() {
     let height= this.$refs.header.$el.offsetHeight;

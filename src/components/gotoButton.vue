@@ -15,7 +15,8 @@
 export default {
   name: "gotoButton",
   props: {
-    msg: String
+    msg: String,
+    usrid:Number
   }
 }
 </script>

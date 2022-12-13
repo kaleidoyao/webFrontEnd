@@ -2,23 +2,42 @@
   <div class="header">
     <a href="/#" class="logoLand">WasteLand</a>
     <ul>
-      <li><a href='/#/?id={{id}}'>Home</a></li>
-      <li><a href='/#/blog?id={{id}}'>Blog</a></li>
-      <li><a href='/#/mine?id={{id}}'>Mine</a></li>
-      <li><a href='/#/about?id={{id}}'>About</a></li>
+      <li><a @click="toHome">Home</a></li>
+      <li><a @click="toBlog">Blog</a></li>
+      <li><a @click="toMine">Mine</a></li>
+      <li><a @click="toAbout">About</a></li>
     </ul>
   </div>
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   name: "headerTag",
   props:{
     usrid: Number
   },
-  data(){
-    return{
-      id: this.usrid
+  methods:{
+    toHome(){
+      router.push({
+        name:"homePage",query:{id:this.usrid}
+      })
+    },
+    toBlog(){
+      router.push({
+        name:"blogPage",query:{id:this.usrid}
+      })
+    },
+    toMine(){
+      router.push({
+        name:"minePage",query:{id:this.usrid}
+      })
+    },
+    toAbout(){
+      router.push({
+        name:"aboutPage",query:{id:this.usrid}
+      })
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-  <header-tag></header-tag>
+  <header-tag :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div class="logoLand">About WasteLand</div>
   <div class="titleLand">What is a blog?</div>
@@ -16,10 +16,20 @@
 <script>
 import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
+import router from "@/router";
 
 export default {
   name: "aboutPage",
-  components:{HeaderTag,BackGround}
+  components:{HeaderTag,BackGround},
+  mounted() {
+    this.userid = router.currentRoute.value.query.id;
+    console.log(this.userid);
+  },
+  data(){
+    return{
+      userid:0
+    }
+  }
 }
 </script>
 

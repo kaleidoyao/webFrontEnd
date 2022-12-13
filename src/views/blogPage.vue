@@ -1,5 +1,5 @@
 <template>
-  <header-tag ref="header" usrid={{this.userid.valueOf()}}></header-tag>
+  <header-tag ref="header" :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div ref="content">
     <blog-item title="hskjdhfs"></blog-item>
@@ -21,7 +21,7 @@ import router from "@/router";
 import axios from "axios";
 //import {ElMessageBox} from "element-plus";
 export default {
-  name: "communityPage",
+  name: "blogPage",
   components: {BackGround, HeaderTag, BlogItem},
   mounted() {
     let height= this.$refs.header.$el.offsetHeight;

@@ -6,8 +6,7 @@
     <div class="content" ref="content">
       <span class="driftBottleAndArrest">
         <drifter-bottle class="bottle"></drifter-bottle>
-        <div>
-          <a href=# class="arrest">点击捕获</a>
+        <div ref="pick">
           <bottle-button></bottle-button>
         </div>
       </span>
@@ -23,6 +22,9 @@
           <li>
             <a href=#> 扔一个 </a>
           </li>
+          <button id="throwButton" v-on:click="throwBT"><span>扔一个</span></button>
+          <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
+          <button id="deleteButton" v-on:click="deleteBT"><span>销毁</span></button>
           <li>
             <p>收到的漂流瓶缩略</p>
             <a href=#>销毁</a>
@@ -38,16 +40,103 @@
 </template>
 
 <script>
+class Drifter{
+  id;
+  ownerid;
+  time;
+  title;
+  content;
+  pickerid;
+  ispicked;
+}
 import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 import DrifterBottle from "@/components/drifterBottle";
 import BottleButton from "@/components/bottleButton";
+import axios from "axios";
 export default {
   components: {BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
+    this.$refs.pick.addEventListener('click',this.pickBT);
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
-  }
+  },
+  data(){
+    return{
+      title:"",
+      content:"",
+      userid:-1,
+      drifter:Drifter,
+      myDrifter:null,
+      currentDrifterID:-1,
+    }
+  },
+
+  methods:{
+    throwBT(){
+      let _this=this
+      let result = -1;
+      axios.get("http://localhost:8088/writeDrifter",{
+        params: {
+          ownerid: _this.userid,
+          title:_this.title,
+          content:_this.content
+        }
+      }).then((response)=>{
+        result = response.data;
+        console.log(result)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    },
+
+    pickBT(){
+      let _this=this
+      let result=null;
+      axios.get("http://localhost:8088/getDrifter",{
+        params: {
+          pickerid:_this.userid
+        }
+      }).then((response)=>{
+        result = response.data;
+        _this.drifter=result
+        console.log(_this.drifter)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    },
+
+    myDrifterBT(){
+      let _this=this
+      let result=null;
+      axios.get("http://localhost:8088/getMyDrifter",{
+        params: {
+          pickerid:_this.userid
+        }
+      }).then((response)=>{
+        result = response.data;
+        _this.myDrifter=result
+        console.log(_this.myDrifter)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    },
+
+    deleteBT(){
+      let _this=this
+      let result=null;
+      axios.get("http://localhost:8088/deleteDrifter",{
+        params: {
+          id:_this.currentDrifterID
+        }
+      }).then((response)=>{
+        result = response.data;
+        console.log(result)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    }
+}
 }
 </script>
 

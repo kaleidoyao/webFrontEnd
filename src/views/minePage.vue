@@ -10,9 +10,9 @@
          <personal-info></personal-info>
        </div>
        <div class="gotoButton">
-         <goto-button msg="write blogs"></goto-button>
-         <goto-button msg="drifter bottle"></goto-button>
-         <goto-button msg="time capsule"></goto-button>
+         <goto-button msg="write blogs" ref="toWrite"></goto-button>
+         <goto-button msg="drifter bottle" ref="toDrifter"></goto-button>
+         <goto-button msg="time capsule" ref="toCapsule"></goto-button>
        </div>
      </span>
      <span class="blogContent">
@@ -58,6 +58,7 @@ export default {
   components: {SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
   mounted() {
     console.log("1234567")
+    this.$refs.toWrite.addEventListener('click',)
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
@@ -67,6 +68,9 @@ export default {
     return{
       userid:0,
     }
+  },
+  methods:{
+
   }
 }
 </script>

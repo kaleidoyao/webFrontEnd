@@ -1,4 +1,5 @@
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <button class="button" style="vertical-align: middle"><span>Pick up</span></button>
 </template>
 
@@ -11,15 +12,15 @@ export default {
 <style scoped>
 .button {
   display: inline-block;
-  border-radius: 7px;
+  border-radius: 20px;
   border: none;
   background: #14a9d0;
   color: white;
-  font-family: inherit;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
   font-size: 13px;
   width: 10em;
-  padding: 1em;
+  padding: 0.8em;
   transition: all 0.4s;
   cursor: pointer;
 }
@@ -32,7 +33,7 @@ export default {
 }
 
 .button span:after {
-  content: 'for free';
+  content: 'a bottle';
   position: absolute;
   opacity: 0;
   top: 0;
@@ -41,7 +42,7 @@ export default {
 }
 
 .button:hover span {
-  padding-right: 3.55em;
+  padding-right: 4.2em;
 }
 
 .button:hover span:after {

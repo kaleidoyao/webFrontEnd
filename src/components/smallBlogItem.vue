@@ -71,6 +71,7 @@ body {
   height: 30vh;
   width: 55vw;
   box-shadow: 0 20px 30px -10px #ccc;
+  border-radius: 20px;
   transition: all 0.5s ease-in-out;
 }
 .book:hover {

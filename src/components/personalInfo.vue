@@ -4,7 +4,7 @@
       <div class="header"></div>
     </div>
     <div class="body">
-      <p class="name">USER NAME</p>
+      <p class="name">Welcome: {{username}}</p>
       <p class="status">Happy Blogging</p>
     </div>
     <div class="footer">
@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: "personalInfo"
+  name: "personalInfo",
+  props:{
+    username:String
+  }
 }
 </script>
 

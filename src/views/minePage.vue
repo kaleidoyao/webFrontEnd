@@ -7,12 +7,12 @@
    <div class="content" ref="content">
      <span class="userContent">
        <div class="userCard">
-         <personal-info></personal-info>
+         <personal-info :username="userName"></personal-info>
        </div>
        <div class="gotoButton">
-         <goto-button msg="write blogs" ref="toWrite"></goto-button>
-         <goto-button msg="drifter bottle" ref="toDrifter"></goto-button>
-         <goto-button msg="time capsule" ref="toCapsule"></goto-button>
+         <div ref="toWrite"><goto-button msg="write blogs"></goto-button></div>
+         <div ref="toDrifter"><goto-button msg="drifter bottle" ref="toDrifter"></goto-button></div>
+         <div ref="toCapsule"><goto-button msg="time capsule"></goto-button></div>
        </div>
      </span>
      <span class="blogContent">
@@ -53,24 +53,50 @@ import router from "@/router/index";
 import PersonalInfo from "@/components/personalInfo";
 import GotoButton from "@/components/gotoButton";
 import SmallBlogItem from "@/components/smallBlogItem";
+import axios from "axios";
 export default {
-  name: "blogPage",
+  name: "minePage",
   components: {SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
   mounted() {
-    console.log("1234567")
-    this.$refs.toWrite.addEventListener('click',)
+    this.$refs.toWrite.addEventListener('click',this.toWritePage);
+    this.$refs.toDrifter.addEventListener('click',this.toDrifterPage);
+    this.$refs.toCapsule.addEventListener('click',this.toCapsulePage);
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
     console.log(this.userid);
+    axios.get("http://localhost:8088/getUserName",{
+      params:{
+        userid:this.userid
+      }
+    }).then((response)=>{
+      console.log(response.data);
+      this.userName = response.data;
+      console.log(this.userName);
+    })
   },
   data(){
     return{
       userid:0,
+      userName:""
     }
   },
   methods:{
-
+    toWritePage(){
+      router.push({
+        name:"writeBlogPage",query:{id:this.userid}
+      })
+    },
+    toDrifterPage(){
+      router.push({
+        name:"drifterPage",query:{id:this.userid}
+      })
+    },
+    toCapsulePage(){
+      router.push({
+        name:"capsulePage",query:{id:this.userid}
+      })
+    }
   }
 }
 </script>

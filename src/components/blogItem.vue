@@ -65,6 +65,26 @@ body {
   overflow: hidden;
 }
 
+.wrapper {
+  height: v-bind(wrapperHeight);
+  margin-top: v-bind(wrapperMarginTop);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book {
+  overflow: hidden;
+  background: white;
+  height: 30vh;
+  width: 65vw;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px -10px #ccc;
+  transition: all 0.5s ease-in-out;
+}
+.book:hover {
+  box-shadow: 0 6px 50px 10px #cfcfcf;
+}
 .book__cover {
   height: 100%;
   width: 100%;
@@ -120,22 +140,10 @@ body {
   display: block;
   transition: all 0.25s ease-in-out;
 }
-
-
-
 .drop-cap {
   font-size: 55px;
   line-height: 28px;
 }
-.wrapper {
-  height: v-bind(wrapperHeight);
-  margin-top: v-bind(wrapperMarginTop);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 
 .book__content {
   text-align: justify;
@@ -152,21 +160,11 @@ body {
   color: #3a3a3a;
   margin-bottom: 2.5rem;
 }
-.book {
-  overflow: hidden;
-  background: white;
-  height: 30vh;
-  width: 65vw;
-  box-shadow: 0 20px 30px -10px #ccc;
-  transition: all 0.5s ease-in-out;
-}
-.book:hover {
-  box-shadow: 0 6px 50px 10px #cfcfcf;
-}
 
 .book--expanded {
   height: 100%;
   width: 100%;
+  background: white;
   overflow-y: scroll;
 }
 .book--expanded .book__cover {
@@ -188,17 +186,11 @@ body {
 .book--expanded .book__cover-exerpt {
   opacity: 0;
 }
-
 .book--expanded .book__content {
   opacity: 1;
 }
 .book--expanded .header-image {
   height: 100%;
   width: 100%;
-}
-
-span .fa {
-  font-size: 17px;
-  margin-left: 20px;
 }
 </style>

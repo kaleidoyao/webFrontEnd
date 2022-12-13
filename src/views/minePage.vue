@@ -134,7 +134,6 @@ export default {
 }
 .blogTime button {
   margin-left: 75%;
-
 }
 .dot {
   width: 10px;

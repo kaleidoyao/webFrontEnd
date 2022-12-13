@@ -6,8 +6,8 @@
       <a href="/#" class="logoLand">WasteLand</a>
       <ul>
         <li><a href="/#/blog">Blog</a></li>
-        <li><a href="/#/drifter">Drifter</a></li>
-        <li><a href="/#/capsule">Capsule</a></li>
+        <li><a href="/#/mine">Mine</a></li>
+        <li><a href="/#/about">About</a></li>
         <li><a href="/#/login">LOGIN</a></li>
       </ul>
     </div>

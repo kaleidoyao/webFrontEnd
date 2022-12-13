@@ -8,9 +8,9 @@ const routes = [
     component: homePage
   },
   {
-    path: '/blog',
-    name: 'blogPage',
-    component: () => import('../views/blogPage')
+    path: '/mine',
+    name: 'minePage',
+    component: () => import('../views/minePage.vue')
   },
   {
     path: '/blog/write',
@@ -40,7 +40,12 @@ const routes = [
   {
     path: '/blog/detail',
     name:'blogDetail',
-    component: () =>import('../views/blogDetail')
+    component: () =>import('../views/blogDetail.vue')
+  },
+  {
+    path: '/blog',
+    name: 'blogPage',
+    component: () => import('../views/blogPage.vue')
   }
 ]
 

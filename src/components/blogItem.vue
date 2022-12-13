@@ -5,26 +5,30 @@
       <div class="book__cover">
         <span class="header-image"><div class="overlay"></div></span>
         <span class="title-wrap">
-          <h1 class="article-title">{{title}}</h1>
-          <p class="book__cover-exerpt">
-            {{abstract}}
-          </p>
+          <h1 class="article-title">{{ blog.title }}</h1>
+          <p class="book__cover-exerpt">{{blog.date}}</p>
         </span>
       </div>
       <div class="book__content">
-        <p><span class="drop-cap">O</span>{{content}}</p>
+        <p><span class="drop-cap">O</span>{{ blog.content }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+class Blog{
+  title
+  content
+}
 export default {
   name: "blogItem",
   props:{
-    "title":String,
-    "content":String,
-    "abstract":String
+     blog: {
+       title:String,
+       content:String,
+       date:String
+     }
   },
   data() {
     return {

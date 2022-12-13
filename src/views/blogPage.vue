@@ -2,14 +2,7 @@
   <header-tag ref="header" :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div ref="content">
-    <blog-item title="hskjdhfs"></blog-item>
-    <blog-item v-for="blog in blogs" title="{{blog.title}}" content="{{blog.content}}}"></blog-item>
-    <blog-item v-for="blog in blogs" :key="index" :title="blog.title" :content="blog.content"></blog-item>
-    <blog-item v-for="blog in blogs" v-bind="blog"></blog-item>
-    <div v-for="blog in blogs" key="blog.date">{{blog.title}}</div>
-<!--    <li key="blog.title" v-for="blog in blogs">-->
-<!--      <blog-item title="{{blog.title}}" content="{{blog.content}}"></blog-item>-->
-<!--    </li>-->
+    <blog-item v-for="blog in blogs" :blog="{title:blog.title,content:blog.content,date:blog.date}"></blog-item>
   </div>
 </template>
 
@@ -19,7 +12,12 @@ import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
 import axios from "axios";
-//import {ElMessageBox} from "element-plus";
+import {ElMessageBox} from "element-plus";
+class Blog{
+  title
+  content
+  date
+}
 export default {
   name: "blogPage",
   components: {BackGround, HeaderTag, BlogItem},

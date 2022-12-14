@@ -2,7 +2,7 @@
   <header-tag ref="header" :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div ref="content">
-    <blog-item v-for="blog in blogs" :blog="{title:blog.title,content:blog.content,date:blog.date}"></blog-item>
+<!--    <blog-item v-for="blog in blogs" :blog="{title:blog.title,content:blog.content,date:blog.date}"></blog-item>-->
   </div>
 </template>
 
@@ -12,14 +12,15 @@ import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
 import axios from "axios";
-import {ElMessageBox} from "element-plus";
-class Blog{
-  title
-  content
-  date
-}
+// import {ElMessageBox} from "element-plus";
+// class Blog{
+//   title
+//   content
+//   date
+// }
 export default {
   name: "blogPage",
+  // eslint-disable-next-line vue/no-unused-components
   components: {BackGround, HeaderTag, BlogItem},
   mounted() {
     let height= this.$refs.header.$el.offsetHeight;

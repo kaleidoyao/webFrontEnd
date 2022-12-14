@@ -6,7 +6,7 @@
         <span class="header-image"><div class="overlay"></div></span>
         <span class="title-wrap">
           <h1 class="article-title">{{ blog.title }}</h1>
-          <p class="book__cover-exerpt">{{blog.date}}</p>
+          <p class="book__cover-exerpt">{{ blog.date }}</p>
         </span>
       </div>
       <div class="book__content">
@@ -17,17 +17,17 @@
 </template>
 
 <script>
-class Blog{
-  title
-  content
-}
+// class Blog {
+//   title
+//   content
+// }
 export default {
   name: "blogItem",
-  props:{
+  props: {
      blog: {
-       title:String,
-       content:String,
-       date:String
+       title: String,
+       content: String,
+       date: String
      }
   },
   data() {

@@ -20,20 +20,30 @@ export default {
 </script>
 
 <style scoped>
-body {
-  background: #99c;
-  padding: 0;
-  margin: 0;
+.container {
+  margin: 0 auto 0 auto;
+  padding: 5em 1em 1em 1em;
+  width: 30em;
+  height: 20em;
   position: relative;
-}
-
-h1 {
-  color: #666;
-  position: relative;
-  z-index: 1;
+  display: block;
+  z-index: 0;
   transition: all 1.5s ease-in-out;
 }
-
+.back {
+  display: block;
+  position: relative;
+  background: #bbbbbb;
+  top: 0;
+  width: 30em;
+  height: 17em;
+  content: "";
+  -webkit-transition: 1.5s ease-in-out;
+  -moz-transition: 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
+  box-shadow: 0 0 1em rgba(68, 68, 136, 0.15);
+  z-index: 0;
+}
 .paper {
   width: 25em;
   height: 15em;
@@ -51,32 +61,10 @@ h1 {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
-.back {
-  display: block;
+h1 {
+  color: #666;
   position: relative;
-  background: #bbbbbb;
-  top: 0;
-  height: 0;
-  width: 30em;
-  height: 17em;
-  content: "";
-  -webkit-transition: 1.5s ease-in-out;
-  -moz-transition: 1.5s ease-in-out;
-  transition: all 1.5s ease-in-out;
-  box-shadow: 0 0 1em rgba(68, 68, 136, 0.15);
-  z-index: 0;
-}
-
-.container {
-  margin: 0 auto 0 auto;
-  padding: 10em 1em 1em 1em;
-  width: 30em;
-  height: 20em;
-  position: relative;
-  overflow: hidden;
-  display: block;
-  z-index: 0;
+  z-index: 1;
   transition: all 1.5s ease-in-out;
 }
 .container .cover {

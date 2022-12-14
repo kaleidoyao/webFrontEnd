@@ -23,6 +23,7 @@ export default {
   padding: 0.8em;
   transition: all 0.4s;
   cursor: pointer;
+  margin-top: 2%;
 }
 
 .button span {

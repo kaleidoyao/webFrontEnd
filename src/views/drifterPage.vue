@@ -1,22 +1,18 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <back-ground></back-ground>
-  <open-envelop></open-envelop>
   <div class="body">
     <header-tag ref="header"></header-tag>
     <div class="content" ref="content">
       <span class="driftBottleAndArrest">
         <drifter-bottle class="bottle"></drifter-bottle>
-        <div ref="pick">
+        <div ref="pick" class="pick">
           <bottle-button></bottle-button>
         </div>
       </span>
       <span class="blogContent">
-        <p>标题</p>
-        <br />
-        <p>
-          正文
-        </p>
+        <h1>Letters From Afar</h1>
+        <open-envelop></open-envelop>
       </span>
       <span class="throwAndCatch">
         <ul>
@@ -168,9 +164,10 @@ export default {
 .bottle {
   margin-top: 3%;
 }
-.arrest {
-  position: relative;
-  margin-top: 20px;
+.pick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blogContent {
@@ -180,10 +177,15 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 45%;
-  height: 550px;
+  height: 650px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;
+}
+.blogContent h1 {
+  color: #404040;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 5%;
 }
 .throwAndCatch {
   background-color: rgba(255,255,255,0.3);

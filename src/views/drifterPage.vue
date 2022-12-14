@@ -1,6 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <back-ground></back-ground>
+  <open-envelop></open-envelop>
   <div class="body">
     <header-tag ref="header"></header-tag>
     <div class="content" ref="content">
@@ -40,6 +41,8 @@
 </template>
 
 <script>
+import OpenEnvelop from "@/views/openEnvelop";
+
 class Drifter{
   id;
   ownerid;
@@ -55,7 +58,7 @@ import DrifterBottle from "@/components/drifterBottle";
 import BottleButton from "@/components/bottleButton";
 import axios from "axios";
 export default {
-  components: {BottleButton, DrifterBottle, HeaderTag, BackGround},
+  components: {OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
     this.$refs.pick.addEventListener('click',this.pickBT);
     let height= this.$refs.header.$el.offsetHeight;

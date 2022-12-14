@@ -32,6 +32,9 @@
         点击LOGIN，开启你的开荒之旅吧！
       </p>
     </div>
+    <footer>
+      © WasteLand, 2022<br /> Group 26
+    </footer>
   </div>
 </template>
 
@@ -153,6 +156,13 @@ export default {
   margin-bottom: 10px;
 }
 .community p {
+  color: white;
+}
+footer {
+  background: #036881;
+  text-align: center;
+  line-height: 1.5em;
+  padding: 2.5em 0;
   color: white;
 }
 </style>

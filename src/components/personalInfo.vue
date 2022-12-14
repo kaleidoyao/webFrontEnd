@@ -17,7 +17,7 @@
 export default {
   name: "personalInfo",
   props:{
-    username:String
+    username: String
   }
 }
 </script>
@@ -46,12 +46,14 @@ export default {
   background-image: url('../assets/imgs/avatar.png');
   background-size: cover;
   background-position: center;
-  transition: all 0.3s;
+  transition: all 0.25s;
 }
 .header:hover {
   width: 22vh;
   height: 22vh;
   border: 3px solid #000000;
 }
-
+.name, .status {
+  font-family: 'Poppins', sans-serif;
+}
 </style>

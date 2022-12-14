@@ -1,4 +1,5 @@
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <div class="calendar-wrap">
     <h2 class="month-year">December 2022</h2>
     <table class="calendar">
@@ -131,6 +132,7 @@ body {
   margin-bottom: 0.75em;
   font-weight: normal;
   font-size: 1.25em;
+  font-family: "Poppins", sans-serif;
   text-align: center;
 }
 
@@ -147,8 +149,9 @@ body {
   width: 4em;
   height: 4em;
   vertical-align: top;
-  font-weight: bold;
+  font-weight: 1000;
   font-size: 0.75em;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
   box-shadow: inset 0 -0.875em #fff, inset 0 -1em rgba(0, 20, 50, 0.1);

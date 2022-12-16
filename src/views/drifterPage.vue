@@ -7,19 +7,29 @@
       <span class="driftBottleAndArrest">
         <drifter-bottle class="bottle"></drifter-bottle>
         <div ref="pick" class="pick">
-          <bottle-button></bottle-button>
+          <bottle-button button-name="pick up"></bottle-button>
+        </div>
+        <div ref="throw" class="throw">
+          <bottle-button button-name="throw"></bottle-button>
         </div>
       </span>
-      <span class="blogContent">
-        <h1>Letters From Afar</h1>
-        <open-envelop></open-envelop>
+      <span class="blogContent" ref="drifterContent">
+        <div ref="showDetail" class="detail">
+          <h1>Letters From Afar</h1>
+          <open-envelop></open-envelop>
+        </div>
+        <div ref="writeDrifter" class="writeDrifter">
+          <div class="title">
+            <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">
+          </div>
+          <div class="mainText">
+            <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>
+          </div>
+        </div>
       </span>
       <span class="throwAndCatch">
         <ul>
-          <li>
-            <a href=#> 扔一个 </a>
-          </li>
-          <button id="throwButton" v-on:click="throwBT"><span>扔一个</span></button>
+          <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
           <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
           <button id="deleteButton" v-on:click="deleteBT"><span>销毁</span></button>
           <li>
@@ -57,6 +67,7 @@ export default {
   components: {OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
     this.$refs.pick.addEventListener('click',this.pickBT);
+    this.$refs.throw.addEventListener('click',this.displayWriteDrifter);
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
   },
@@ -87,6 +98,8 @@ export default {
       }).catch((error)=>{
         console.log(error)
       });
+      this.$refs["writeDrifter"].classList.add('hidden');
+      this.$refs["showDetail"].classList.remove('hidden');
     },
 
     pickBT(){
@@ -134,6 +147,16 @@ export default {
       }).catch((error)=>{
         console.log(error)
       });
+    },
+    inputTitle(event){
+
+    },
+    inputContent(event){
+
+    },
+    displayWriteDrifter(){
+      this.$refs["showDetail"].classList.add('hidden');
+      this.$refs["writeDrifter"].classList.remove('hidden');
     }
 }
 }
@@ -160,6 +183,10 @@ export default {
   display: inline-block;
   vertical-align: top;
   margin: 5px;
+  text-align: center;
+}
+.throw{
+  margin-top: 10px;
 }
 .bottle {
   margin-top: 3%;

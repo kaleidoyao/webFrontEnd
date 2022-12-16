@@ -1,11 +1,14 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-  <button class="button" style="vertical-align: middle"><span>Pick up</span></button>
+  <button class="button" style="vertical-align: middle"><span>{{buttonName}}</span></button>
 </template>
 
 <script>
 export default {
-  name: "bottleButton"
+  name: "bottleButton",
+  props:{
+    buttonName:String
+  }
 }
 </script>
 

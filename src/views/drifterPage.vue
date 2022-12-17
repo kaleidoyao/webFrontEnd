@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import OpenEnvelop from "@/views/openEnvelop";
+import OpenEnvelop from "@/components/openEnvelop";
 
 class Drifter{
   id;
@@ -148,12 +148,12 @@ export default {
         console.log(error)
       });
     },
-    inputTitle(event){
-
-    },
-    inputContent(event){
-
-    },
+    // inputTitle(event){
+    //
+    // },
+    // inputContent(event){
+    //
+    // },
     displayWriteDrifter(){
       this.$refs["showDetail"].classList.add('hidden');
       this.$refs["writeDrifter"].classList.remove('hidden');
@@ -225,5 +225,8 @@ export default {
   display: inline-block;
   vertical-align: top;
   margin: 5px;
+}
+.hidden {
+  display: none;
 }
 </style>

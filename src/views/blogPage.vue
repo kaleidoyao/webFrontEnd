@@ -2,7 +2,7 @@
   <header-tag ref="header" :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div ref="content">
-<!--    <blog-item v-for="blog in blogs" :blog="{title:blog.title,content:blog.content,date:blog.date}"></blog-item>-->
+    <blog-item v-for="blog in blogs" :key="blog.id" :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></blog-item>
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import axios from "axios";
 //   title
 //   content
 //   date
+//   author
 // }
 export default {
   name: "blogPage",

@@ -10,7 +10,7 @@
         </span>
       </div>
       <div class="book__content">
-        <p><span class="drop-cap">O</span>{{ blog.content }}</p>
+        <p>{{ blog.content }}</p>
       </div>
     </div>
   </div>
@@ -21,13 +21,16 @@
 //   title
 //   content
 // }
+// import axios from "axios";
+
 export default {
   name: "blogItem",
   props: {
      blog: {
        title: String,
        content: String,
-       date: String
+       date: String,
+       authorid:Number
      }
   },
   data() {
@@ -35,6 +38,7 @@ export default {
       status: 'book',
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
+      authorName:"",
     }
   },
   mounted() {

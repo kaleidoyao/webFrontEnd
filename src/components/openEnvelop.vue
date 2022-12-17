@@ -3,7 +3,7 @@
   <div class="container">
     <div class="back">
       <div class="paper">
-        <h1>The message</h1>
+        <h1>{{content}}</h1>
       </div>
       <div class="cover">
       </div>
@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: "openEnvelop"
+  name: "openEnvelop",
+  props:{
+    content:String
+  }
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
+  <menu-button></menu-button>
   <back-ground></back-ground>
  <div class="body">
    <header-tag ref="header" :usrid=userid></header-tag>
@@ -54,9 +55,10 @@ import PersonalInfo from "@/components/personalInfo";
 import GotoButton from "@/components/gotoButton";
 import SmallBlogItem from "@/components/smallBlogItem";
 import axios from "axios";
+import MenuButton from "@/components/menuButton";
 export default {
   name: "minePage",
-  components: {SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
+  components: {MenuButton, SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
   mounted() {
     this.$refs.toWrite.addEventListener('click',this.toWritePage);
     this.$refs.toDrifter.addEventListener('click',this.toDrifterPage);

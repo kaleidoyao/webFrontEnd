@@ -160,7 +160,7 @@ body {
   font-size: 1.1rem;
   opacity: 0;
   transition: all 1.5s ease-in-out;
-  max-width: 750px;
+  max-width: 75vw;
   margin: 0 auto 6rem;
   padding: 0 2rem;
 }
@@ -184,7 +184,7 @@ body {
   opacity: 0.95;
 }
 .book--expanded .title-wrap {
-  transform: translate(25vw, 15vh);
+  transform: translate(43vw, 15vh);
   color: white;
 }
 .book--expanded .article-title {
@@ -197,6 +197,7 @@ body {
 }
 .book--expanded .book__content {
   opacity: 1;
+  margin-top: 5%;
 }
 .book--expanded .header-image {
   height: 100%;

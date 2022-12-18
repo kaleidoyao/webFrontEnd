@@ -18,14 +18,14 @@
           <h1>Letters From Afar</h1>
           <open-envelop></open-envelop>
         </div>
-<!--        <div ref="writeDrifter" class="writeDrifter">-->
-<!--          <div class="title">-->
-<!--            <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">-->
-<!--          </div>-->
-<!--          <div class="mainText">-->
-<!--            <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>-->
-<!--          </div>-->
-<!--        </div>-->
+        <div ref="writeDrifter" class="writeDrifter">
+          <div class="title">
+            <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">
+          </div>
+          <div class="mainText">
+            <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>
+          </div>
+        </div>
       </span>
       <span class="throwAndCatch">
         <ul>

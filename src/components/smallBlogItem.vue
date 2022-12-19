@@ -31,7 +31,10 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum accusantium velit expedita, minima sapiente unde magnam dicta. Consequuntur cumque numquam sed deserunt, quidem officia illo blanditiis ipsum, commodi distinctio quam molestias dolore, doloremque corporis? Rem ad recusandae delectus accusamus, harum quisquam perferendis dolor aut consectetur nesciunt atque laborum ab dolores.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, neque, magnam. Impedit deleniti ad alias, unde vero quis mollitia, tenetur minima porro, officia iusto quae harum labore nostrum aliquid aut maxime, architecto in reprehenderit. Doloribus pariatur quam fuga sed modi veniam, vel corporis magnam quis eius cumque voluptate, dolore repellendus labore nobis, voluptatibus dicta sapiente doloremque! Enim dicta totam debitis cumque similique, natus, consequatur quidem cum incidunt, sint quos. Ea.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident voluptatum possimus dolores nesciunt natus quaerat quas quo quam obcaecati ducimus totam quia sint, et nobis nisi tenetur id aspernatur quibusdam molestiae reprehenderit sed incidunt. Voluptas error necessitatibus sed inventore, quasi facilis, est. Asperiores atque laboriosam inventore quis eos nulla. Fuga neque odit maiores facilis voluptas nemo numquam, eos amet molestias.</p>
-        <like-button></like-button>
+        <div class="buttons">
+          <span><like-button></like-button></span>
+          <span><collect-button></collect-button></span>
+        </div>
         <h1 class="comment-title">Comments</h1>
         <div class="comment-divider"></div>
         <comment-area></comment-area>
@@ -43,10 +46,11 @@
 <script>
 import LikeButton from "@/components/likeButton";
 import CommentArea from "@/components/commentArea";
+import CollectButton from "@/components/collectButton";
 export default {
   name: "smallBlogItem",
   // eslint-disable-next-line vue/no-unused-components
-  components: {CommentArea, LikeButton},
+  components: {CollectButton, CommentArea, LikeButton},
   data() {
     return {
       status: 'book',
@@ -246,5 +250,12 @@ export default {
   height: 1px;
   background: #d2d2d2;
   margin: auto;
+}
+.buttons {
+  text-align: right;
+}
+.buttons span {
+  display: inline-block;
+  margin-left: 2vw;
 }
 </style>

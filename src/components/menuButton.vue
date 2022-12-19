@@ -21,19 +21,19 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path d="M192 32c0 17.7 14.3 32 32 32c123.7 0 224 100.3 224 224c0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32zm0 96c0 17.7 14.3 32 32 32c70.7 0 128 57.3 128 128c0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192c-17.7 0-32 14.3-32 32zM96 144c0-26.5-21.5-48-48-48S0 117.5 0 144V368c0 79.5 64.5 144 144 144s144-64.5 144-144s-64.5-144-144-144H128v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48s-48-21.5-48-48V144z"/>
         </svg>
-        <span>Mine</span>
+        <span><a @click="toMine">Mine</a></span>
       </li>
       <li class="more-button-list-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path d="M393.4 9.4c12.5-12.5 32.8-12.5 45.3 0l64 64c12.5 12.5 12.5 32.8 0 45.3c-11.8 11.8-30.7 12.5-43.2 1.9l-9.5 9.5-48.8 48.8c-9.2 9.2-11.5 22.9-8.6 35.6c9.4 40.9-1.9 85.6-33.8 117.5L197.3 493.3c-25 25-65.5 25-90.5 0l-88-88c-25-25-25-65.5 0-90.5L180.2 153.3c31.9-31.9 76.6-43.1 117.5-33.8c12.6 2.9 26.4 .5 35.5-8.6l48.8-48.8 9.5-9.5c-10.6-12.6-10-31.4 1.9-43.2zM99.3 347.3l65.4 65.4c6.2 6.2 16.4 6.2 22.6 0l97.4-97.4c6.2-6.2 6.2-16.4 0-22.6l-65.4-65.4c-6.2-6.2-16.4-6.2-22.6 0L99.3 324.7c-6.2 6.2-6.2 16.4 0 22.6z"/>
         </svg>
-        <span>Drifter</span>
+        <span><a @click="toDrifter">Drifter</a></span>
       </li>
       <li class="more-button-list-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
           <path d="M64 144c0-26.5 21.5-48 48-48s48 21.5 48 48V256H64V144zM0 144V368c0 61.9 50.1 112 112 112s112-50.1 112-112V189.6c1.8 19.1 8.2 38 19.8 54.8L372.3 431.7c35.5 51.7 105.3 64.3 156 28.1s63-107.5 27.5-159.2L427.3 113.3C391.8 61.5 321.9 49 271.3 85.2c-28 20-44.3 50.8-47.3 83V144c0-61.9-50.1-112-112-112S0 82.1 0 144zm296.6 64.2c-16-23.3-10-55.3 11.9-71c21.2-15.1 50.5-10.3 66 12.2l67 97.6L361.6 303l-65-94.8zM491 407.7c-.8 .6-1.6 1.1-2.4 1.6l4-2.8c-.5 .4-1 .8-1.6 1.2z"/>
         </svg>
-        <span>Capsule</span>
+        <span><a @click="toCapsule">Capsule</a></span>
       </li>
       </ul>
   </div>
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   name: "menuButton",
   mounted() {
@@ -52,6 +54,21 @@ export default {
         document.querySelector('.list-container').classList.remove('active');
       }
       else document.querySelector('.list-container').classList.add('active');
+    },
+    toMine() {
+      router.push({
+        name:"minePage",query:{id:this.usrid}
+      })
+    },
+    toDrifter() {
+      router.push({
+        name:"drifterPage",query:{id:this.userid}
+      })
+    },
+    toCapsule() {
+      router.push({
+        name:"capsulePage",query:{id:this.userid}
+      })
     }
   }
 }

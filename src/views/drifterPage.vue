@@ -1,5 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+  <menu-button></menu-button>
   <back-ground></back-ground>
   <div class="body">
     <header-tag ref="header"></header-tag>
@@ -63,8 +64,9 @@ import HeaderTag from "@/components/headerTag";
 import DrifterBottle from "@/components/drifterBottle";
 import BottleButton from "@/components/bottleButton";
 import axios from "axios";
+import MenuButton from "@/components/menuButton";
 export default {
-  components: {OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
+  components: {MenuButton, OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
     this.$refs.pick.addEventListener('click',this.pickBT);
     this.$refs.throw.addEventListener('click',this.displayWriteDrifter);

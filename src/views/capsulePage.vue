@@ -1,5 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+  <menu-button></menu-button>
   <back-ground></back-ground>
   <div class="body">
     <header-tag ref="header"></header-tag>
@@ -27,9 +28,10 @@ import HeaderTag from "@/components/headerTag";
 import TimeCapsule from "@/components/timeCapsule";
 import PersonalInfo from "@/components/personalInfo";
 import CalendarItem from "@/components/calendarItem";
+import MenuButton from "@/components/menuButton";
 export default {
   name: "capsulePage",
-  components: {CalendarItem, PersonalInfo, TimeCapsule, HeaderTag, BackGround},
+  components: {MenuButton, CalendarItem, PersonalInfo, TimeCapsule, HeaderTag, BackGround},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';

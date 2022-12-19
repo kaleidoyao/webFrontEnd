@@ -5,12 +5,22 @@
       <div class="header"></div>
     </div>
     <div class="body">
-      <p class="name">Welcome: {{username}}</p>
+      <h1 class="name">testName {{username}}</h1>
       <p class="status">Happy Blogging</p>
-      <div class="posts-info">
-        <p><span>1024</span>Posts</p>
-        <p><span>1024</span>Likes</p>
-        <p><span>1024</span>Collects</p>
+      <div class="divider"></div>
+      <div class="info">
+        <div class="one">
+          <span class="text">233</span><br />
+          <span class="heading">Posts</span>
+        </div>
+        <div class="two">
+          <span class="text">233</span><br />
+          <span class="heading">Likes</span>
+        </div>
+        <div class="three">
+          <span class="text">233</span><br />
+          <span class="heading">Collects</span>
+        </div>
       </div>
     </div>
     <div class="social">
@@ -65,7 +75,49 @@ export default {
   height: 22vh;
   border: 3px solid #404040;
 }
-.name, .status {
+.name {
   font-family: 'Poppins', sans-serif;
+  font-size: 1.4em;
+  color: #2b303b;
+  margin-bottom: 0;
+}
+.status {
+  font-family: 'Poppins', sans-serif;
+  color: #525252;
+  margin-top: 1vh;
+}
+.divider {
+  width: 85%;
+  height: 1px;
+  background: #d2d2d2;
+  margin: auto;
+}
+.info {
+  position: relative;
+  margin-bottom: 15vh;
+}
+.one, .two, .three {
+  margin-top: 2vh;
+  position: absolute;
+}
+.one {
+  left: 2vw;
+}
+.two {
+  left: 8vw;
+}
+.three {
+  left: 14vw;
+}
+.info .text {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #525252;
+}
+.info .heading {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #999;
 }
 </style>

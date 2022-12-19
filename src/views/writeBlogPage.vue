@@ -1,4 +1,5 @@
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <back-ground></back-ground>
   <header-tag ref="header"></header-tag>
   <div class="content" ref="content">

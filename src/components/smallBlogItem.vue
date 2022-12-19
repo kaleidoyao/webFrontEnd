@@ -12,19 +12,41 @@
         </span>
       </div>
       <div class="book__content">
+        <div class="summary">
+          <div class="summary-item">
+            <h5 class="item-title">Reading Time</h5>
+            <p class="item-text"><span class="item-data">6</span> Mins</p>
+          </div>
+          <div class="summary-item">
+            <h5 class="item-title">Author</h5>
+            <p class="item-text"><span class="item-data">Gagaga</span></p>
+          </div>
+          <div class="summary-item">
+            <h5 class="item-title">Publish Time</h5>
+            <p class="item-text"><span class="item-data">6</span> Mins</p>
+          </div>
+        </div>
         <p><span class="drop-cap">O</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias est incidunt odit ea adipisci animi nihil voluptates iure beatae explicabo asperiores enim ex placeat itaque minus error temporibus voluptate corporis suscipit commodi voluptatibus praesentium molestiae, perspiciatis nulla. Accusantium harum nisi maiores, velit perferendis, nesciunt ad, porro sequi aliquid maxime molestias!</p>
         <p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nobis fuga delectus tempore. Odio ipsa voluptate ex nobis ratione consequatur dignissimos dolorum culpa, ipsam sit dolorem itaque excepturi, natus sed deleniti incidunt ipsum asperiores! Molestiae cumque quam nulla, nam inventore. Necessitatibus blanditiis cumque laboriosam, id, ad unde quo ipsum nulla.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum accusantium velit expedita, minima sapiente unde magnam dicta. Consequuntur cumque numquam sed deserunt, quidem officia illo blanditiis ipsum, commodi distinctio quam molestias dolore, doloremque corporis? Rem ad recusandae delectus accusamus, harum quisquam perferendis dolor aut consectetur nesciunt atque laborum ab dolores.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, neque, magnam. Impedit deleniti ad alias, unde vero quis mollitia, tenetur minima porro, officia iusto quae harum labore nostrum aliquid aut maxime, architecto in reprehenderit. Doloribus pariatur quam fuga sed modi veniam, vel corporis magnam quis eius cumque voluptate, dolore repellendus labore nobis, voluptatibus dicta sapiente doloremque! Enim dicta totam debitis cumque similique, natus, consequatur quidem cum incidunt, sint quos. Ea.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident voluptatum possimus dolores nesciunt natus quaerat quas quo quam obcaecati ducimus totam quia sint, et nobis nisi tenetur id aspernatur quibusdam molestiae reprehenderit sed incidunt. Voluptas error necessitatibus sed inventore, quasi facilis, est. Asperiores atque laboriosam inventore quis eos nulla. Fuga neque odit maiores facilis voluptas nemo numquam, eos amet molestias.</p>
+        <like-button></like-button>
+        <h1 class="comment-title">Comments</h1>
+        <div class="comment-divider"></div>
+        <comment-area></comment-area>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import LikeButton from "@/components/likeButton";
+import CommentArea from "@/components/commentArea";
 export default {
   name: "smallBlogItem",
+  // eslint-disable-next-line vue/no-unused-components
+  components: {CommentArea, LikeButton},
   data() {
     return {
       status: 'book',
@@ -58,11 +80,6 @@ export default {
 * {
   margin: 0;
   padding: 0;
-}
-body {
-  background: #f3f4f4;
-  font-family: 'Roboto Condensed', sans-serif;
-  overflow: hidden;
 }
 
 .book {
@@ -133,8 +150,6 @@ body {
   transition: all 0.25s ease-in-out;
 }
 
-
-
 .drop-cap {
   font-size: 55px;
   line-height: 28px;
@@ -166,7 +181,7 @@ body {
 }
 
 .book--expanded {
-  height: 100%;
+  max-height: 100vh;
   background: white;
   overflow-y: scroll;
 }
@@ -196,5 +211,40 @@ body {
 .book--expanded .header-image {
   height: 100%;
   width: 100%;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+  padding: 30px 50px;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px #f2f2f2;
+}
+.summary .summary-item {
+  padding-right: 20px;
+}
+.summary .summary-item .item-title {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #999;
+}
+.summary .summary-item .item-text {
+  margin-top: 12px;
+  margin-bottom: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+}
+.comment-title {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 1vw;
+  font-family: 'Poppins', sans-serif;
+}
+.comment-divider {
+  width: 96%;
+  height: 1px;
+  background: #d2d2d2;
+  margin: auto;
 }
 </style>

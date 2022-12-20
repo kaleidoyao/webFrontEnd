@@ -5,13 +5,14 @@
       <div class="book__cover">
         <span class="header-image"><div class="overlay"></div></span>
         <span class="title-wrap">
-          <h1 class="article-title">Dark House</h1>
+          <h1 class="article-title">{{blog.title}}</h1>
           <p class="book__cover-exerpt">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae accusamus, numquam nihil dicta illum, atque deserunt quas quasi nulla, fugiat ipsum voluptas vel laudantium autem. Tempora veniam labore error dolores facere, nostrum suscipit modi.
+
           </p>
         </span>
       </div>
       <div class="book__content">
+        <p><span class="drop-cap">O</span>{{blog.content}}</p>
         <div class="summary">
           <div class="summary-item">
             <h5 class="item-title">Reading Time</h5>
@@ -52,6 +53,14 @@ import CommentArea from "@/components/commentArea";
 import CollectButton from "@/components/collectButton";
 export default {
   name: "smallBlogItem",
+  props:{
+    blog: {
+      title: String,
+      content: String,
+      date: String,
+      authorid:Number
+    }
+  },
   // eslint-disable-next-line vue/no-unused-components
   components: {CollectButton, CommentArea, LikeButton},
   data() {

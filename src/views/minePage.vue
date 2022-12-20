@@ -19,15 +19,6 @@
        <div class="blogList">
          <div class="blogItem">
            <span class="dot"></span>
-           <div class="blogTime">2022/11/20
-             <button class="delete-button">Delete</button>
-           </div>
-           <div class="blogDetail">
-             <small-blog-item></small-blog-item>
-           </div>
-         </div>
-         <div class="blogItem">
-           <span class="dot"></span>
            <div class="blogTime">2022/11/21
             <button class="delete-button">Delete</button>
            </div>
@@ -35,13 +26,13 @@
              <small-blog-item></small-blog-item>
            </div>
          </div>
-         <div class="blogItem">
+         <div class="blogItem" v-for="blog in blogs" :key="blog.id">
            <span class="dot"></span>
-           <div class="blogTime">2022/11/22
-            <button class="delete-button">Delete</button>
+           <div class="blogTime">{{blog.date}}
+             <button class="delete-button">Delete</button>
            </div>
            <div class="blogDetail">
-             <small-blog-item></small-blog-item>
+             <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></small-blog-item>
            </div>
          </div>
        </div>
@@ -79,11 +70,21 @@ export default {
       this.userName = response.data;
       console.log(this.userName);
     })
+    axios.get("http://localhost:8088/myBlog",{
+      params:{
+        userid:this.userid,
+        n:2
+      }
+    }).then((response)=>{
+      console.log(response.data);
+      this.blogs = response.data;
+    })
   },
   data(){
     return{
       userid:0,
-      userName:""
+      userName:"",
+      blogs:[]
     }
   },
   methods:{

@@ -6,6 +6,9 @@
     <header-tag ref="header"></header-tag>
     <div class="content" ref="content">
       <span class="section1">
+        <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
+        <button id="myCapsuleButton" v-on:click="myCapsuleBT"><span>我的胶囊</span></button>
+        <button id="openButton" v-on:click="openBT"><span>打开</span></button>
         <div class="userCard">
           <personal-info></personal-info>
         </div>
@@ -23,6 +26,17 @@
 </template>
 
 <script>
+import axios from "axios";
+
+class Capsule{
+  capsuleid;
+  userid;
+  title;
+  content;
+  writetime;
+  opentime;
+  isopened;
+}
 import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 import TimeCapsule from "@/components/timeCapsule";
@@ -35,6 +49,72 @@ export default {
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
+  },
+
+  data(){
+    return{
+      title:"",
+      content:"",
+      userid:-1,
+      capsule:Capsule,
+      myCapsule:null,
+      openCapsule:null,
+      capsuleid:-1,
+      opentime:null,
+    }
+  },
+
+  methods:{
+    writeBT(){
+      let _this=this
+      let result = -1;
+      axios.get("http://localhost:8088/makeCapsule",{
+        params: {
+          userid: _this.userid,
+          title:_this.title,
+          content:_this.content,
+          opentime:_this.opentime
+        }
+      }).then((response)=>{
+        result = response.data;
+        console.log(result)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    },
+    myCapsuleBT(){
+      let _this=this
+      let result=null;
+      axios.get("http://localhost:8088/getMyCapsule",{
+        params: {
+          userid:_this.userid
+        }
+      }).then((response)=>{
+        result = response.data;
+        _this.myCapsule=result
+        console.log(_this.myCapsule)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    },
+    openBT(){
+      let _this=this
+      let result=null;
+      axios.get("http://localhost:8088/openCapsule",{
+        params: {
+          capsuleid:_this.capsuleid
+        }
+      }).then((response)=>{
+        result = response.data;
+        _this.openCapsule=result
+        if(result===""){
+          console.log("还未到开启时间")
+        }
+        else console.log(_this.openCapsule)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    }
   }
 }
 </script>

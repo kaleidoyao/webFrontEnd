@@ -1,6 +1,5 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-  <link rel="stylesheet" href="https://fonts.font.im/css?family=Lobster">
   <menu-button></menu-button>
   <back-ground></back-ground>
  <div class="body">
@@ -21,7 +20,7 @@
          <div class="blogItem">
            <span class="dot"></span>
            <div class="blogTime">2022/11/20
-             <button>Delete</button>
+             <button class="delete-button">Delete</button>
            </div>
            <div class="blogDetail">
              <small-blog-item></small-blog-item>
@@ -29,14 +28,18 @@
          </div>
          <div class="blogItem">
            <span class="dot"></span>
-           <div class="blogTime">2022/11/21</div>
+           <div class="blogTime">2022/11/21
+            <button class="delete-button">Delete</button>
+           </div>
            <div class="blogDetail">
              <small-blog-item></small-blog-item>
            </div>
          </div>
          <div class="blogItem">
            <span class="dot"></span>
-           <div class="blogTime">2022/11/22</div>
+           <div class="blogTime">2022/11/22
+            <button class="delete-button">Delete</button>
+           </div>
            <div class="blogDetail">
              <small-blog-item></small-blog-item>
            </div>
@@ -152,7 +155,7 @@ export default {
   border-left: 3px solid black;
 }
 .blogItem {
-  margin-top: 10px;
+  margin-top: 5vh;
   position: relative;
 }
 .blogTime {
@@ -173,5 +176,11 @@ export default {
   position: absolute;
   left: -8px;
   top: 50%;
+}
+.delete-button {
+  border: 0.1rem solid #575757;
+  border-radius: 10px;
+  background-color: white;
+  color: #575757;
 }
 </style>

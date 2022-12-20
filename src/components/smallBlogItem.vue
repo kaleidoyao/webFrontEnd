@@ -35,7 +35,10 @@
           <span><like-button></like-button></span>
           <span><collect-button></collect-button></span>
         </div>
-        <h1 class="comment-title">Comments</h1>
+        <div>
+          <span><h1 class="comment-title">Comments</h1></span>
+          <span style="margin-left: 28vw"><button class="add-comment">add comment</button></span>
+        </div>
         <div class="comment-divider"></div>
         <comment-area></comment-area>
       </div>
@@ -244,6 +247,17 @@ export default {
   margin-bottom: 2vh;
   margin-left: 1vw;
   font-family: 'Poppins', sans-serif;
+  display: inline-block;
+}
+.add-comment {
+  display: inline-block;
+  border: 1px solid #000000;
+  border-radius: 25px;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  height: 4vh;
+  background-color: white;
+  cursor: pointer;
 }
 .comment-divider {
   width: 96%;

@@ -15,7 +15,7 @@
         </div>
       </span>
       <span class="blogContent" ref="drifterContent">
-        <div ref="showDetail" class="detail">
+        <div ref="showDetail" class="detail hidden">
           <h1>Letters From Afar</h1>
           <open-envelop></open-envelop>
         </div>

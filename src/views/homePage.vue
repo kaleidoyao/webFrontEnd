@@ -32,6 +32,7 @@
         点击LOGIN，开启你的开荒之旅吧！
       </p>
     </div>
+    <tag-cloud></tag-cloud>
     <footer>
       © WasteLand, 2022<br /> Group 26
     </footer>
@@ -40,8 +41,9 @@
 
 <script>
 import GetStartedButton from "@/components/getStartedButton";
+import TagCloud from "@/components/tagCloud";
 export default {
-  components: {GetStartedButton},
+  components: {TagCloud, GetStartedButton},
   mounted() {
     window.addEventListener('scroll', this.move);
   },

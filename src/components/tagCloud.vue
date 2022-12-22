@@ -1,28 +1,30 @@
 <template>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap">
-  <div class="body">
-  <div id='cursor'></div>
-  <ul class='tags-cloud'>
-    <li class='tag'><span class='wrap'>HTML</span></li>
-    <li class='tag'><span class='wrap'>Pug</span></li>
-    <li class='tag'><span class='wrap'>CSS</span></li>
-    <li class='tag'><span class='wrap'>LESS</span></li>
-    <li class='tag'><span class='wrap'>PostCSS</span></li>
-    <li class='tag'><span class='wrap'>RSCSS</span></li>
-    <li class='tag'><span class='wrap'>SVG</span></li>
-    <li class='tag'><span class='wrap'>Javascript</span></li>
-    <li class='tag'><span class='wrap'>Gulp</span></li>
-    <li class='tag'><span class='wrap'>Webpack</span></li>
-    <li class='tag'><span class='wrap'>Canvas</span></li>
-    <li class='tag'><span class='wrap'>WebGL</span></li>
-    <li class='tag'><span class='wrap'>Three.js</span></li>
-    <li class='tag'><span class='wrap'>Anime.js</span></li>
-    <li class='tag'><span class='wrap'>Barba.js</span></li>
-    <li class='tag'><span class='wrap'>Git</span></li>
-    <li class='tag'><span class='wrap'>Linux</span></li>
-    <li class='tag'><span class='wrap'>Math</span></li>
-  </ul>
-  <button ref="button"></button>
+  <div style="background-color: #036881;">
+    <div class="wrapper">
+      <div style="text-align: center"><button ref="button" class="button">点击开启今日词云</button></div>
+      <div ref="main" class="hidden" style="display: flex; align-items: center; justify-content: center">
+        <ul class='tags-cloud'>
+          <li class='tag'><span class='wrap'>HTML</span></li>
+          <li class='tag'><span class='wrap'>Pug</span></li>
+          <li class='tag'><span class='wrap'>CSS</span></li>
+          <li class='tag'><span class='wrap'>LESS</span></li>
+          <li class='tag'><span class='wrap'>PostCSS</span></li>
+          <li class='tag'><span class='wrap'>RSCSS</span></li>
+          <li class='tag'><span class='wrap'>SVG</span></li>
+          <li class='tag'><span class='wrap'>Javascript</span></li>
+          <li class='tag'><span class='wrap'>Gulp</span></li>
+          <li class='tag'><span class='wrap'>Webpack</span></li>
+          <li class='tag'><span class='wrap'>Canvas</span></li>
+          <li class='tag'><span class='wrap'>WebGL</span></li>
+          <li class='tag'><span class='wrap'>Three.js</span></li>
+          <li class='tag'><span class='wrap'>Anime.js</span></li>
+          <li class='tag'><span class='wrap'>Barba.js</span></li>
+          <li class='tag'><span class='wrap'>Git</span></li>
+          <li class='tag'><span class='wrap'>Linux</span></li>
+          <li class='tag'><span class='wrap'>Math</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -144,37 +146,47 @@ class TagsCloud {
 }
 
 export default {
+  name: 'tagCloud',
   mounted() {
     this.$refs.button.addEventListener('click', this.main);
   },
   methods: {
     main() {
-      {
-        const root = document.querySelector('.tags-cloud');
-        const cloud = new TagsCloud(root);
-        cloud.start();
-      }
-      {
-        const cursor = document.getElementById('cursor');
-        const isActivated = false;
-        document.addEventListener('mousemove', (e) => {
-          if (!isActivated) {
-            cursor.classList.add('-activated');
-          }
-          cursor.style.transform =
-              `translateX(${e.clientX}px) translateY(${e.clientY}px)`;
-        });
-      }
+      console.log(1);
+      console.log(this.$refs.main);
+      this.$refs.main.classList.remove('hidden');
+      // console.log(this.$refs.main);
+      const root = document.querySelector('.tags-cloud');
+      const cloud = new TagsCloud(root);
+      cloud.start();
     }
   }
 }
 </script>
 
 <style scoped>
-#button {
-  height: 100px;
-  width: 100px;
+.wrapper {
+  position: relative;
 }
+.hidden {
+  height: 1px;
+}
+.tags-cloud {
+  height: 40vmin;
+  width: 40vmin;
+  list-style: none;
+  opacity: 0;
+}
+.button {
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: white;
+  padding: 1vh 2vw;
+  margin-bottom: 15vh;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -182,22 +194,6 @@ export default {
   to {
     opacity: 1;
   }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-body {
-  background: #1b263b;
-  color: #778da9;
-  cursor: none;
 }
 
 #cursor {
@@ -216,15 +212,7 @@ body {
   animation: fadeIn 1s ease-out forwards;
 }
 
-.tags-cloud {
-  position: fixed;
-  top: calc(50% - 30vmin);
-  left: calc(50% - 30vmin);
-  height: 60vmin;
-  width: 60vmin;
-  list-style: none;
-  opacity: 0;
-}
+
 
 .tags-cloud.-loaded {
   animation: fadeIn 1s ease-out forwards;
@@ -240,6 +228,7 @@ body {
 }
 
 .tags-cloud > .tag > .wrap {
+  color: white;
   display: inline-block;
   transform: translateX(-50%) translateY(-50%);
 }

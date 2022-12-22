@@ -18,7 +18,6 @@
       <img src="../assets/imgs/mountain.png" id="mountain">
       <img src="../assets/imgs/river.png" id="river">
       <img src="../assets/imgs/tree.png" id="tree">
-
       <get-started-button msg="Explore" id="button"></get-started-button>
     </div>
     <div class="community">
@@ -149,7 +148,7 @@ export default {
 }
 .community {
   position: relative;
-  padding: 100px;
+  padding: 100px 100px 10vh;
   background: #036881;
 }
 .community h2 {

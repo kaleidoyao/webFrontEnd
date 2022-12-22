@@ -1,4 +1,5 @@
 <template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <header-tag ref="header" :usrid=userid></header-tag>
   <back-ground></back-ground>
   <div ref="content">

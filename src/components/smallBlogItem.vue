@@ -71,21 +71,8 @@ export default {
     }
   },
   mounted() {
-    // let _this=this
-    // let result=null
     this.$refs['book'].addEventListener('click', this.changeStatus);
     window.addEventListener("scroll", this.scrollToTop);
-    // axios.get("http://localhost:8088/myBlog",{
-    //   params:{
-    //     userid:_this.userid,
-    //     n:100
-    //   }
-    // }).then((response)=>{
-    //   result=response.data
-    //   _this.blogs=result
-    //   console.log(_this.blogs)
-    // })
-
 
 
   },

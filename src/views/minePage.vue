@@ -111,7 +111,7 @@ export default {
     axios.get("http://localhost:8088/myBlog",{
       params:{
         userid:this.userid,
-        n:2
+        n:10
       }
     }).then((response)=>{
       console.log(response.data);

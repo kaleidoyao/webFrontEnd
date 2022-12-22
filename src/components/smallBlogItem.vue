@@ -5,14 +5,14 @@
       <div class="book__cover">
         <span class="header-image"><div class="overlay"></div></span>
         <span class="title-wrap">
-          <h1 class="article-title">{{blog.title}}</h1>
+<!--          <h1 class="article-title">{{blog.title}}</h1>-->
           <p class="book__cover-exerpt">
 
           </p>
         </span>
       </div>
       <div class="book__content">
-        <p><span class="drop-cap">O</span>{{blog.content}}</p>
+<!--        <p><span class="drop-cap">O</span>{{blog.content}}</p>-->
         <div class="summary">
           <div class="summary-item">
             <h5 class="item-title">Reading Time</h5>
@@ -71,8 +71,23 @@ export default {
     }
   },
   mounted() {
+    // let _this=this
+    // let result=null
     this.$refs['book'].addEventListener('click', this.changeStatus);
     window.addEventListener("scroll", this.scrollToTop);
+    // axios.get("http://localhost:8088/myBlog",{
+    //   params:{
+    //     userid:_this.userid,
+    //     n:100
+    //   }
+    // }).then((response)=>{
+    //   result=response.data
+    //   _this.blogs=result
+    //   console.log(_this.blogs)
+    // })
+
+
+
   },
   methods: {
     changeStatus(){

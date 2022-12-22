@@ -20,7 +20,7 @@
          <div class="blogItem">
            <span class="dot"></span>
            <div class="blogTime">2022/11/21
-            <button class="delete-button">Delete</button>
+            <button class="delete-button" v-on:click="deleteBT">Delete</button>
            </div>
            <div class="blogDetail">
              <small-blog-item></small-blog-item>
@@ -84,7 +84,8 @@ export default {
     return{
       userid:0,
       userName:"",
-      blogs:[]
+      blogs:[],
+      blogid:0
     }
   },
   methods:{
@@ -102,6 +103,19 @@ export default {
       router.push({
         name:"capsulePage",query:{id:this.userid}
       })
+    },
+    deleteBT(){
+      let _this=this
+      let result=null
+      axios.get("http://localhost:8088/deleteBlog",{
+        params:{
+          blogid:_this.blogid//获取相应的id？
+        }
+      }).then((response)=>{
+        result=response.data
+        console.log(result)
+      })
+
     }
   }
 }

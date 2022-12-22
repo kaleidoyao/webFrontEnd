@@ -6,20 +6,20 @@
       <div class="header"></div>
     </div>
     <div class="body">
-      <h1 class="name">testName {{username}}</h1>
+      <h1 class="name">{{username}}</h1>
       <p class="status">Happy Blogging</p>
       <div class="divider"></div>
       <div class="info">
         <div class="one">
-          <span class="text">233</span><br />
+          <span class="text">{{postNum}}</span><br />
           <span class="heading">Posts</span>
         </div>
         <div class="two">
-          <span class="text">233</span><br />
+          <span class="text">{{likeNum}}</span><br />
           <span class="heading">Likes</span>
         </div>
         <div class="three">
-          <span class="text">233</span><br />
+          <span class="text">{{collectNum}}</span><br />
           <span class="heading">Collects</span>
         </div>
       </div>
@@ -43,11 +43,61 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "personalInfo",
   props: {
     username: String
-  }
+  },
+
+  data() {
+    return {
+      userid:0,
+      postNum:0,
+      likeNum:0,
+      collectNum:0,
+      followerNum:0,
+      followeeNum:0,
+      blogs:[]
+    }
+  },
+
+  mounted() {
+    let _this=this
+    let result=0
+
+    axios.get("http://localhost:8088/getBlogNumber",{
+      params:{
+        userid:_this.userid,
+      }
+    }).then((response)=>{
+      result=response.data
+      _this.postNum=result
+    })
+
+    axios.get("http://localhost:8088/getLikes",{
+      params:{
+        userid:_this.userid,
+      }
+    }).then((response)=>{
+      result=response.data
+      _this.likeNum=result
+    })
+
+    axios.get("http://localhost:8088/getCollect",{
+      params:{
+        userid:_this.userid,
+      }
+    }).then((response)=>{
+      result=response.data
+      _this.collectNum=result
+    })
+
+  },
+
+
+
+
 }
 </script>
 

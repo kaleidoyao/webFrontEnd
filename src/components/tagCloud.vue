@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div style="text-align: center"><button ref="button" class="button">点击开启今日词云</button></div>
       <div ref="main" class="hidden" style="display: flex; align-items: center; justify-content: center">
-        <ul class='tags-cloud'>
+        <ul class='tags-cloud hidden'>
           <li class='tag'><span class='wrap'>HTML</span></li>
           <li class='tag'><span class='wrap'>Pug</span></li>
           <li class='tag'><span class='wrap'>CSS</span></li>
@@ -152,10 +152,7 @@ export default {
   },
   methods: {
     main() {
-      console.log(1);
-      console.log(this.$refs.main);
       this.$refs.main.classList.remove('hidden');
-      // console.log(this.$refs.main);
       const root = document.querySelector('.tags-cloud');
       const cloud = new TagsCloud(root);
       cloud.start();
@@ -169,7 +166,7 @@ export default {
   position: relative;
 }
 .hidden {
-  height: 1px;
+  height: 0;
 }
 .tags-cloud {
   height: 40vmin;
@@ -182,7 +179,7 @@ export default {
   border-radius: 20px;
   background-color: white;
   padding: 1vh 2vw;
-  margin-bottom: 15vh;
+  margin-bottom: 20vh;
   font-size: 0.9em;
   cursor: pointer;
 }
@@ -195,29 +192,9 @@ export default {
     opacity: 1;
   }
 }
-
-#cursor {
-  position: fixed;
-  top: -16px;
-  left: -16px;
-  z-index: 1;
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
-  background: #e0e1dd;
-  opacity: 0;
-}
-
-#cursor.-activated {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-
-
 .tags-cloud.-loaded {
   animation: fadeIn 1s ease-out forwards;
 }
-
 .tags-cloud > .tag {
   position: absolute;
   top: 50%;
@@ -226,7 +203,6 @@ export default {
   font-weight: bold;
   transition: transform .5s linear, opacity .5s linear;
 }
-
 .tags-cloud > .tag > .wrap {
   color: white;
   display: inline-block;

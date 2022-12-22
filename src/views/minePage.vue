@@ -2,43 +2,43 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <menu-button></menu-button>
   <back-ground></back-ground>
- <div class="body">
-   <header-tag ref="header" :usrid=userid></header-tag>
-   <div class="content" ref="content">
-     <span class="userContent">
-       <div class="userCard">
-         <personal-info :username="userName"></personal-info>
-       </div>
-       <div class="gotoButton">
-         <div ref="toWrite"><goto-button msg="write blogs"></goto-button></div>
-         <div ref="toDrifter"><goto-button msg="drifter bottle" ref="toDrifter"></goto-button></div>
-         <div ref="toCapsule"><goto-button msg="time capsule"></goto-button></div>
-       </div>
-     </span>
-     <span class="blogContent">
-       <div class="blogList">
-         <div class="blogItem">
-           <span class="dot"></span>
-           <div class="blogTime">2022/11/21
-            <button class="delete-button">Delete</button>
-           </div>
-           <div class="blogDetail">
-             <small-blog-item></small-blog-item>
-           </div>
-         </div>
-         <div class="blogItem" v-for="blog in blogs" :key="blog.id">
-           <span class="dot"></span>
-           <div class="blogTime">{{blog.date}}
-             <button class="delete-button">Delete</button>
-           </div>
-           <div class="blogDetail">
-             <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></small-blog-item>
-           </div>
-         </div>
-       </div>
-     </span>
-   </div>
- </div>
+  <div class="body">
+    <header-tag ref="header" :usrid=userid></header-tag>
+    <div class="content" ref="content">
+      <span class="userContent">
+        <div class="userCard">
+          <personal-info :username="userName"></personal-info>
+        </div>
+        <div class="gotoButton">
+          <div ref="toWrite"><goto-button msg="write blogs"></goto-button></div>
+          <div ref="toDrifter"><goto-button msg="drifter bottle" ref="toDrifter"></goto-button></div>
+          <div ref="toCapsule"><goto-button msg="time capsule"></goto-button></div>
+        </div>
+      </span>
+      <span class="blogContent">
+        <div class="blogList">
+          <div class="blogItem">
+            <span class="dot"></span>
+            <div class="blogTime">2022/11/21
+              <button class="delete-button">Delete</button>
+            </div>
+            <div class="blogDetail">
+              <small-blog-item></small-blog-item>
+            </div>
+          </div>
+          <div class="blogItem" v-for="blog in blogs" :key="blog.id">
+            <span class="dot"></span>
+            <div class="blogTime">{{blog.date}}
+              <button class="delete-button">Delete</button>
+            </div>
+            <div class="blogDetail">
+              <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></small-blog-item>
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -87,18 +87,18 @@ export default {
       blogs:[]
     }
   },
-  methods:{
-    toWritePage(){
+  methods: {
+    toWritePage() {
       router.push({
         name:"writeBlogPage",query:{id:this.userid}
       })
     },
-    toDrifterPage(){
+    toDrifterPage() {
       router.push({
         name:"drifterPage",query:{id:this.userid}
       })
     },
-    toCapsulePage(){
+    toCapsulePage() {
       router.push({
         name:"capsulePage",query:{id:this.userid}
       })
@@ -112,7 +112,6 @@ export default {
   width: 100%;
   min-height: 100vh;
 }
-
 .content {
   display: flex;
   justify-content: center;
@@ -135,7 +134,8 @@ export default {
   margin-top: 20%;
 }
 .gotoButton {
-  margin-top: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 .blogContent {
   background-color: rgba(255,255,255,0.3);

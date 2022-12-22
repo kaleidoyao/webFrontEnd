@@ -4,33 +4,57 @@
     <div ref="book" :class="status">
       <div class="book__cover">
         <span class="header-image"><div class="overlay"></div></span>
-        <span class="title-wrap">
-          <h1 class="article-title">{{ blog.title }}</h1>
-          <p class="book__cover-exerpt">{{ blog.date }}</p>
+        <div>
+          <span class="title-wrap">
+          <h1 class="article-title">JYPDMV</h1>
+          <p class="book__cover-exerpt">2222</p>
         </span>
+        </div>
       </div>
       <div class="book__content">
-        <p>{{ blog.content }}</p>
+        <div class="summary">
+          <div class="summary-item">
+            <h5 class="item-title">Reading Time</h5>
+            <p class="item-text"><span class="item-data">6</span> Mins</p>
+          </div>
+          <div class="summary-item">
+            <h5 class="item-title">Author</h5>
+            <p class="item-text"><span class="item-data">Gagaga</span></p>
+          </div>
+          <div class="summary-item">
+            <h5 class="item-title">Publish Time</h5>
+            <p class="item-text"><span class="item-data">6</span> Mins</p>
+          </div>
+        </div>
+        <p>33333</p>
+        <div class="buttons">
+          <span><like-button></like-button></span>
+          <span><collect-button></collect-button></span>
+        </div>
+        <div>
+          <span><h1 class="comment-title">Comments</h1></span>
+          <span style="margin-left: 39vw"><button class="add-comment">add comment</button></span>
+        </div>
+        <div class="comment-divider"></div>
+        <comment-area></comment-area>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// class Blog {
-//   title
-//   content
-// }
-// import axios from "axios";
-
+import LikeButton from "@/components/likeButton";
+import CollectButton from "@/components/collectButton";
+import CommentArea from "@/components/commentArea";
 export default {
   name: "blogItem",
+  components: {CommentArea, CollectButton, LikeButton},
   props: {
      blog: {
        title: String,
        content: String,
        date: String,
-       authorid:Number
+       authorid: Number
      }
   },
   data() {
@@ -38,7 +62,7 @@ export default {
       status: 'book',
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
-      authorName:"",
+      authorName: "",
     }
   },
   mounted() {
@@ -67,11 +91,6 @@ export default {
 * {
   margin: 0;
   padding: 0;
-}
-body {
-  background: #f3f4f4;
-  font-family: 'Roboto Condensed', sans-serif;
-  overflow: hidden;
 }
 
 .wrapper {
@@ -184,7 +203,10 @@ body {
   opacity: 0.95;
 }
 .book--expanded .title-wrap {
-  transform: translate(43vw, 15vh);
+  display: block;
+  margin-top: 5vh;
+  margin-right: auto;
+  margin-left: auto;
   color: white;
 }
 .book--expanded .article-title {
@@ -194,6 +216,9 @@ body {
 }
 .book--expanded .book__cover-exerpt {
   opacity: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
 }
 .book--expanded .book__content {
   opacity: 1;
@@ -202,5 +227,58 @@ body {
 .book--expanded .header-image {
   height: 100%;
   width: 100%;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+  padding: 30px 50px;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px #f2f2f2;
+}
+.summary .summary-item {
+  padding-right: 20px;
+}
+.summary .summary-item .item-title {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #999;
+}
+.summary .summary-item .item-text {
+  margin-top: 12px;
+  margin-bottom: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+}
+.comment-title {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 1vw;
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+}
+.add-comment {
+  display: inline-block;
+  border: 1px solid #000000;
+  border-radius: 25px;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  height: 4vh;
+  background-color: white;
+  cursor: pointer;
+}
+.comment-divider {
+  width: 96%;
+  height: 1px;
+  background: #d2d2d2;
+  margin: auto;
+}
+.buttons {
+  text-align: right;
+}
+.buttons span {
+  display: inline-block;
+  margin-left: 2vw;
 }
 </style>

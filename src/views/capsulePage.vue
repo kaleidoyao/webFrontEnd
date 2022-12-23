@@ -19,7 +19,8 @@
       </span>
       <span class="section2"></span>
       <span class="section3">
-        <calendar-item></calendar-item>
+<!--        <calendar-item></calendar-item>-->
+        <el-calendar  />
       </span>
     </div>
   </div>
@@ -41,12 +42,12 @@ import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 import TimeCapsule from "@/components/timeCapsule";
 import PersonalInfo from "@/components/personalInfo";
-import CalendarItem from "@/components/calendarItem";
+// import CalendarItem from "@/components/calendarItem";
 import MenuButton from "@/components/menuButton";
 import router from "@/router";
 export default {
   name: "capsulePage",
-  components: {MenuButton, CalendarItem, PersonalInfo, TimeCapsule, HeaderTag, BackGround},
+  components: {MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
@@ -139,7 +140,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 500px;
+  height: 700px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;
@@ -174,7 +175,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 500px;
+  height: 600px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;

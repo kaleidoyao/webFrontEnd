@@ -58,7 +58,6 @@ export default {
       collectNum:0,
       followerNum:0,
       followeeNum:0,
-      blogs:[]
     }
   },
 

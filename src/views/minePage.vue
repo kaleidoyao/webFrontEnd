@@ -17,24 +17,24 @@
       </span>
       <span class="blogContent">
         <div class="blogList">
-<!--          <div class="blogItem">-->
-<!--            <span class="dot"></span>-->
-<!--            <div class="blogTime">2022/11/21-->
-<!--              <button class="delete-button">Delete</button>-->
-<!--            </div>-->
-<!--            <div class="blogDetail">-->
-<!--              <small-blog-item></small-blog-item>-->
-<!--            </div>-->
-<!--          </div>-->
-          <div class="blogItem" v-for="blog in blogs" :key="blog.id">
+          <div class="blogItem">
             <span class="dot"></span>
-            <div class="blogTime">{{blog.date}}
+            <div class="blogTime">2022/11/21
               <button class="delete-button">Delete</button>
             </div>
             <div class="blogDetail">
-              <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></small-blog-item>
+              <small-blog-item></small-blog-item>
             </div>
           </div>
+<!--          <div class="blogItem" v-for="blog in blogs" :key="blog.id">-->
+<!--            <span class="dot"></span>-->
+<!--            <div class="blogTime">{{blog.date}}-->
+<!--              <button class="delete-button">Delete</button>-->
+<!--            </div>-->
+<!--            <div class="blogDetail">-->
+<!--              <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></small-blog-item>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </span>
     </div>
@@ -53,6 +53,7 @@ import MenuButton from "@/components/menuButton";
 import {ElMessageBox} from "element-plus";
 export default {
   name: "minePage",
+  // eslint-disable-next-line vue/no-unused-components
   components: {MenuButton, SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
   data(){
     return{

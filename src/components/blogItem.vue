@@ -6,9 +6,9 @@
         <span class="header-image"><div class="overlay"></div></span>
         <div>
           <span class="title-wrap">
-          <h1 class="article-title">JYPDMV</h1>
-          <p class="book__cover-exerpt">2222</p>
-        </span>
+            <h1 class="article-title">JYPDMV</h1>
+            <p class="book__cover-exerpt">2222</p>
+          </span>
         </div>
       </div>
       <div class="book__content">

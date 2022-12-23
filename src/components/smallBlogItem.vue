@@ -4,12 +4,14 @@
     <div ref="book" :class="status">
       <div class="book__cover">
         <span class="header-image"><div class="overlay"></div></span>
-        <span class="title-wrap">
-<!--          <h1 class="article-title">{{blog.title}}</h1>-->
-          <p class="book__cover-exerpt">
-
-          </p>
-        </span>
+        <div>
+          <span class="title-wrap">
+            <h1 class="article-title">2222eeeeee2</h1>
+            <p class="book__cover-exerpt">
+              11111111111111dsffffffffffffffffffaaaaaaxzzzzzzzzzzzzzhaqqqqqqqqqqqqqqqqqqqqqqqqqqaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            </p>
+          </span>
+        </div>
       </div>
       <div class="book__content">
 <!--        <p><span class="drop-cap">O</span>{{blog.content}}</p>-->
@@ -149,20 +151,19 @@ export default {
   font-size: 2.5rem;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
-  text-align: center;
+  text-align: left;
   letter-spacing: 0.025em;
   transition: font-size 0.45s ease-in-out, color 0.3s ease-out;
 }
 .book__cover-exerpt {
   color: #6a6a6a;
-  max-width: 45vw;
+  width: 35vw;
+  word-wrap:break-word;
+  word-break:break-all;
   max-height: 15vh;
   line-height: 1.6;
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 1rem 1.5rem;
-  text-align: center;
+  padding: 1rem 0;
   opacity: 1;
   display: block;
   transition: all 0.25s ease-in-out;
@@ -211,10 +212,14 @@ export default {
   opacity: 0.95;
 }
 .book--expanded .title-wrap {
-  transform: translate(7vw, 15vh);
+  display: block;
+  margin-top: 5vh;
+  margin-right: auto;
+  margin-left: auto;
   color: white;
 }
 .book--expanded .article-title {
+  text-align: center;
   color: black;
   font-size: 64px;
   letter-spacing: 0.05em;

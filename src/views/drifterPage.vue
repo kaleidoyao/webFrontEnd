@@ -3,7 +3,7 @@
   <menu-button></menu-button>
   <back-ground></back-ground>
   <div class="body">
-    <header-tag ref="header"></header-tag>
+    <header-tag ref="header" :usrid=userid></header-tag>
     <div class="content" ref="content">
       <span class="driftBottleAndArrest">
         <drifter-bottle class="bottle"></drifter-bottle>
@@ -65,6 +65,7 @@ import DrifterBottle from "@/components/drifterBottle";
 import BottleButton from "@/components/bottleButton";
 import axios from "axios";
 import MenuButton from "@/components/menuButton";
+import router from "@/router";
 export default {
   components: {MenuButton, OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
@@ -72,6 +73,8 @@ export default {
     this.$refs.throw.addEventListener('click',this.displayWriteDrifter);
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
+    this.userid = router.currentRoute.value.query.id;
+    console.log(this.userid);
   },
   data(){
     return{

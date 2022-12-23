@@ -3,7 +3,7 @@
   <menu-button></menu-button>
   <back-ground></back-ground>
   <div class="body">
-    <header-tag ref="header"></header-tag>
+    <header-tag ref="header" :usrid=userid></header-tag>
     <div class="content" ref="content">
       <span class="section1">
         <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
@@ -43,12 +43,15 @@ import TimeCapsule from "@/components/timeCapsule";
 import PersonalInfo from "@/components/personalInfo";
 import CalendarItem from "@/components/calendarItem";
 import MenuButton from "@/components/menuButton";
+import router from "@/router";
 export default {
   name: "capsulePage",
   components: {MenuButton, CalendarItem, PersonalInfo, TimeCapsule, HeaderTag, BackGround},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
+    this.userid = router.currentRoute.value.query.id;
+    console.log(this.userid);
   },
 
   data(){

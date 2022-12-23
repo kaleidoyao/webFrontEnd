@@ -61,6 +61,11 @@ import router from "@/router";
 export default {
   name: "blogPage",
   components: {BackGround, HeaderTag, BlogItem},
+  data(){
+    return{
+      userid:-1,
+    }
+  },
   mounted() {
     let height = this.$refs.header.$el.offsetHeight + 5;
     this.$refs["container"].style.marginTop = height + 'px';

@@ -27,7 +27,7 @@ export default {
   },
   data(){
     return{
-      userid:0
+      userid:-1
     }
   }
 }

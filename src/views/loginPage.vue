@@ -39,13 +39,6 @@ import router from "@/router/index";
 import {ElMessageBox} from 'element-plus';
 
 export default {
-  created() {
-    this.regisName="";
-    this.regisPass="";
-    this.regisVerPass="";
-    this.logName="";
-    this.logPass="";
-  },
   data(){
     return{
       regisName:"",

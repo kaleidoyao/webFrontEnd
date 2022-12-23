@@ -43,6 +43,11 @@ import GetStartedButton from "@/components/getStartedButton";
 import TagCloud from "@/components/tagCloud";
 export default {
   components: {TagCloud, GetStartedButton},
+  data(){
+    return{
+      userid:-1,
+    }
+  },
   mounted() {
     window.addEventListener('scroll', this.move);
   },

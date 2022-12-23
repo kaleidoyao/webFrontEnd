@@ -17,15 +17,15 @@
       </span>
       <span class="blogContent">
         <div class="blogList">
-          <div class="blogItem">
-            <span class="dot"></span>
-            <div class="blogTime">2022/11/21
-              <button class="delete-button">Delete</button>
-            </div>
-            <div class="blogDetail">
-              <small-blog-item></small-blog-item>
-            </div>
-          </div>
+<!--          <div class="blogItem">-->
+<!--            <span class="dot"></span>-->
+<!--            <div class="blogTime">2022/11/21-->
+<!--              <button class="delete-button">Delete</button>-->
+<!--            </div>-->
+<!--            <div class="blogDetail">-->
+<!--              <small-blog-item></small-blog-item>-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="blogItem" v-for="blog in blogs" :key="blog.id">
             <span class="dot"></span>
             <div class="blogTime">{{blog.date}}
@@ -50,9 +50,17 @@ import GotoButton from "@/components/gotoButton";
 import SmallBlogItem from "@/components/smallBlogItem";
 import axios from "axios";
 import MenuButton from "@/components/menuButton";
+import {ElMessageBox} from "element-plus";
 export default {
   name: "minePage",
   components: {MenuButton, SmallBlogItem, GotoButton, PersonalInfo, HeaderTag, BackGround},
+  data(){
+    return{
+      userid:-1,
+      userName:"",
+      blogs:[],
+    }
+  },
   mounted() {
     this.$refs.toWrite.addEventListener('click',this.toWritePage);
     this.$refs.toDrifter.addEventListener('click',this.toDrifterPage);
@@ -61,31 +69,37 @@ export default {
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
     console.log(this.userid);
-    axios.get("http://localhost:8088/getUserName",{
-      params:{
-        userid:this.userid
-      }
-    }).then((response)=>{
-      console.log(response.data);
-      this.userName = response.data;
-      console.log(this.userName);
-    })
-    axios.get("http://localhost:8088/myBlog",{
-      params:{
-        userid:this.userid,
-        n:10
-      }
-    }).then((response)=>{
-      console.log(response.data);
-      this.blogs = response.data;
-    })
-  },
-  data(){
-    return{
-      userid:0,
-      userName:"",
-      blogs:[],
-      blogid:0
+    if(typeof this.userid == "undefined"){
+      ElMessageBox.confirm('请先登录后再查看个人页面！','提示',{
+        confirmButtonText: '确定', //确定按钮的文本内容
+        showCancelButton: false, //是否可通过点击遮罩关闭
+        type: 'warning', //消息类型，用于显示图标
+      }).then(() => {
+        router.push({
+          name:"loginPage"
+        })
+      }).catch(() => {
+
+      });
+    }else{
+      axios.get("http://localhost:8088/getUserName",{
+        params:{
+          userid:this.userid
+        }
+      }).then((response)=>{
+        console.log(response.data);
+        this.userName = response.data;
+        console.log(this.userName);
+      })
+      axios.get("http://localhost:8088/myBlog",{
+        params:{
+          userid:this.userid,
+          n:10
+        }
+      }).then((response)=>{
+        console.log(response.data);
+        this.blogs = response.data;
+      })
     }
   },
   methods: {

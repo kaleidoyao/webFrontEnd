@@ -82,7 +82,7 @@ export default {
   },
   data(){
     return {
-      userid: 0,
+      userid: -1,
       font: '"EB Garamond", serif',
       font_title: '"Playfair Display", serif',
       font_sans_serif: '"Manrope", sans-serif',

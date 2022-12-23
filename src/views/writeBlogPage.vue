@@ -68,7 +68,7 @@ export default {
         }).then(() => {
           console.log(_this.userid)
           router.push({
-            name:"blogPage",query:{id:_this.userid}
+            name:"minePage",query:{id:_this.userid}
           })
         }).catch(() => {
 

@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #036881;">
+  <div style="background-color: #036881; padding-top: 7vh;">
     <div class="wrapper">
       <div style="text-align: center"><button ref="button" class="button">点击开启今日词云</button></div>
       <div ref="main" class="hidden" style="display: flex; align-items: center; justify-content: center">

@@ -188,7 +188,6 @@ export default {
   font-size: 1.1rem;
   opacity: 0;
   transition: all 1.5s ease-in-out;
-  max-width: 750px;
   margin: 0 auto 6rem;
   padding: 0 2rem;
 }
@@ -200,6 +199,7 @@ export default {
 
 .book--expanded {
   max-height: 100vh;
+  width: 100%;
   background: white;
   overflow-y: scroll;
 }

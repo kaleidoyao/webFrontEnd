@@ -29,19 +29,10 @@
         </div>
       </span>
       <span class="throwAndCatch">
-        <ul>
-          <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
-          <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
-          <button id="deleteButton" v-on:click="deleteBT"><span>销毁</span></button>
-          <li>
-            <p>收到的漂流瓶缩略</p>
-            <a href=#>销毁</a>
-          </li>
-          <li>
-            <p>收到的漂流瓶缩略</p>
-            <a href=#>销毁</a>
-          </li>
-        </ul>
+        <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
+        <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
+        <button id="deleteButton" v-on:click="deleteBT"><span>销毁</span></button>
+        <card-list></card-list>
       </span>
     </div>
   </div>
@@ -66,8 +57,9 @@ import BottleButton from "@/components/bottleButton";
 import axios from "axios";
 import MenuButton from "@/components/menuButton";
 import router from "@/router";
+import CardList from "@/components/cardList";
 export default {
-  components: {MenuButton, OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
+  components: {CardList, MenuButton, OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
     this.$refs.pick.addEventListener('click',this.pickBT);
     this.$refs.throw.addEventListener('click',this.displayWriteDrifter);

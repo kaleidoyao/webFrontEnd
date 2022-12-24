@@ -1,10 +1,12 @@
 <template>
-  <div></div>
+  <card-list></card-list>
 </template>
 
 <script>
+import CardList from "@/components/cardList";
 export default {
-  name: "testPage"
+  name: "testPage",
+  components: {CardList}
 }
 </script>
 

@@ -17,7 +17,9 @@
           <time-capsule></time-capsule>
         </div>
       </span>
-      <span class="section2"></span>
+      <span class="section2">
+        <open-capsule></open-capsule>
+      </span>
       <span class="section3">
 <!--        <calendar-item></calendar-item>-->
         <el-calendar  />
@@ -45,9 +47,10 @@ import PersonalInfo from "@/components/personalInfo";
 // import CalendarItem from "@/components/calendarItem";
 import MenuButton from "@/components/menuButton";
 import router from "@/router";
+import OpenCapsule from "@/components/openCapsule";
 export default {
   name: "capsulePage",
-  components: {MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
+  components: {OpenCapsule, MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';

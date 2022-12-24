@@ -12,8 +12,14 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "collectButton",
+  props:{
+    userid:Number,
+    blogid:Number
+  },
   data() {
     return {
       isUp: false,
@@ -26,10 +32,26 @@ export default {
       if(this.isUp === false) {
         this.like = this.like+1;
         this.borderColor = '#efb336';
+        axios.get("http://localhost:8088/collect",{
+          params:{
+            userid:this.userid,
+            blogid:this.blogid
+          }
+        }).then((response)=>{
+          console.log(response.data)
+        })
       }
       else {
         this.like = this.like-1;
         this.borderColor = '#000000';
+        axios.get("http://localhost:8088/cancelCollect",{
+          params:{
+            userid:this.userid,
+            blogid:this.blogid
+          }
+        }).then((response)=>{
+          console.log(response.data)
+        })
       }
       this.isUp = !this.isUp;
     }

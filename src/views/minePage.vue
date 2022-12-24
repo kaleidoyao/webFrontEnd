@@ -17,24 +17,24 @@
       </span>
       <span class="blogContent">
         <div class="blogList">
-          <div class="blogItem">
-            <span class="dot"></span>
-            <div class="blogTime">2022/11/21
-              <button class="delete-button">Delete</button>
-            </div>
-            <div class="blogDetail">
-              <small-blog-item></small-blog-item>
-            </div>
-          </div>
-<!--          <div class="blogItem" v-for="blog in blogs" :key="blog.id">-->
+<!--          <div class="blogItem">-->
 <!--            <span class="dot"></span>-->
-<!--            <div class="blogTime">{{blog.date}}-->
+<!--            <div class="blogTime">2022/11/21-->
 <!--              <button class="delete-button">Delete</button>-->
 <!--            </div>-->
 <!--            <div class="blogDetail">-->
-<!--              <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid}"></small-blog-item>-->
+<!--              <small-blog-item></small-blog-item>-->
 <!--            </div>-->
 <!--          </div>-->
+          <div class="blogItem" v-for="blog in blogs" :key="blog.id">
+            <span class="dot"></span>
+            <div class="blogTime">{{blog.date}}
+              <button class="delete-button" @click="deleteBT(blog.blogid)">Delete</button>
+            </div>
+            <div class="blogDetail">
+              <small-blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></small-blog-item>
+            </div>
+          </div>
         </div>
       </span>
     </div>
@@ -119,18 +119,26 @@ export default {
         name:"capsulePage",query:{id:this.userid}
       })
     },
-    deleteBT(){
-      let _this=this
+    deleteBT(bid){
       let result=null
-      axios.get("http://localhost:8088/deleteBlog",{
-        params:{
-          blogid:_this.blogid//获取相应的id？
-        }
-      }).then((response)=>{
-        result=response.data
-        console.log(result)
-      })
+      ElMessageBox.confirm('确定要删除这条博客吗？','提示',{
+        confirmButtonText: '确定', //确定按钮的文本内容
+        showCancelButton: true,
+        cancelButtonText:'取消',
+        type: 'warning', //消息类型，用于显示图标
+      }).then(() => {
+        axios.get("http://localhost:8088/deleteBlog",{
+          params:{
+            blogid:bid
+          }
+        }).then((response)=>{
+          result=response.data
+          console.log(result)
+        })
+        router.go(0)
+      }).catch(() => {
 
+      });
     }
   }
 }

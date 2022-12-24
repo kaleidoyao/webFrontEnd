@@ -12,8 +12,36 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "likeButton",
+  props:{
+    userid:Number,
+    blogid:Number
+  },
+  mounted() {
+    axios.get("http://localhost:8088/likeNum",{
+      params:{
+        blogid:this.blogid
+      }
+    }).then((response)=>{
+      this.like = response.data
+      console.log(this.like)
+    })
+
+    axios.get("http://localhost:8088/haveLiked",{
+      params:{
+        blogid:this.blogid,
+        userid:this.userid
+      }
+    }).then((response)=>{
+      let result = response.data
+      if(result === true){
+        this.isUp = true;
+      }
+    })
+  },
   data() {
     return {
       isUp: false,
@@ -26,10 +54,28 @@ export default {
       if(this.isUp === false) {
         this.like = this.like+1;
         this.borderColor = '#E5404F';
+        axios.get("http://localhost:8088/like",{
+          params:{
+            userid:this.userid,
+            blogid:this.blogid
+          }
+        }).then((response)=>{
+          console.log(response.data);
+          console.log("like+1")
+        })
       }
       else {
         this.like = this.like-1;
         this.borderColor = '#000000';
+        axios.get("http://localhost:8088/dislike",{
+          params:{
+            userid:this.userid,
+            blogid:this.blogid
+          }
+        }).then((response)=>{
+          console.log(response.data)
+          console.log("cancel like+1.")
+        })
       }
       this.isUp = !this.isUp;
     }

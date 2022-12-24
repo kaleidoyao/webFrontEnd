@@ -6,9 +6,9 @@
         <span class="header-image"><div class="overlay"></div></span>
         <div>
           <span class="title-wrap">
-            <h1 class="article-title">2222eeeeee2</h1>
+            <h1 class="article-title">{{blog.title}}</h1>
             <p class="book__cover-exerpt">
-              11111111111111dsffffffffffffffffffaaaaaaxzzzzzzzzzzzzzhaqqqqqqqqqqqqqqqqqqqqqqqqqqaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              {{blog.content.substring(0,200)}}
             </p>
           </span>
         </div>
@@ -22,21 +22,21 @@
           </div>
           <div class="summary-item">
             <h5 class="item-title">Author</h5>
-            <p class="item-text"><span class="item-data">Gagaga</span></p>
+            <p class="item-text"><span class="item-data">{{authorName}}</span></p>
           </div>
           <div class="summary-item">
             <h5 class="item-title">Publish Time</h5>
             <p class="item-text"><span class="item-data">6</span> Mins</p>
           </div>
         </div>
-        <p><span class="drop-cap">O</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias est incidunt odit ea adipisci animi nihil voluptates iure beatae explicabo asperiores enim ex placeat itaque minus error temporibus voluptate corporis suscipit commodi voluptatibus praesentium molestiae, perspiciatis nulla. Accusantium harum nisi maiores, velit perferendis, nesciunt ad, porro sequi aliquid maxime molestias!</p>
-        <p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nobis fuga delectus tempore. Odio ipsa voluptate ex nobis ratione consequatur dignissimos dolorum culpa, ipsam sit dolorem itaque excepturi, natus sed deleniti incidunt ipsum asperiores! Molestiae cumque quam nulla, nam inventore. Necessitatibus blanditiis cumque laboriosam, id, ad unde quo ipsum nulla.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum accusantium velit expedita, minima sapiente unde magnam dicta. Consequuntur cumque numquam sed deserunt, quidem officia illo blanditiis ipsum, commodi distinctio quam molestias dolore, doloremque corporis? Rem ad recusandae delectus accusamus, harum quisquam perferendis dolor aut consectetur nesciunt atque laborum ab dolores.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, neque, magnam. Impedit deleniti ad alias, unde vero quis mollitia, tenetur minima porro, officia iusto quae harum labore nostrum aliquid aut maxime, architecto in reprehenderit. Doloribus pariatur quam fuga sed modi veniam, vel corporis magnam quis eius cumque voluptate, dolore repellendus labore nobis, voluptatibus dicta sapiente doloremque! Enim dicta totam debitis cumque similique, natus, consequatur quidem cum incidunt, sint quos. Ea.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident voluptatum possimus dolores nesciunt natus quaerat quas quo quam obcaecati ducimus totam quia sint, et nobis nisi tenetur id aspernatur quibusdam molestiae reprehenderit sed incidunt. Voluptas error necessitatibus sed inventore, quasi facilis, est. Asperiores atque laboriosam inventore quis eos nulla. Fuga neque odit maiores facilis voluptas nemo numquam, eos amet molestias.</p>
+        <p><span class="drop-cap">{{blog.content.substring(0,1)}}</span>{{blog.content.substring(1)}}</p>
+<!--        <p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nobis fuga delectus tempore. Odio ipsa voluptate ex nobis ratione consequatur dignissimos dolorum culpa, ipsam sit dolorem itaque excepturi, natus sed deleniti incidunt ipsum asperiores! Molestiae cumque quam nulla, nam inventore. Necessitatibus blanditiis cumque laboriosam, id, ad unde quo ipsum nulla.</p>-->
+<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum accusantium velit expedita, minima sapiente unde magnam dicta. Consequuntur cumque numquam sed deserunt, quidem officia illo blanditiis ipsum, commodi distinctio quam molestias dolore, doloremque corporis? Rem ad recusandae delectus accusamus, harum quisquam perferendis dolor aut consectetur nesciunt atque laborum ab dolores.</p>-->
+<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, neque, magnam. Impedit deleniti ad alias, unde vero quis mollitia, tenetur minima porro, officia iusto quae harum labore nostrum aliquid aut maxime, architecto in reprehenderit. Doloribus pariatur quam fuga sed modi veniam, vel corporis magnam quis eius cumque voluptate, dolore repellendus labore nobis, voluptatibus dicta sapiente doloremque! Enim dicta totam debitis cumque similique, natus, consequatur quidem cum incidunt, sint quos. Ea.</p>-->
+<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident voluptatum possimus dolores nesciunt natus quaerat quas quo quam obcaecati ducimus totam quia sint, et nobis nisi tenetur id aspernatur quibusdam molestiae reprehenderit sed incidunt. Voluptas error necessitatibus sed inventore, quasi facilis, est. Asperiores atque laboriosam inventore quis eos nulla. Fuga neque odit maiores facilis voluptas nemo numquam, eos amet molestias.</p>-->
         <div class="buttons">
-          <span><like-button></like-button></span>
-          <span><collect-button></collect-button></span>
+          <span><like-button :userid="userid" :blogid="blog.blogid"></like-button></span>
+          <span><collect-button :userid="userid" :blogid="blog.blogid"></collect-button></span>
         </div>
         <div>
           <span><h1 class="comment-title">Comments</h1></span>
@@ -53,6 +53,7 @@
 import LikeButton from "@/components/likeButton";
 import CommentArea from "@/components/commentArea";
 import CollectButton from "@/components/collectButton";
+import axios from "axios";
 export default {
   name: "smallBlogItem",
   props:{
@@ -60,8 +61,10 @@ export default {
       title: String,
       content: String,
       date: String,
-      authorid:Number
-    }
+      authorid:Number,
+      blogid:Number,
+    },
+    userid:Number
   },
   // eslint-disable-next-line vue/no-unused-components
   components: {CollectButton, CommentArea, LikeButton},
@@ -70,12 +73,21 @@ export default {
       status: 'book',
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
+      authorName:"",
     }
   },
   mounted() {
     this.$refs['book'].addEventListener('click', this.changeStatus);
     window.addEventListener("scroll", this.scrollToTop);
-
+    axios.get("http://localhost:8088/getUserName",{
+      params:{
+        userid:this.blog.authorid
+      }
+    }).then((response)=>{
+      console.log(response.data);
+      this.authorName = response.data;
+      console.log(this.authorName);
+    })
 
   },
   methods: {

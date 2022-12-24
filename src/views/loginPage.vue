@@ -1,35 +1,55 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <div class="body">
-  <div class="container">
-    <div class="container-box" ref="container-box">
-      <div class="register-box hidden" ref="register-box">
-        <h1>REGISTER</h1>
-        <input type="text" placeholder="Username" @blur="inputRegisName($event)">
-        <input type="password" placeholder="Your Password" v-on:input="inputRegisPass">
-        <input type="password" placeholder="Verify Password" v-on:input="inputRegisVerPass">
-        <button id="button" v-on:click="registerBT"><span>Register</span></button>
+    <div class="container">
+      <div class="container-box" ref="container-box">
+        <div class="register-box hidden" ref="register-box">
+          <h1>REGISTER</h1>
+          <input type="text" placeholder="Username" @blur="inputRegisName($event)">
+          <input type="password" placeholder="Your Password" v-on:input="inputRegisPass">
+          <input type="password" placeholder="Verify Password" v-on:input="inputRegisVerPass">
+          <button id="button" v-on:click="registerBT"><span>Register</span></button>
+          <p @click="show">modify personal information</p>
+        </div>
+        <div class="login-box" ref="login-box">
+          <h1>LOGIN</h1>
+          <input type="text" placeholder="Username" @blur="inputLogName($event)">
+          <input type="password" placeholder="Your Password" v-on:input="inputLogPass">
+          <button id="button" v-on:click="loginBT"><span>Login</span></button>
+          <p @click="show">modify personal information</p>
+        </div>
       </div>
-      <div class="login-box" ref="login-box">
-        <h1>LOGIN</h1>
-        <input type="text" placeholder="Username" @blur="inputLogName($event)">
-        <input type="password" placeholder="Your Password" v-on:input="inputLogPass">
-        <button id="button" v-on:click="loginBT"><span>Login</span></button>
+      <div class="under-box left">
+        <h2>Welcome To</h2>
+        <img src="../assets/imgs/Login_Lighthouse.svg" width="200">
+        <p>已有账号</p>
+        <button ref="login">Go To Login</button>
+      </div>
+      <div class="under-box right">
+        <h2>Welcome To</h2>
+        <img src="../assets/imgs/Login_Boat.gif" width="200">
+        <p>暂无账号</p>
+        <button ref="register">Go To Register</button>
       </div>
     </div>
-    <div class="under-box left">
-      <h2>Welcome To</h2>
-      <img src="../assets/imgs/Login_Lighthouse.svg" width="200">
-      <p>已有账号</p>
-      <button ref="login">Go To Login</button>
+    <div class="modify-wrapper">
+      <div class="modify">
+        <div class="modify-main">
+          <h2 class="form-title">Modification</h2>
+          <div class="form-holder">
+            <input type="text" class="input" placeholder="Username" />
+            <input type="email" class="input" placeholder="Your Password" />
+            <input type="password" class="input" placeholder="Verify Password" />
+          </div>
+          <button class="submit-btn">submit</button>
+        </div>
+        <div class="exit">
+          <div class="center">
+            <img src="../assets/icons/exit.png" alt="" style="width: 4vh; cursor: pointer;" @click="exit">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="under-box right">
-      <h2>Welcome To</h2>
-      <img src="../assets/imgs/Login_Boat.gif" width="200">
-      <p>暂无账号</p>
-      <button ref="register">Go To Register</button>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -37,7 +57,6 @@
 import axios from "axios";
 import router from "@/router/index";
 import {ElMessageBox} from 'element-plus';
-
 export default {
   data(){
     return{
@@ -53,7 +72,13 @@ export default {
     this.$refs.login.addEventListener('click', this.displayRegister);
     this.$refs.register.addEventListener('click', this.displayLogin);
   },
-  methods:{
+  methods: {
+    exit() {
+      document.querySelector(".modify-wrapper").style.display = "none";
+    },
+    show() {
+      document.querySelector(".modify-wrapper").style.display = "flex";
+    },
     inputRegisName(event){
       let _this=this;
       _this.regisName=event.target.value;
@@ -245,6 +270,14 @@ export default {
   z-index: 2;
   transition: 0.5s ease-in-out;
 }
+.container-box p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6em;
+  color: black;
+  text-decoration: underline;
+  padding-top: 2vh;
+  cursor: pointer;
+}
 .register-box, .login-box {
   display: flex;
   flex-direction: column;
@@ -301,7 +334,7 @@ input {
   line-height: 35px;
   border-radius: 15px;
   background-color: rgba(240, 248, 255, 0.9);
-  padding: 0px 20px;
+  padding: 0 20px;
   margin-bottom: 10px;
   font-size: 14px;
   border: 0;
@@ -336,5 +369,89 @@ input::placeholder {
   border-radius: 36px;
   font: 600 15px 'Poppins';
   letter-spacing: 1px;
+}
+
+.modify-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.modify {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  height: 70vh;
+  width: 45vw;
+  position: relative;
+  overflow: hidden;
+}
+.modify .modify-main {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.modify .modify-main .form-title {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7em;
+  text-align: center;
+  margin-top: 1vh;
+}
+.modify .modify-main .form-holder .input {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+}
+.modify .modify-main .submit-btn {
+  width: 70%;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  color: #000;
+  margin: 3vh auto;
+  padding: 10px 30px;
+  border-radius: 36px;
+  font: 600 15px 'Poppins';
+  letter-spacing: 1px;
+}
+.modify .exit {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+.modify .exit::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  -webkit-transform: translate(-50%, 0);
+  background-color: #F4F4F4;
+  width: 200%;
+  height: 250px;
+  border-radius: 50%;
+  z-index: 4;
+  -webkit-transition: all 0.3s ease;
+}
+.modify .exit .center {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  -webkit-transform: translate(-50%, 0%);
+  z-index: 5;
 }
 </style>

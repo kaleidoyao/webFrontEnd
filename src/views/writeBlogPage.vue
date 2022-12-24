@@ -1,5 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
+  <menu-button></menu-button>
   <back-ground></back-ground>
   <header-tag ref="header"></header-tag>
   <div class="content" ref="content">
@@ -19,9 +20,10 @@ import BackGround from "@/components/backGround";
 import router from "@/router";
 import axios from "axios";
 import {ElMessageBox} from "element-plus";
+import MenuButton from "@/components/menuButton";
 export default {
   name: "writeBlogPage",
-  components: {BackGround, HeaderTag},
+  components: {MenuButton, BackGround, HeaderTag},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
@@ -89,7 +91,6 @@ export default {
 
 <style scoped>
 .content {
-  /*display: inline-block;*/
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   border-left: 2px solid rgba(255, 255, 255, 0.7);
@@ -97,9 +98,7 @@ export default {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   min-height: 100vh;
   text-align: center;
-  /*vertical-align: bottom;*/
   padding-top: 5%;
-  /*overflow-x:hidden;*/
 }
 
 text {
@@ -115,13 +114,14 @@ input {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px 20px;
   margin-bottom: 20px;
-  font-size: 35px;
+  font-size: 5vh;
   border: 0;
   outline: 0;
 }
 
 input::-webkit-input-placeholder {
   font-family: 'Poppins', sans-serif;
+  font-size: 5vh;
 }
 
 textarea {
@@ -137,6 +137,13 @@ textarea {
 
 textarea::-webkit-input-placeholder {
   font-family: 'Poppins', sans-serif;
+}
+
+input, textarea {
+  font-family: 'Poppins', sans-serif;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 0 2px #63a4e0;
 }
 
 .button {

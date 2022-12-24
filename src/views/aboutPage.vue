@@ -99,8 +99,8 @@ export default {
   font-family: 'Poppins', sans-serif;
 }
 .main__wrapper {
-  max-width: 90vw;
-  padding: 3vw;
+  max-width: 100vw;
+  padding: 5vw;
   margin: auto;
   background-color: rgba(255,255,255,0.7);
   border-radius: 15px;

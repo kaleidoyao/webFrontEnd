@@ -3,13 +3,16 @@
   <div>
     <ul id="cardList" class="cards">
       <li>
-        <div class="card transform">
-          <div class="bottle"></div>
-          <div class="title"><h2>The title</h2></div>
-          <div class="card-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid</p>
+<!--        <div class="card transform">-->
+          <div class="card transform" v-for="drifter in myDrifter" :key="drifter.id">
+            <div class="bottle"></div>
+            <button id="deleteButton" @click="deleteBT(drifter.id)"><span>delete</span></button>
+            <div class="title"><h2>{{drifter.title}}</h2></div>
+            <div class="card-content">
+              <p>{{drifter.content}}</p>
+            </div>
           </div>
-        </div>
+<!--        </div>-->
       </li>
       <li><div class="card transform"></div></li>
       <li><div class="card transform"></div></li>
@@ -19,9 +22,19 @@
 </template>
 
 <script>
+import router from "@/router";
+import axios from "axios";
+
 export default {
   name: "cardList",
+  data(){
+    return{
+      myDrifter:[],
+      userid:-1
+    }
+  },
   mounted() {
+    this.userid = router.currentRoute.value.query.id;
     let cards = document.querySelectorAll(".card");
     for(let card of cards) {
       card.addEventListener('click', ()=>{
@@ -29,7 +42,21 @@ export default {
         else card.classList.add('transform-active');
       })
     }
+    let _this=this
+    let result=null;
+    axios.get("http://localhost:8088/getMyDrifter",{
+      params: {
+        pickerid:_this.userid
+      }
+    }).then((response)=>{
+      result = response.data;
+      _this.myDrifter=result
+      console.log(_this.myDrifter)
+    }).catch((error)=>{
+      console.log(error)
+    });
   }
+
 }
 </script>
 

@@ -31,8 +31,17 @@
       <span class="throwAndCatch">
         <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
         <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
-        <button id="deleteButton" v-on:click="deleteBT"><span>销毁</span></button>
-        <card-list></card-list>
+        <card-list>
+          <div class="cardList" v-for="drifter in myDrifter" :key="drifter.id">
+            <span class="dot"></span>
+            <div class="drifterTime">{{drifter.time}}
+              <button class="delete-button" @click="deleteBT(drifter.id)">Delete</button>
+            </div>
+            <div class="cardDetail">
+              <card-list :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,authorid:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-list>
+            </div>
+          </div>
+        </card-list>
       </span>
     </div>
   </div>
@@ -132,11 +141,10 @@ export default {
     },
 
     deleteBT(){
-      let _this=this
       let result=null;
       axios.get("http://localhost:8088/deleteDrifter",{
         params: {
-          id:_this.currentDrifterID
+          id:this.currentDrifterID
         }
       }).then((response)=>{
         result = response.data;

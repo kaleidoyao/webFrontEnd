@@ -18,7 +18,10 @@
         </div>
       </span>
       <span class="section2">
-        <open-capsule></open-capsule>
+        <div class="show-capsule">
+          <open-capsule></open-capsule>
+          <capsule-card></capsule-card>
+        </div>
       </span>
       <span class="section3">
 <!--        <calendar-item></calendar-item>-->
@@ -48,9 +51,10 @@ import PersonalInfo from "@/components/personalInfo";
 import MenuButton from "@/components/menuButton";
 import router from "@/router";
 import OpenCapsule from "@/components/openCapsule";
+import CapsuleCard from "@/components/capsuleCard";
 export default {
   name: "capsulePage",
-  components: {OpenCapsule, MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
+  components: {CapsuleCard, OpenCapsule, MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
@@ -170,6 +174,10 @@ export default {
   display: inline-block;
   vertical-align: top;
   margin: 5px;
+}
+.show-capsule {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 .section3 {
   background-color: rgba(255,255,255,0.3);

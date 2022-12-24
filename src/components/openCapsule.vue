@@ -1,5 +1,5 @@
 <template>
-  <div class="div">
+  <div class="capsule-wrapper">
     <div class="left"></div>
     <div class="right"></div>
   </div>
@@ -12,49 +12,43 @@ export default {
 </script>
 
 <style scoped>
-p {
-  font-size: 60px;
-}
-
-.div {
+.capsule-wrapper {
   height: 6vh;
-  width: 150px;
+  width: 10vw;
   margin: 0 auto;
-  background: white;
   border-radius: 80px;
-  border: 4px solid black;
 }
-
-.div div {
-  width: 50%;
+.capsule-wrapper div {
+  width: 48%;
   height: 100%;
   border-radius: 80px;
 }
-
-.div div:hover {
-  background: red;
-}
-
 .right {
+  background-color: #3970C0;
   float: right;
-  border-left: 2px solid #000;
   margin-right: -2px;
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
+  border: 2px solid black;
+  animation: moveRight 1s ease-in-out 0.5s forwards;
 }
-.right:hover {
-  background: #ffffff;
+@keyframes moveRight {
+  to {
+    transform: translateX(2vh) rotate(-20deg);
+  }
 }
 .left {
+  background-color: white;
   float: left;
-  border-right: 2px solid #000;
   margin-right: -2px;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  border: 2px solid black;
+  animation: moveLeft 1s ease-in-out 0.5s forwards;
 }
-
-.left:hover {
-  background: #ffffff;
+@keyframes moveLeft {
+  to {
+    transform: translateX(-2vh) rotate(20deg);;
+  }
 }
-
 </style>

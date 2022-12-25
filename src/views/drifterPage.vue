@@ -31,17 +31,14 @@
       <span class="throwAndCatch">
         <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
         <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
-        <card-list>
-          <div class="cardList" v-for="drifter in myDrifter" :key="drifter.id">
-            <span class="dot"></span>
-            <div class="drifterTime">{{drifter.time}}
-              <button class="delete-button" @click="deleteBT(drifter.id)">Delete</button>
-            </div>
-            <div class="cardDetail">
-              <card-list :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,authorid:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-list>
-            </div>
-          </div>
-        </card-list>
+        <card-list></card-list>
+<!--          <div class="cardList" v-for="drifter in myDrifter" :key="drifter.id">-->
+<!--            <span class="dot"></span>-->
+<!--              <button class="delete-button" @click="deleteBT(drifter.id)">Delete</button>-->
+<!--            <div class="cardDetail">-->
+<!--              <card-list :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,authorid:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-list>-->
+<!--            </div>-->
+<!--          </div>-->
       </span>
     </div>
   </div>
@@ -76,6 +73,20 @@ export default {
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
     console.log(this.userid);
+
+    // let _this=this
+    // let result=null;
+    // axios.get("http://localhost:8088/getMyDrifter",{
+    //   params: {
+    //     pickerid:_this.userid
+    //   }
+    // }).then((response)=>{
+    //   result = response.data;
+    //   _this.myDrifter=result
+    //   console.log(_this.myDrifter)
+    // }).catch((error)=>{
+    //   console.log(error)
+    // });
   },
   data(){
     return{
@@ -140,11 +151,11 @@ export default {
       });
     },
 
-    deleteBT(){
+    deleteBT(id){
       let result=null;
       axios.get("http://localhost:8088/deleteDrifter",{
         params: {
-          id:this.currentDrifterID
+          id:id
         }
       }).then((response)=>{
         result = response.data;

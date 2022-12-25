@@ -13,8 +13,27 @@
           <div ref="toWrite"><goto-button msg="write blogs"></goto-button></div>
           <div ref="toDrifter"><goto-button msg="drifter bottle" ref="toDrifter"></goto-button></div>
           <div ref="toCapsule"><goto-button msg="time capsule"></goto-button></div>
+          <p @click="show">modify personal information</p>
         </div>
       </span>
+      <div class="modify-wrapper">
+        <div class="modify">
+          <div class="modify-main">
+            <h2 class="form-title">Modification</h2>
+            <div class="form-holder">
+              <input type="text" class="input" placeholder="Username" @blur="inputModifyName($event)" />
+              <input type="email" class="input" placeholder="Your Password" v-on:input="inputModifyPass" />
+              <input type="password" class="input" placeholder="Verify Password" v-on:input="inputModifyVerPass"/>
+            </div>
+            <button class="submit-btn" v-on:click="submitBT">submit</button>
+          </div>
+          <div class="exit">
+            <div class="center">
+              <img src="../assets/icons/exit.png" alt="" style="width: 4vh; cursor: pointer;" @click="exit">
+            </div>
+          </div>
+        </div>
+      </div>
       <span class="blogContent">
         <div class="blogList">
 <!--          <div class="blogItem">-->
@@ -60,6 +79,9 @@ export default {
       userid:-1,
       userName:"",
       blogs:[],
+      modifyName:"",
+      modifyPass:"",
+      modifyVerPass:""
     }
   },
   mounted() {
@@ -139,7 +161,101 @@ export default {
       }).catch(() => {
 
       });
-    }
+    },
+    exit() {
+      document.querySelector(".modify-wrapper").style.display = "none";
+    },
+    show() {
+      document.querySelector(".modify-wrapper").style.display = "flex";
+    },
+    inputModifyName(val){
+      let _this=this;
+      _this.modifyName=val.target.value;
+      console.log(_this.modifyName)
+    },
+    inputModifyPass(val){
+      let _this=this;
+      let modifyPass=_this.modifyPass;
+      let len=modifyPass.length;
+      if(val.data!=null) modifyPass=modifyPass+val.data;
+      else modifyPass=modifyPass.substring(0,len-1);
+      _this.modifyPass=modifyPass
+      console.log(_this.modifyPass)
+    },
+    inputModifyVerPass(val){
+      let _this=this;
+      let modifyVerPass=_this.modifyVerPass;
+      let len=modifyVerPass.length;
+      if(val.data!=null) modifyVerPass=modifyVerPass+val.data;
+      else modifyVerPass=modifyVerPass.substring(0,len-1);
+      _this.modifyVerPass=modifyVerPass
+      console.log(_this.modifyVerPass)
+    },
+    submitBT(){
+      let _this=this
+      let result = true;
+
+      if(_this.modifyName===""){
+        ElMessageBox.confirm('用户名不可为空！','提示',{
+          confirmButtonText: '确定', //确定按钮的文本内容
+          showCancelButton: false, //是否可通过点击遮罩关闭
+          type: 'warning', //消息类型，用于显示图标
+        })
+      }
+      else if(_this.modifyPass===""){
+        ElMessageBox.confirm('密码不可为空！','提示',{
+          confirmButtonText: '确定', //确定按钮的文本内容
+          showCancelButton: false, //是否可通过点击遮罩关闭
+          type: 'warning', //消息类型，用于显示图标
+        })
+      }
+      else if(_this.modifyPass !== _this.modifyVerPass){
+        ElMessageBox.confirm('两次输入密码不同，请重新输入！','提示',{
+          confirmButtonText: '确定', //确定按钮的文本内容
+          showCancelButton: false, //是否可通过点击遮罩关闭
+          type: 'warning', //消息类型，用于显示图标
+        }).then(() => {
+
+        }).catch(() => {
+
+        });
+      }else{
+        axios.get("http://localhost:8088/changeInfo",{
+          params: {
+            userid:_this.userid,
+            name: _this.modifyName,
+            passwd: _this.modifyPass,
+          }
+        }).then((response)=>{
+          result = response.data;
+          console.log(result)
+          if(result){
+            ElMessageBox.confirm('修改成功','提示',{
+              confirmButtonText: '确定', //确定按钮的文本内容
+              showCancelButton: false, //是否可通过点击遮罩关闭
+              type: 'success', //消息类型，用于显示图标
+            }).then(() => {
+
+            }).catch(() => {
+
+            });
+          }else{
+            console.log("user name already exists")
+            ElMessageBox.confirm('用户名已存在，请更改用户名','提示',{
+              confirmButtonText: '确定', //确定按钮的文本内容
+              showCancelButton: false, //是否可通过点击遮罩关闭
+              type: 'warning', //消息类型，用于显示图标
+            }).then(() => {
+
+            }).catch(() => {
+
+            });
+          }
+        }).catch((error)=>{
+          console.log(error)
+        });
+      }
+    },
   }
 }
 </script>
@@ -220,5 +336,102 @@ export default {
   border-radius: 10px;
   background-color: white;
   color: #575757;
+}
+input {
+  width: 65%;
+  line-height: 35px;
+  border-radius: 15px;
+  background-color: rgba(240, 248, 255, 0.9);
+  padding: 0 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 0;
+  outline: 0;
+}
+input::placeholder {
+  font: 300 14px 'Poppins';
+}
+.modify-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.modify {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  height: 70vh;
+  width: 45vw;
+  position: relative;
+  overflow: hidden;
+}
+.modify .modify-main {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 65%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+.modify .modify-main .form-title {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7em;
+  text-align: center;
+  margin-top: 1vh;
+}
+.modify .modify-main .form-holder .input {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 8px 15px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+}
+.modify .modify-main .submit-btn {
+  width: 70%;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  color: #000;
+  margin: 3vh auto;
+  padding: 10px 30px;
+  border-radius: 36px;
+  font: 600 15px 'Poppins';
+  letter-spacing: 1px;
+}
+.modify .exit {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+.modify .exit::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  -webkit-transform: translate(-50%, 0);
+  background-color: #F4F4F4;
+  width: 200%;
+  height: 250px;
+  border-radius: 50%;
+  z-index: 4;
+  -webkit-transition: all 0.3s ease;
+}
+.modify .exit .center {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  -webkit-transform: translate(-50%, 0%);
+  z-index: 5;
 }
 </style>

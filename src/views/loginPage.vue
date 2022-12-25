@@ -9,14 +9,12 @@
           <input type="password" placeholder="Your Password" v-on:input="inputRegisPass">
           <input type="password" placeholder="Verify Password" v-on:input="inputRegisVerPass">
           <button id="button" v-on:click="registerBT"><span>Register</span></button>
-          <p @click="show">modify personal information</p>
         </div>
         <div class="login-box" ref="login-box">
           <h1>LOGIN</h1>
           <input type="text" placeholder="Username" @blur="inputLogName($event)">
           <input type="password" placeholder="Your Password" v-on:input="inputLogPass">
           <button id="button" v-on:click="loginBT"><span>Login</span></button>
-          <p @click="show">modify personal information</p>
         </div>
       </div>
       <div class="under-box left">
@@ -37,11 +35,11 @@
         <div class="modify-main">
           <h2 class="form-title">Modification</h2>
           <div class="form-holder">
-            <input type="text" class="input" placeholder="Username" />
-            <input type="email" class="input" placeholder="Your Password" />
-            <input type="password" class="input" placeholder="Verify Password" />
+            <input type="text" class="input" placeholder="Username" @blur="inputModifyName($event)" />
+            <input type="email" class="input" placeholder="Your Password" v-on:input="inputModifyPass" />
+            <input type="password" class="input" placeholder="Verify Password" v-on:input="inputModifyVerPass"/>
           </div>
-          <button class="submit-btn">submit</button>
+          <button class="submit-btn" v-on:click="submitBT">submit</button>
         </div>
         <div class="exit">
           <div class="center">
@@ -65,7 +63,7 @@ export default {
       regisVerPass:"",
       logName:"",
       logPass:"",
-      userid:0,
+      userid:-1,
     }
   },
   mounted() {
@@ -73,12 +71,6 @@ export default {
     this.$refs.register.addEventListener('click', this.displayLogin);
   },
   methods: {
-    exit() {
-      document.querySelector(".modify-wrapper").style.display = "none";
-    },
-    show() {
-      document.querySelector(".modify-wrapper").style.display = "flex";
-    },
     inputRegisName(event){
       let _this=this;
       _this.regisName=event.target.value;
@@ -112,7 +104,6 @@ export default {
       else logPass=logPass.substring(0,len-1);
       _this.logPass=logPass
     },
-
     registerBT(){
       let _this=this
       let result = true;
@@ -221,7 +212,6 @@ export default {
         console.log(error)
       });
     },
-
     displayRegister(){
       this.$refs["container-box"].style.transform = 'translateX(0%)';
       this.$refs["register-box"].classList.add('hidden');

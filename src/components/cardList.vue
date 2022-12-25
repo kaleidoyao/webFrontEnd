@@ -2,19 +2,26 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <div>
     <ul id="cardList" class="cards">
-      <li>
-<!--        <div class="card transform">-->
-          <div class="card transform" v-for="drifter in myDrifter" :key="drifter.id">
+      <li v-for="drifter in myDrifter" :key="drifter.id">
+          <div class="card transform" ref="card">
             <div class="bottle"></div>
-            <button id="deleteButton" @click="deleteBT(drifter.id)"><span>delete</span></button>
-            <div class="title"><h2>{{drifter.title}}</h2></div>
+<!--            <div class="title"><h2>{{drifter.title}}</h2></div>-->
+            <div class="title"><h2>222</h2></div>
             <div class="card-content">
-              <p>{{drifter.content}}</p>
+<!--              <p>{{drifter.content}}</p>-->
+              <p>hahahahaha</p>
             </div>
           </div>
-<!--        </div>-->
       </li>
-      <li><div class="card transform"></div></li>
+<!--      <li>-->
+<!--        <div class="card transform">-->
+<!--          <div class="bottle"></div>-->
+<!--          <div class="title"><h2>222</h2></div>-->
+<!--          <div class="card-content">-->
+<!--            <p>hahahahaha</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </li>-->
       <li><div class="card transform"></div></li>
       <li><div class="card transform"></div></li>
     </ul>
@@ -22,26 +29,43 @@
 </template>
 
 <script>
-import router from "@/router";
 import axios from "axios";
+import router from "@/router";
 
 export default {
   name: "cardList",
+  // props:{
+  //   drifter: {
+  //     title: String,
+  //     content: String,
+  //     time: String,
+  //     ownerid:Number,
+  //     id:Number,
+  //   },
+  //   userid:Number
+  // },
   data(){
     return{
-      myDrifter:[],
+      myDrifter:null,
       userid:-1
     }
   },
   mounted() {
+    // eslint-disable-next-line vue/no-mutating-props
     this.userid = router.currentRoute.value.query.id;
-    let cards = document.querySelectorAll(".card");
-    for(let card of cards) {
-      card.addEventListener('click', ()=>{
-        if(card.classList.contains('transform-active')) card.classList.remove('transform-active');
-        else card.classList.add('transform-active');
-      })
-    }
+    // let cards = document.querySelectorAll(".card");
+    // console.log(555)
+    // console.log(cards)
+    // for(let card of cards) {
+    //   console.log(1234)
+    //   card.addEventListener('click', ()=>{
+    //     console.log(123)
+    //     if(card.classList.contains('transform-active')) card.classList.remove('transform-active');
+    //     else card.classList.add('transform-active');
+    //   })
+    // }
+    console.log(this.$refs['card'])
+
     let _this=this
     let result=null;
     axios.get("http://localhost:8088/getMyDrifter",{
@@ -55,8 +79,13 @@ export default {
     }).catch((error)=>{
       console.log(error)
     });
+  },
+  methods:{
+    // showCard(id){
+    //   if(card.classList.contains('transform-active')) card.classList.remove('transform-active');
+    //   else card.classList.add('transform-active');
+    // }
   }
-
 }
 </script>
 

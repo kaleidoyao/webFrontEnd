@@ -47,9 +47,9 @@
       <div class="commentWrapper">
         <div style="text-align: right; margin-top: 2vh;"><img src="../assets/icons/exit.png" alt="" style="width: 3vh; cursor: pointer;" @click="exitComment"></div>
         <div class="comment">
-          <div><textarea /></div>
+          <div><textarea v-model="commentContent" /></div>
         </div>
-        <div style="display: flex; justify-content: center; margin-bottom: 2vh"><button class="submit-button">submit</button></div>
+        <div style="display: flex; justify-content: center; margin-bottom: 2vh"><button class="submit-button" @click="submitComment">submit</button></div>
       </div>
     </div>
   </div>
@@ -60,6 +60,7 @@ import LikeButton from "@/components/likeButton";
 import CollectButton from "@/components/collectButton";
 import CommentArea from "@/components/commentArea";
 import axios from "axios";
+import router from "@/router";
 export default {
   name: "blogItem",
   components: {CommentArea, CollectButton, LikeButton},
@@ -79,7 +80,8 @@ export default {
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
       authorName: "",
-      comments:[]
+      comments:[],
+      commentContent:""
     }
   },
   mounted() {
@@ -121,6 +123,29 @@ export default {
     },
     exitComment() {
       document.querySelector(".comment-input").classList.add("hidden");
+    },
+    getdate() {
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
+    submitComment(){
+      axios.get("http://localhost:8088/writeComment",{
+        params:{
+          userid:this.userid,
+          blogid:this.blog.blogid,
+          content:this.commentContent,
+          date:this.getdate()
+        }
+      }).then((response)=>{
+        console.log(response.data)
+        this.exitComment()
+        router.go(0)
+      })
     }
   }
 }
@@ -360,7 +385,7 @@ export default {
   opacity: 0.5;
 }
 textarea {
-  width: 45vw;
+  width: 33vw;
   height: 20vh;
   line-height: 35px;
   border-radius: 15px;

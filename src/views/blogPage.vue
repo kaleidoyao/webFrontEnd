@@ -17,9 +17,9 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.835 12.007l.002.354c.012 1.404.096 2.657.242 3.451 0 .015.16.802.261 1.064.16.38.447.701.809.905a2 2 0 00.91.219c.249-.012.66-.137.954-.242l.244-.094c1.617-.642 4.707-2.74 5.891-4.024l.087-.09.39-.42c.245-.322.375-.715.375-1.138 0-.379-.116-.758-.347-1.064-.07-.099-.18-.226-.28-.334l-.379-.397c-1.305-1.321-4.129-3.175-5.593-3.79 0-.013-.91-.393-1.343-.407h-.057c-.665 0-1.286.379-1.603.991-.087.168-.17.496-.233.784l-.114.544c-.13.874-.216 2.216-.216 3.688zm-6.332-1.525C3.673 10.482 3 11.162 3 12a1.51 1.51 0 001.503 1.518l3.7-.328c.65 0 1.179-.532 1.179-1.19 0-.658-.528-1.191-1.18-1.191l-3.699-.327z" /></svg>
             Trending
           </a>
-          <a class="sidebar-link todolist">
+          <a class="sidebar-link collection">
             <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.769 8.382H22C22 4.985 19.964 3 16.516 3H7.484C4.036 3 2 4.985 2 8.338v7.324C2 19.015 4.036 21 7.484 21h9.032C19.964 21 22 19.015 22 15.662v-.313h-4.231c-1.964 0-3.556-1.552-3.556-3.466 0-1.915 1.592-3.467 3.556-3.467v-.034zm0 1.49h3.484c.413 0 .747.326.747.728v2.531a.746.746 0 01-.747.728H17.85c-.994.013-1.864-.65-2.089-1.595a1.982 1.982 0 01.433-1.652 2.091 2.091 0 011.576-.74zm.151 2.661h.329a.755.755 0 00.764-.745.755.755 0 00-.764-.746h-.329a.766.766 0 00-.54.213.727.727 0 00-.224.524c0 .413.34.75.764.754zM6.738 8.382h5.644a.755.755 0 00.765-.746.755.755 0 00-.765-.745H6.738a.755.755 0 00-.765.737c0 .413.341.75.765.754z" /></svg>
-            Collections
+            Collection
           </a>
         </div>
       </div>
@@ -37,8 +37,8 @@
           <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
       </div>
-      <div id="collections">
-        <div class="main-header anim" style="--delay: 0s">Collections</div>
+      <div class="hidden" id="collection">
+        <div class="main-header anim" style="--delay: 0s">Collection</div>
         <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;" v-for="blog in collections" :key="blog.id">
           <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
@@ -69,7 +69,7 @@ export default {
     this.userid = router.currentRoute.value.query.id;
     document.querySelector(".discover").addEventListener('click', this.clickDiscover);
     document.querySelector(".trending").addEventListener('click', this.clickTrending);
-    document.querySelector(".todolist").addEventListener('click', this.clickTodolist);
+    document.querySelector(".collection").addEventListener('click', this.clickCollection);
     axios.get("http://localhost:8088/allBlog",{
       params:{
         n:10
@@ -87,25 +87,28 @@ export default {
   },
   methods: {
     clickDiscover() {
-      document.querySelector(".trending").classList.remove('is-active');
-      document.querySelector(".todolist").classList.remove('is-active');
       document.querySelector(".discover").classList.add('is-active');
-      document.getElementById('trending').classList.add('hidden');
+      document.querySelector(".trending").classList.remove('is-active');
+      document.querySelector(".collection").classList.remove('is-active');
       document.getElementById('discover').classList.remove('hidden');
+      document.getElementById('trending').classList.add('hidden');
+      document.getElementById('collection').classList.add('hidden');
     },
     clickTrending() {
+      document.querySelector(".discover").classList.remove('is-active');
       document.querySelector(".trending").classList.add('is-active');
-      document.querySelector(".todolist").classList.remove('is-active');
-      document.querySelector(".discover").classList.remove('is-active');
+      document.querySelector(".collection").classList.remove('is-active');
       document.getElementById('discover').classList.add('hidden');
       document.getElementById('trending').classList.remove('hidden');
+      document.getElementById('collection').classList.add('hidden');
     },
-    clickTodolist() {
-      document.querySelector(".trending").classList.remove('is-active');
-      document.querySelector(".todolist").classList.add('is-active');
+    clickCollection() {
       document.querySelector(".discover").classList.remove('is-active');
+      document.querySelector(".trending").classList.remove('is-active');
+      document.querySelector(".collection").classList.add('is-active');
       document.getElementById('discover').classList.add('hidden');
-      document.getElementById('trending').classList.remove('hidden');
+      document.getElementById('trending').classList.add('hidden');
+      document.getElementById('collection').classList.remove('hidden');
     }
   }
 }

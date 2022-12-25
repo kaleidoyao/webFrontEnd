@@ -33,11 +33,14 @@
         </div>
         <div>
           <span><h1 class="comment-title">Comments</h1></span>
-          <span style="margin-left: 39vw"><button class="add-comment">add comment</button></span>
+          <span style="margin-left: 39vw"><button class="add-comment" @click.stop="addComment">add comment</button></span>
         </div>
         <div class="comment-divider"></div>
         <comment-area></comment-area>
       </div>
+    </div>
+    <div class="comment-input hidden">
+      <comment-input></comment-input>
     </div>
   </div>
 </template>
@@ -46,9 +49,10 @@
 import LikeButton from "@/components/likeButton";
 import CollectButton from "@/components/collectButton";
 import CommentArea from "@/components/commentArea";
+import CommentInput from "@/components/commentInput";
 export default {
   name: "blogItem",
-  components: {CommentArea, CollectButton, LikeButton},
+  components: {CommentInput, CommentArea, CollectButton, LikeButton},
   props: {
      blog: {
        title: String,
@@ -150,20 +154,19 @@ export default {
   font-size: 2.5rem;
   line-height: 1;
   font-family: 'Poppins', sans-serif;
-  text-align: center;
+  text-align: left;
   letter-spacing: 0.025em;
   transition: font-size 0.45s ease-in-out, color 0.3s ease-out;
 }
 .book__cover-exerpt {
   color: #6a6a6a;
-  max-width: 45vw;
+  width: 45vw;
+  word-wrap:break-word;
+  word-break:break-all;
   max-height: 15vh;
   line-height: 1.6;
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 1rem 1.5rem;
-  text-align: center;
+  padding: 1rem 0;
   opacity: 1;
   display: block;
   transition: all 0.25s ease-in-out;
@@ -210,6 +213,7 @@ export default {
   color: white;
 }
 .book--expanded .article-title {
+  text-align: center;
   color: black;
   font-size: 64px;
   letter-spacing: 0.05em;
@@ -280,5 +284,18 @@ export default {
 .buttons span {
   display: inline-block;
   margin-left: 2vw;
+}
+.hidden {
+ display: none;
+}
+.comment-input {
+  position: absolute;
+  top: 50%;
+  width: 80%;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 15px;
+  border-left: 2px solid rgba(255,255,255,0.7);
+  border-top: 2px solid rgba(255,255,255,0.7);
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 </style>

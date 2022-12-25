@@ -1,15 +1,22 @@
 <template>
   <div class="commentWrapper">
-    <blockquote class="comment">Be like the bird who, pausing in her flight awhile on boughs too slight, feels them give way beneath her, and yet sings, knowing she hath wings.
-      <div class="author">Gagaga</div>
-      <div class="time">19 December 2022</div>
+    <blockquote class="comment">{{comment.content}}
+      <div class="author">{{comment.author}}</div>
+      <div class="time">{{comment.date}}</div>
     </blockquote>
   </div>
 </template>
 
 <script>
 export default {
-  name: "commentArea"
+  name: "commentArea",
+  props:{
+    comment:{
+      content:String,
+      author:String,
+      date:String
+    }
+  }
 }
 </script>
 

@@ -27,26 +27,20 @@
     <div class="wrapper">
       <div id="discover">
         <div class="main-header anim" style="--delay: 0s">Discover</div>
-        <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;">
-          <blog-item></blog-item>
-        </div>
-        <div class="anim" style="--delay: 0.2s; margin-bottom: 2vh;">
-          <blog-item></blog-item>
-        </div>
-        <div class="anim" style="--delay: 0.3s; margin-bottom: 2vh;">
-          <blog-item></blog-item>
+        <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;" v-for="blog in blogs" :key="blog.id">
+          <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
       </div>
       <div class="hidden" id="trending">
         <div class="main-header anim" style="--delay: 0s">Trending</div>
-        <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;">
-          <blog-item></blog-item>
+        <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;" v-for="blog in blogs" :key="blog.id">
+          <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
-        <div class="anim" style="--delay: 0.2s; margin-bottom: 2vh;">
-          <blog-item></blog-item>
-        </div>
-        <div class="anim" style="--delay: 0.3s; margin-bottom: 2vh;">
-          <blog-item></blog-item>
+      </div>
+      <div id="collections">
+        <div class="main-header anim" style="--delay: 0s">Collections</div>
+        <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;" v-for="blog in collections" :key="blog.id">
+          <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
       </div>
     </div>
@@ -58,12 +52,15 @@ import BlogItem from "@/components/blogItem";
 import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
+import axios from "axios";
 export default {
   name: "blogPage",
   components: {BackGround, HeaderTag, BlogItem},
   data(){
     return{
       userid:-1,
+      blogs:[],
+      collections:[]
     }
   },
   mounted() {
@@ -73,6 +70,20 @@ export default {
     document.querySelector(".discover").addEventListener('click', this.clickDiscover);
     document.querySelector(".trending").addEventListener('click', this.clickTrending);
     document.querySelector(".todolist").addEventListener('click', this.clickTodolist);
+    axios.get("http://localhost:8088/allBlog",{
+      params:{
+        n:10
+      }
+    }).then((response)=>{
+      this.blogs = response.data
+    })
+    axios.get("http://localhost:8088/allCollect",{
+      params:{
+        userid:this.userid
+      }
+    }).then((response)=>{
+      this.collections=response.data
+    })
   },
   methods: {
     clickDiscover() {
@@ -93,6 +104,8 @@ export default {
       document.querySelector(".trending").classList.remove('is-active');
       document.querySelector(".todolist").classList.add('is-active');
       document.querySelector(".discover").classList.remove('is-active');
+      document.getElementById('discover').classList.add('hidden');
+      document.getElementById('trending').classList.remove('hidden');
     }
   }
 }

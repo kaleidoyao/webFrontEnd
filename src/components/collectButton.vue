@@ -27,6 +27,19 @@ export default {
       borderColor: '#000000',
     }
   },
+  mounted() {
+    axios.get("http://localhost:8088/isCollected",{
+      params:{
+        blogid:this.blogid,
+        userid:this.userid
+      }
+    }).then((response)=>{
+      let result = response.data
+      if(result === true){
+        this.isUp = true;
+      }
+    })
+  },
   methods: {
     handleClick() {
       if(this.isUp === false) {

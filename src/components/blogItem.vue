@@ -6,8 +6,10 @@
         <span class="header-image"><div class="overlay"></div></span>
         <div>
           <span class="title-wrap">
-            <h1 class="article-title">JYPDMV</h1>
-            <p class="book__cover-exerpt">2222</p>
+            <h1 class="article-title">{{blog.title}}</h1>
+            <p class="book__cover-exerpt">
+              {{blog.content.substring(0,200)}}
+            </p>
           </span>
         </div>
       </div>
@@ -19,24 +21,26 @@
           </div>
           <div class="summary-item">
             <h5 class="item-title">Author</h5>
-            <p class="item-text"><span class="item-data">Gagaga</span></p>
+            <p class="item-text"><span class="item-data">{{authorName}}</span></p>
           </div>
           <div class="summary-item">
             <h5 class="item-title">Publish Time</h5>
             <p class="item-text"><span class="item-data">6</span> Mins</p>
           </div>
         </div>
-        <p>33333</p>
+        <p>{{blog.content}}</p>
         <div class="buttons">
-          <span><like-button></like-button></span>
-          <span><collect-button></collect-button></span>
+          <span><like-button :userid="userid" :blogid="blog.blogid"></like-button></span>
+          <span><collect-button :userid="userid" :blogid="blog.blogid"></collect-button></span>
         </div>
         <div>
           <span><h1 class="comment-title">Comments</h1></span>
           <span style="margin-left: 39vw"><button class="add-comment" @click.stop="addComment">add comment</button></span>
         </div>
         <div class="comment-divider"></div>
-        <comment-area></comment-area>
+        <div class="comments" v-for="comment in comments" :key="comment.id">
+          <comment-area :comment="{content:comment.content,author:comment.username,date:comment.date}"></comment-area>
+        </div>
       </div>
     </div>
     <div class="comment-input hidden">
@@ -49,6 +53,7 @@
 import LikeButton from "@/components/likeButton";
 import CollectButton from "@/components/collectButton";
 import CommentArea from "@/components/commentArea";
+<<<<<<< HEAD
 import CommentInput from "@/components/commentInput";
 export default {
   name: "blogItem",
@@ -60,6 +65,21 @@ export default {
        date: String,
        authorid: Number
      }
+=======
+import axios from "axios";
+export default {
+  name: "blogItem",
+  components: {CommentArea, CollectButton, LikeButton},
+  props:{
+    blog: {
+      title: String,
+      content: String,
+      date: String,
+      authorid:Number,
+      blogid:Number,
+    },
+    userid:Number
+>>>>>>> 32a9527dca22128aeb244d4f1b31b6c9392190ce
   },
   data() {
     return {
@@ -67,11 +87,28 @@ export default {
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
       authorName: "",
+      comments:[]
     }
   },
   mounted() {
     this.$refs['book'].addEventListener('click', this.changeStatus);
     window.addEventListener("scroll", this.scrollToTop);
+    axios.get("http://localhost:8088/getUserName",{
+      params:{
+        userid:this.blog.authorid
+      }
+    }).then((response)=>{
+      console.log(response.data);
+      this.authorName = response.data;
+      console.log(this.authorName);
+    })
+    axios.get("http://localhost:8088/getComment",{
+      params:{
+        blogid:this.blog.blogid
+      }
+    }).then((response)=>{
+      this.comments = response.data;
+    })
   },
   methods: {
     changeStatus(){

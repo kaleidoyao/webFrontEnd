@@ -43,8 +43,14 @@
         </div>
       </div>
     </div>
-    <div class="comment-input hidden">
-      <comment-input></comment-input>
+    <div class="comment-input anim hidden">
+      <div class="commentWrapper">
+        <div style="text-align: right; margin-top: 2vh;"><img src="../assets/icons/exit.png" alt="" style="width: 3vh; cursor: pointer;" @click="exitComment"></div>
+        <div class="comment">
+          <div><textarea /></div>
+        </div>
+        <div style="display: flex; justify-content: center; margin-bottom: 2vh"><button class="submit-button">submit</button></div>
+      </div>
     </div>
   </div>
 </template>
@@ -53,20 +59,19 @@
 import LikeButton from "@/components/likeButton";
 import CollectButton from "@/components/collectButton";
 import CommentArea from "@/components/commentArea";
-import CommentInput from "@/components/commentInput";
 import axios from "axios";
 export default {
   name: "blogItem",
-  components: {CommentInput, CommentArea, CollectButton, LikeButton},
+  components: {CommentArea, CollectButton, LikeButton},
   props:{
     blog: {
       title: String,
       content: String,
       date: String,
-      authorid:Number,
-      blogid:Number,
+      authorid: Number,
+      blogid: Number,
     },
-    userid:Number
+    userid: Number
   },
   data() {
     return {
@@ -98,7 +103,7 @@ export default {
     })
   },
   methods: {
-    changeStatus(){
+    changeStatus() {
       if(this.status === 'book') {
         this.status = 'book--expanded';
         this.wrapperHeight = '100vh';
@@ -110,6 +115,12 @@ export default {
         this.wrapperHeight = '30vh';
         this.wrapperMarginTop = '5vh';
       }
+    },
+    addComment() {
+      document.querySelector(".comment-input").classList.remove("hidden");
+    },
+    exitComment() {
+      document.querySelector(".comment-input").classList.add("hidden");
     }
   }
 }
@@ -315,11 +326,79 @@ export default {
 .comment-input {
   position: absolute;
   top: 50%;
-  width: 80%;
-  background-color: rgba(255,255,255,0.7);
+  width: 60%;
+  background-color: rgba(255,255,255);
   border-radius: 15px;
   border-left: 2px solid rgba(255,255,255,0.7);
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+.commentWrapper {
+  width: 90%;
+  margin: auto;
+}
+.comment {
+  position: relative;
+  margin: 2vh 0;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.comment::before {
+  content: url(https://icons.craftwork.design/static/media/QuotesFill.f65b03951f44e212816420b00909f4df.svg);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  transform: scale(2);
+  opacity: 0.5;
+}
+.comment::after {
+  content: url(https://icons.craftwork.design/static/media/QuotesFill.f65b03951f44e212816420b00909f4df.svg);
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  transform: scale(2) rotate(180deg);
+  opacity: 0.5;
+}
+textarea {
+  width: 45vw;
+  height: 20vh;
+  line-height: 35px;
+  border-radius: 15px;
+  background-color: #f8f8f8;
+  padding: 0 20px;
+  font-size: 1.5em;
+  border: 0;
+  outline: 0;
+}
+.submit-button {
+  color: #000;
+  padding: 1vh 10vh;
+  border-radius: 36px;
+  font: 600 2vh 'Poppins';
+  letter-spacing: 1px;
+}
+.anim {
+  -webkit-animation: bottom 0.8s both;
+  animation: bottom 0.8s both;
+}
+@-webkit-keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>

@@ -222,10 +222,6 @@ export default {
       this.$refs["login-box"].classList.add('hidden');
       this.$refs["register-box"].classList.remove('hidden');
     }
-  },
-  unmounted() {
-    // this.$refs['login'].removeEventListener('click',this.displayRegister);
-    // this.$refs['register'].removeEventListener('click', this.displayLogin);
   }
 }
 </script>

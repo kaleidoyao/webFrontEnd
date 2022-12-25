@@ -30,6 +30,7 @@
         <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;" v-for="blog in blogs" :key="blog.id">
           <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
+        <blog-item></blog-item>
       </div>
       <div class="hidden" id="trending">
         <div class="main-header anim" style="--delay: 0s">Trending</div>

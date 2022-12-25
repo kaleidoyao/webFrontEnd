@@ -43,7 +43,9 @@
           <span style="margin-left: 28vw"><button class="add-comment">add comment</button></span>
         </div>
         <div class="comment-divider"></div>
-        <comment-area></comment-area>
+        <div class="comments" v-for="comment in comments" :key="comment.id">
+          <comment-area :comment="{content:comment.content,author:comment.username,date:comment.date}"></comment-area>
+        </div>
       </div>
     </div>
   </div>
@@ -74,6 +76,7 @@ export default {
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
       authorName:"",
+      comments:[]
     }
   },
   mounted() {
@@ -89,6 +92,13 @@ export default {
       console.log(this.authorName);
     })
 
+    axios.get("http://localhost:8088/getComment",{
+      params:{
+        blogid:this.blog.blogid
+      }
+    }).then((response)=>{
+      this.comments = response.data;
+    })
   },
   methods: {
     changeStatus(){

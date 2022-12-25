@@ -53,23 +53,11 @@
 import LikeButton from "@/components/likeButton";
 import CollectButton from "@/components/collectButton";
 import CommentArea from "@/components/commentArea";
-<<<<<<< HEAD
 import CommentInput from "@/components/commentInput";
-export default {
-  name: "blogItem",
-  components: {CommentInput, CommentArea, CollectButton, LikeButton},
-  props: {
-     blog: {
-       title: String,
-       content: String,
-       date: String,
-       authorid: Number
-     }
-=======
 import axios from "axios";
 export default {
   name: "blogItem",
-  components: {CommentArea, CollectButton, LikeButton},
+  components: {CommentInput, CommentArea, CollectButton, LikeButton},
   props:{
     blog: {
       title: String,
@@ -79,7 +67,6 @@ export default {
       blogid:Number,
     },
     userid:Number
->>>>>>> 32a9527dca22128aeb244d4f1b31b6c9392190ce
   },
   data() {
     return {

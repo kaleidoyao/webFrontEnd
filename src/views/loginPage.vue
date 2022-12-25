@@ -5,15 +5,15 @@
       <div class="container-box" ref="container-box">
         <div class="register-box hidden" ref="register-box">
           <h1>REGISTER</h1>
-          <input type="text" placeholder="Username" @blur="inputRegisName($event)">
-          <input type="password" placeholder="Your Password" v-on:input="inputRegisPass">
-          <input type="password" placeholder="Verify Password" v-on:input="inputRegisVerPass">
+          <input v-model="regisName" type="text" placeholder="Username">
+          <input v-model="regisPass" type="password" placeholder="Your Password">
+          <input v-model="regisVerPass" type="password" placeholder="Verify Password">
           <button id="button" v-on:click="registerBT"><span>Register</span></button>
         </div>
         <div class="login-box" ref="login-box">
           <h1>LOGIN</h1>
-          <input type="text" placeholder="Username" @blur="inputLogName($event)">
-          <input type="password" placeholder="Your Password" v-on:input="inputLogPass">
+          <input v-model="logName" type="text" placeholder="Username">
+          <input v-model="logPass" type="password" placeholder="Your Password">
           <button id="button" v-on:click="loginBT"><span>Login</span></button>
         </div>
       </div>
@@ -71,39 +71,6 @@ export default {
     this.$refs.register.addEventListener('click', this.displayLogin);
   },
   methods: {
-    inputRegisName(event){
-      let _this=this;
-      _this.regisName=event.target.value;
-      console.log(_this.regisName)
-    },
-    inputRegisPass(val){
-      let _this=this;
-      let regisPass=_this.regisPass;
-      let len=regisPass.length;
-      if(val.data!=null) regisPass=regisPass+val.data;
-      else regisPass=regisPass.substring(0,len-1);
-      _this.regisPass=regisPass
-    },
-    inputRegisVerPass(val){
-      let _this=this;
-      let regisVerPass=_this.regisVerPass;
-      let len=regisVerPass.length;
-      if(val.data!=null) regisVerPass=regisVerPass+val.data;
-      else regisVerPass=regisVerPass.substring(0,len-1);
-      _this.regisVerPass=regisVerPass
-    },
-    inputLogName(event){
-      let _this=this;
-      _this.logName=event.target.value;
-    },
-    inputLogPass(val){
-      let _this=this;
-      let logPass=_this.logPass;
-      let len=logPass.length;
-      if(val.data!=null) logPass=logPass+val.data;
-      else logPass=logPass.substring(0,len-1);
-      _this.logPass=logPass
-    },
     registerBT(){
       let _this=this
       let result = true;

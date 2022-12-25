@@ -21,9 +21,9 @@
           <div class="modify-main">
             <h2 class="form-title">Modification</h2>
             <div class="form-holder">
-              <input type="text" class="input" placeholder="Username" @blur="inputModifyName($event)" />
-              <input type="password" class="input" placeholder="Your Password" v-on:input="inputModifyPass" />
-              <input type="password" class="input" placeholder="Verify Password" v-on:input="inputModifyVerPass"/>
+              <input v-model="modifyName" type="text" class="input" placeholder="Username"/>
+              <input v-model="modifyPass" type="password" class="input" placeholder="Your Password"/>
+              <input v-model="modifyVerPass" type="password" class="input" placeholder="Verify Password"/>
             </div>
             <button class="submit-btn" v-on:click="submitBT">submit</button>
           </div>
@@ -72,7 +72,8 @@ export default {
       blogs:[],
       modifyName:"",
       modifyPass:"",
-      modifyVerPass:""
+      modifyVerPass:"",
+      inputValue:""
     }
   },
   mounted() {
@@ -160,33 +161,9 @@ export default {
     show() {
       document.querySelector(".modify-wrapper").style.display = "flex";
     },
-    inputModifyName(val){
-      let _this=this;
-      _this.modifyName=val.target.value;
-      console.log(_this.modifyName)
-    },
-    inputModifyPass(val){
-      let _this=this;
-      let modifyPass=_this.modifyPass;
-      let len=modifyPass.length;
-      if(val.data!=null) modifyPass=modifyPass+val.data;
-      else modifyPass=modifyPass.substring(0,len-1);
-      _this.modifyPass=modifyPass
-      console.log(_this.modifyPass)
-    },
-    inputModifyVerPass(val){
-      let _this=this;
-      let modifyVerPass=_this.modifyVerPass;
-      let len=modifyVerPass.length;
-      if(val.data!=null) modifyVerPass=modifyVerPass+val.data;
-      else modifyVerPass=modifyVerPass.substring(0,len-1);
-      _this.modifyVerPass=modifyVerPass
-      console.log(_this.modifyVerPass)
-    },
     submitBT(){
       let _this=this
       let result = true;
-
       if(_this.modifyName===""){
         ElMessageBox.confirm('用户名不可为空！','提示',{
           confirmButtonText: '确定', //确定按钮的文本内容
@@ -227,7 +204,10 @@ export default {
               showCancelButton: false, //是否可通过点击遮罩关闭
               type: 'success', //消息类型，用于显示图标
             }).then(() => {
-
+              _this.modifyName=""
+              _this.modifyPass=""
+              _this.modifyVerPass=""
+              document.querySelector(".modify-wrapper").style.display = "none";
             }).catch(() => {
 
             });

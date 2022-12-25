@@ -13,7 +13,7 @@
           <div ref="toWrite"><goto-button msg="write blogs"></goto-button></div>
           <div ref="toDrifter"><goto-button msg="drifter bottle" ref="toDrifter"></goto-button></div>
           <div ref="toCapsule"><goto-button msg="time capsule"></goto-button></div>
-          <p @click="show">modify personal information</p>
+          <div ref="show"><goto-button msg="modify info"></goto-button></div>
         </div>
       </span>
       <div class="modify-wrapper">
@@ -36,15 +36,6 @@
       </div>
       <span class="blogContent">
         <div class="blogList">
-<!--          <div class="blogItem">-->
-<!--            <span class="dot"></span>-->
-<!--            <div class="blogTime">2022/11/21-->
-<!--              <button class="delete-button">Delete</button>-->
-<!--            </div>-->
-<!--            <div class="blogDetail">-->
-<!--              <small-blog-item></small-blog-item>-->
-<!--            </div>-->
-<!--          </div>-->
           <div class="blogItem" v-for="blog in blogs" :key="blog.id">
             <span class="dot"></span>
             <div class="blogTime">{{blog.date}}
@@ -88,6 +79,7 @@ export default {
     this.$refs.toWrite.addEventListener('click',this.toWritePage);
     this.$refs.toDrifter.addEventListener('click',this.toDrifterPage);
     this.$refs.toCapsule.addEventListener('click',this.toCapsulePage);
+    this.$refs.show.addEventListener('click',this.show);
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;

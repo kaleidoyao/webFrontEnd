@@ -16,13 +16,13 @@
           <div ref="show"><goto-button msg="modify info"></goto-button></div>
         </div>
       </span>
-      <div class="modify-wrapper">
+      <div class="modify-wrapper anim">
         <div class="modify">
           <div class="modify-main">
             <h2 class="form-title">Modification</h2>
             <div class="form-holder">
               <input type="text" class="input" placeholder="Username" @blur="inputModifyName($event)" />
-              <input type="email" class="input" placeholder="Your Password" v-on:input="inputModifyPass" />
+              <input type="password" class="input" placeholder="Your Password" v-on:input="inputModifyPass" />
               <input type="password" class="input" placeholder="Verify Password" v-on:input="inputModifyVerPass"/>
             </div>
             <button class="submit-btn" v-on:click="submitBT">submit</button>
@@ -425,5 +425,29 @@ input::placeholder {
   top: 10%;
   -webkit-transform: translate(-50%, 0%);
   z-index: 5;
+}
+.anim {
+  -webkit-animation: bottom 0.8s both;
+  animation: bottom 0.8s both;
+}
+@-webkit-keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>

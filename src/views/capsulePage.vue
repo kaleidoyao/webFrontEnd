@@ -19,7 +19,7 @@
       <span class="section2">
         <div class="write-capsule anim hidden">
           <div class="date-picker" style="text-align: center; margin-top: 3vh;">
-            <el-date-picker v-model="time" type="date" placeholder="Pick a day" />
+            <el-date-picker v-model="opentime" type="date" placeholder="Pick a day" value-format="YYYY-MM-DD" />
           </div>
           <div class="title" style="text-align: center;">
             <input v-model="title" type="text" placeholder="在此输入标题..." class="input1">
@@ -54,6 +54,7 @@ import router from "@/router";
 import OpenCapsule from "@/components/openCapsule";
 import CapsuleCard from "@/components/capsuleCard";
 import {ElMessageBox} from "element-plus";
+
 class Capsule {
   capsuleid;
   userid;
@@ -80,8 +81,7 @@ export default {
       myCapsule: null,
       openCapsule: null,
       capsuleid: -1,
-      opentime: null,
-      time: '',
+      opentime: Date,
     }
   },
   methods: {
@@ -133,7 +133,6 @@ export default {
       });
     },
     throwBT(){
-      console.log(this.getdate())
       let _this=this
       let result = -1;
       axios.get("http://localhost:8088/makeCapsule",{

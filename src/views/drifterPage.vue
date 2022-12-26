@@ -121,6 +121,16 @@ export default {
       }).then((response)=>{
         result = response.data;
         console.log(result)
+        _this.title=""
+        _this.content=""
+        ElMessageBox.confirm('成功扔出漂流瓶！','提示',{
+          confirmButtonText: '确定', //确定按钮的文本内容
+          showCancelButton: false, //是否可通过点击遮罩关闭
+          type: 'success', //消息类型，用于显示图标
+        }).then(() => {
+
+        }).catch(() => {
+        })
       }).catch((error)=>{
         console.log(error)
       });
@@ -137,13 +147,42 @@ export default {
         }
       }).then((response)=>{
         result = response.data;
-        _this.drifter=result
-        console.log(_this.drifter)
+        if(result!==""){
+            _this.drifter=result
+            ElMessageBox.confirm('成功捞到一个漂流瓶！','提示',{
+              confirmButtonText: '确定', //确定按钮的文本内容
+              showCancelButton: false, //是否可通过点击遮罩关闭
+              type: 'success', //消息类型，用于显示图标
+            }).then(() => {
+              this.$refs["writeDrifter"].classList.add('hidden');
+              this.$refs["showDetail"].classList.remove('hidden');
+              axios.get("http://localhost:8088/getMyDrifter",{
+                params: {
+                  pickerid:_this.userid
+                }
+              }).then((response)=>{
+                result = response.data;
+                _this.myDrifter=result
+                console.log(_this.myDrifter)
+              }).catch((error)=>{
+                console.log(error)
+              });
+            }).catch(() => {
+          })
+        }
+        else {
+          ElMessageBox.confirm('漂流瓶已经被捞完啦！过几天再来吧！','提示',{
+            confirmButtonText: '确定', //确定按钮的文本内容
+            showCancelButton: true,
+            cancelButtonText:'取消',
+            type: 'warning', //消息类型，用于显示图标
+          }).then(() => {
+          }).catch(() => {
+          })
+        }
       }).catch((error)=>{
         console.log(error)
       });
-      this.$refs["writeDrifter"].classList.add('hidden');
-      this.$refs["showDetail"].classList.remove('hidden');
     },
 
     deleteBT(id) {

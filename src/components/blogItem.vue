@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="comment-input anim hidden">
+    <div class="comment-input anim" :class="isShow">
       <div class="commentWrapper">
         <div style="text-align: right; margin-top: 2vh;"><img src="../assets/icons/exit.png" alt="" style="width: 3vh; cursor: pointer;" @click="exitComment"></div>
         <div class="comment">
@@ -77,11 +77,12 @@ export default {
   data() {
     return {
       status: 'book',
+      isShow: 'hidden',
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
       authorName: "",
-      comments:[],
-      commentContent:""
+      comments: [],
+      commentContent: ""
     }
   },
   mounted() {
@@ -119,10 +120,10 @@ export default {
       }
     },
     addComment() {
-      document.querySelector(".comment-input").classList.remove("hidden");
+      this.isShow = '';
     },
     exitComment() {
-      document.querySelector(".comment-input").classList.add("hidden");
+      this.isShow = 'hidden';
     },
     getdate() {
       var date = new Date();
@@ -158,6 +159,7 @@ export default {
 }
 
 .wrapper {
+  position: relative;
   height: v-bind(wrapperHeight);
   margin-top: v-bind(wrapperMarginTop);
   width: 100%;

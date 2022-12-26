@@ -157,5 +157,6 @@ input:focus, textarea:focus {
   font-size: 13px;
   width: 10em;
   padding: 0.8em;
+  cursor: pointer;
 }
 </style>

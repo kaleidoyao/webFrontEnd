@@ -16,7 +16,7 @@
       </span>
       <span class="blogContent" ref="drifterContent">
         <div ref="showDetail" class="detail hidden">
-          <h1>{{this.drifter.title}}</h1>
+          <h1>Letters From Afar</h1>
           <open-envelop :content="drifter.content"></open-envelop>
         </div>
         <div ref="writeDrifter" class="writeDrifter">
@@ -32,10 +32,12 @@
         </div>
       </span>
       <span class="throwAndCatch">
+        <h4 style="font-weight: 500; padding-left: 3vh; margin-top: 2vh; margin-bottom: 2vh;">来自漂流瓶的信</h4>
+        <div style="height: 1px; background-color: black; width: 90%; margin-right: auto; margin-left: auto;"></div>
         <div>
           <ul id="cardList" class="cards">
             <li v-for="drifter in myDrifter" :key="drifter.id">
-              <div style="text-align: right; margin-bottom: 0.5vh;"><button class="delete-button" @click="deleteBT(drifter.id)">Delete</button></div>
+              <div style="text-align: right; padding-right: 1vh;"><img src="../assets/icons/exit.png" style="width: 2vh; cursor: pointer;" alt="" @click="deleteBT(drifter.id)" /></div>
               <card-item :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,owner:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-item>
             </li>
           </ul>

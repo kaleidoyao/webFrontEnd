@@ -31,10 +31,10 @@
       <span class="throwAndCatch">
         <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
         <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
-        <div v-for="drifter in myDrifter" :key="drifter.id">
+        <div>
           <ul id="cardList" class="cards">
-            <li>
-              <button class="delete-button" @click="deleteBT(drifter.id)">Delete</button>
+            <li v-for="drifter in myDrifter" :key="drifter.id">
+              <div style="text-align: right; margin-bottom: 0.5vh;"><button class="delete-button" @click="deleteBT(drifter.id)">Delete</button></div>
               <card-item :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,owner:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-item>
             </li>
           </ul>
@@ -72,7 +72,6 @@ export default {
     let height= this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
-    console.log(this.userid);
 
     let _this=this
     let result=null;
@@ -100,7 +99,7 @@ export default {
   },
 
   methods:{
-    throwBT(){
+    throwBT() {
       let _this=this
       let result = -1;
       axios.get("http://localhost:8088/writeDrifter",{
@@ -135,7 +134,7 @@ export default {
       });
     },
 
-    myDrifterBT(){
+    myDrifterBT() {
       let _this=this
       let result=null;
       axios.get("http://localhost:8088/getMyDrifter",{
@@ -151,37 +150,31 @@ export default {
       });
     },
 
-    deleteBT(id){
+    deleteBT(id) {
       let result=null;
-      ElMessageBox.confirm('确定要删除这条博客吗？','提示',{
+      ElMessageBox.confirm('确定要删除这个漂流瓶吗？','提示',{
         confirmButtonText: '确定', //确定按钮的文本内容
         showCancelButton: true,
         cancelButtonText:'取消',
         type: 'warning', //消息类型，用于显示图标
       }).then(() => {
-          axios.get("http://localhost:8088/deleteDrifter",{
-            params:{
-              id:id
-            }
-          }).then((response)=>{
-            result=response.data
-            console.log(result)
-          })
+        axios.get("http://localhost:8088/deleteDrifter",{
+          params:{
+            id:id
+          }
+        }).then((response)=>{
+          result=response.data
+          console.log(result)
+        })
         router.go(0)
       }).catch(() => {
-  })
-},
-    // inputTitle(event){
-    //
-    // },
-    // inputContent(event){
-    //
-    // },
+      })
+    },
     displayWriteDrifter(){
       this.$refs["showDetail"].classList.add('hidden');
       this.$refs["writeDrifter"].classList.remove('hidden');
     }
-}
+  }
 }
 </script>
 
@@ -264,5 +257,12 @@ export default {
   display: block;
   width: 100%;
   padding-bottom: 10px;
+}
+.delete-button {
+  border: 0.1rem solid #575757;
+  border-radius: 10px;
+  background-color: white;
+  color: #575757;
+  cursor: pointer;
 }
 </style>

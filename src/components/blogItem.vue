@@ -17,7 +17,7 @@
         <div class="summary">
           <div class="summary-item">
             <h5 class="item-title">Reading Time</h5>
-            <p class="item-text"><span class="item-data">6</span> Mins</p>
+            <p class="item-text"><span class="item-data">{{readtime}}</span> Mins</p>
           </div>
           <div class="summary-item">
             <h5 class="item-title">Author</h5>
@@ -25,7 +25,7 @@
           </div>
           <div class="summary-item">
             <h5 class="item-title">Publish Time</h5>
-            <p class="item-text"><span class="item-data">6</span> Mins</p>
+            <p class="item-text"><span class="item-data">{{blog.date}}</span></p>
           </div>
         </div>
         <p>{{blog.content}}</p>
@@ -82,7 +82,8 @@ export default {
       wrapperMarginTop: '5vh',
       authorName: "",
       comments: [],
-      commentContent: ""
+      commentContent: "",
+      readtime:0
     }
   },
   mounted() {
@@ -104,6 +105,7 @@ export default {
     }).then((response)=>{
       this.comments = response.data;
     })
+    this.readtime = Math.ceil(this.blog.content.length/150);
   },
   methods: {
     changeStatus() {

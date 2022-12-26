@@ -2,10 +2,10 @@
   <div class="card transform" :class="isExpand" @click="expandCard">
     <div class="bottle"></div>
     <div class="title">
-      <h2>the title</h2>
+      <h2>{{drifter.title}}</h2>
     </div>
     <div class="card-content">
-      <p>hahahahaha</p>
+      <p>{{drifter.content}}</p>
     </div>
   </div>
 </template>
@@ -17,6 +17,16 @@ export default {
     return {
       isExpand: '',
     }
+  },
+  props:{
+    drifter: {
+      title: String,
+      content: String,
+      time: String,
+      ownerid: Number,
+      drifterid: Number,
+    },
+    userid:Number
   },
   methods: {
     expandCard() {

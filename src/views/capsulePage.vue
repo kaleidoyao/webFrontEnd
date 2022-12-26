@@ -8,13 +8,12 @@
       <span class="section1">
         <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
         <button id="myCapsuleButton" v-on:click="myCapsuleBT"><span>我的胶囊</span></button>
-        <button id="openButton" v-on:click="openBT"><span>打开</span></button>
         <div class="userCard">
           <personal-info></personal-info>
         </div>
         <div class="capsules">
-          <time-capsule></time-capsule>
-          <time-capsule></time-capsule>
+          <time-capsule v-on:click="openBT"></time-capsule>
+          <time-capsule v-on:click="openBT"></time-capsule>
         </div>
       </span>
       <span class="section2">

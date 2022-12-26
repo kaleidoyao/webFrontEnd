@@ -1,6 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <header-tag ref="header" :usrid=userid></header-tag>
+  <menu-button></menu-button>
   <back-ground></back-ground>
   <div class="container" ref="container">
     <div class="sidebar">
@@ -54,9 +55,10 @@ import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
 import axios from "axios";
+import MenuButton from "@/components/menuButton";
 export default {
   name: "blogPage",
-  components: {BackGround, HeaderTag, BlogItem},
+  components: {MenuButton, BackGround, HeaderTag, BlogItem},
   data(){
     return{
       userid:-1,

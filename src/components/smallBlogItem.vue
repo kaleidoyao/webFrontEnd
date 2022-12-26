@@ -14,7 +14,6 @@
         </div>
       </div>
       <div class="book__content">
-<!--        <p><span class="drop-cap">O</span>{{blog.content}}</p>-->
         <div class="summary">
           <div class="summary-item">
             <h5 class="item-title">Reading Time</h5>
@@ -30,22 +29,27 @@
           </div>
         </div>
         <p><span class="drop-cap">{{blog.content.substring(0,1)}}</span>{{blog.content.substring(1)}}</p>
-<!--        <p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nobis fuga delectus tempore. Odio ipsa voluptate ex nobis ratione consequatur dignissimos dolorum culpa, ipsam sit dolorem itaque excepturi, natus sed deleniti incidunt ipsum asperiores! Molestiae cumque quam nulla, nam inventore. Necessitatibus blanditiis cumque laboriosam, id, ad unde quo ipsum nulla.</p>-->
-<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum accusantium velit expedita, minima sapiente unde magnam dicta. Consequuntur cumque numquam sed deserunt, quidem officia illo blanditiis ipsum, commodi distinctio quam molestias dolore, doloremque corporis? Rem ad recusandae delectus accusamus, harum quisquam perferendis dolor aut consectetur nesciunt atque laborum ab dolores.</p>-->
-<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, neque, magnam. Impedit deleniti ad alias, unde vero quis mollitia, tenetur minima porro, officia iusto quae harum labore nostrum aliquid aut maxime, architecto in reprehenderit. Doloribus pariatur quam fuga sed modi veniam, vel corporis magnam quis eius cumque voluptate, dolore repellendus labore nobis, voluptatibus dicta sapiente doloremque! Enim dicta totam debitis cumque similique, natus, consequatur quidem cum incidunt, sint quos. Ea.</p>-->
-<!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident voluptatum possimus dolores nesciunt natus quaerat quas quo quam obcaecati ducimus totam quia sint, et nobis nisi tenetur id aspernatur quibusdam molestiae reprehenderit sed incidunt. Voluptas error necessitatibus sed inventore, quasi facilis, est. Asperiores atque laboriosam inventore quis eos nulla. Fuga neque odit maiores facilis voluptas nemo numquam, eos amet molestias.</p>-->
         <div class="buttons">
           <span><like-button :userid="userid" :blogid="blog.blogid"></like-button></span>
           <span><collect-button :userid="userid" :blogid="blog.blogid"></collect-button></span>
         </div>
         <div>
           <span><h1 class="comment-title">Comments</h1></span>
-          <span style="margin-left: 28vw"><button class="add-comment">add comment</button></span>
+          <span style="margin-left: 28vw"><button class="add-comment" @click.stop="addComment">add comment</button></span>
         </div>
         <div class="comment-divider"></div>
         <div class="comments" v-for="comment in comments" :key="comment.id">
           <comment-area :comment="{content:comment.content,author:comment.username,date:comment.date}"></comment-area>
         </div>
+      </div>
+    </div>
+    <div class="comment-input anim" :class="isShow">
+      <div class="commentWrapper">
+        <div style="text-align: right; margin-top: 2vh;"><img src="../assets/icons/exit.png" alt="" style="width: 3vh; cursor: pointer;" @click="exitComment"></div>
+        <div class="comment">
+          <div><textarea v-model="commentContent" /></div>
+        </div>
+        <div style="display: flex; justify-content: center; margin-bottom: 2vh"><button class="submit-button" @click="submitComment">submit</button></div>
       </div>
     </div>
   </div>
@@ -56,6 +60,7 @@ import LikeButton from "@/components/likeButton";
 import CommentArea from "@/components/commentArea";
 import CollectButton from "@/components/collectButton";
 import axios from "axios";
+import router from "@/router";
 export default {
   name: "smallBlogItem",
   props:{
@@ -63,20 +68,20 @@ export default {
       title: String,
       content: String,
       date: String,
-      authorid:Number,
-      blogid:Number,
+      authorid: Number,
+      blogid: Number,
     },
     userid:Number
   },
-  // eslint-disable-next-line vue/no-unused-components
   components: {CollectButton, CommentArea, LikeButton},
   data() {
     return {
       status: 'book',
+      isShow: 'hidden',
       wrapperHeight: '30vh',
       wrapperMarginTop: '5vh',
-      authorName:"",
-      comments:[]
+      authorName: "",
+      comments: []
     }
   },
   mounted() {
@@ -101,7 +106,7 @@ export default {
     })
   },
   methods: {
-    changeStatus(){
+    changeStatus() {
       if(this.status === 'book') {
         this.status = 'book--expanded';
         this.wrapperHeight = '100vh';
@@ -113,6 +118,35 @@ export default {
         this.wrapperHeight = '30vh';
         this.wrapperMarginTop = '5vh';
       }
+    },
+    addComment() {
+      this.isShow = '';
+    },
+    exitComment() {
+      this.isShow = 'hidden';
+    },
+    getdate() {
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      var currentdate = year + seperator1 + month + seperator1 + strDate;
+      return currentdate;
+    },
+    submitComment(){
+      axios.get("http://localhost:8088/writeComment",{
+        params:{
+          userid:this.userid,
+          blogid:this.blog.blogid,
+          content:this.commentContent,
+          date:this.getdate()
+        }
+      }).then((response)=>{
+        console.log(response.data)
+        this.exitComment()
+        router.go(0)
+      })
     }
   }
 }
@@ -309,5 +343,86 @@ export default {
 .buttons span {
   display: inline-block;
   margin-left: 2vw;
+}
+.hidden {
+  display: none;
+}
+.comment-input {
+  position: absolute;
+  top: 50%;
+  width: 70%;
+  background-color: rgba(255,255,255);
+  border-radius: 15px;
+  border-left: 2px solid rgba(255,255,255,0.7);
+  border-top: 2px solid rgba(255,255,255,0.7);
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+.commentWrapper {
+  width: 90%;
+  margin: auto;
+}
+.comment {
+  position: relative;
+  margin: 2vh 0;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.comment::before {
+  content: url(https://icons.craftwork.design/static/media/QuotesFill.f65b03951f44e212816420b00909f4df.svg);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  transform: scale(2);
+  opacity: 0.5;
+}
+.comment::after {
+  content: url(https://icons.craftwork.design/static/media/QuotesFill.f65b03951f44e212816420b00909f4df.svg);
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  transform: scale(2) rotate(180deg);
+  opacity: 0.5;
+}
+textarea {
+  width: 33vw;
+  height: 20vh;
+  line-height: 35px;
+  border-radius: 15px;
+  background-color: #f8f8f8;
+  padding: 0 20px;
+  font-size: 1.5em;
+  border: 0;
+  outline: 0;
+}
+.submit-button {
+  color: #000;
+  padding: 1vh 10vh;
+  border-radius: 36px;
+  font: 600 2vh 'Poppins';
+  letter-spacing: 1px;
+}
+.anim {
+  -webkit-animation: bottom 0.8s both;
+  animation: bottom 0.8s both;
+}
+@-webkit-keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>

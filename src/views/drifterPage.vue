@@ -16,15 +16,15 @@
       </span>
       <span class="blogContent" ref="drifterContent">
         <div ref="showDetail" class="detail hidden">
-          <h1>Letters From Afar</h1>
-          <open-envelop></open-envelop>
+          <h1>{{this.drifter.title}}</h1>
+          <open-envelop :content="drifter.content"></open-envelop>
         </div>
         <div ref="writeDrifter" class="writeDrifter">
           <div class="title" style="text-align: center;">
-            <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">
+            <input type="text" placeholder="在此输入标题..." class="input1" v-model="title">
           </div>
           <div class="mainText" style="text-align: center;">
-            <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>
+            <textarea class="input2" placeholder="在此输入正文..." v-model="content"></textarea>
           </div>
           <div style="text-align: center;">
             <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
@@ -32,7 +32,6 @@
         </div>
       </span>
       <span class="throwAndCatch">
-        <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
         <div>
           <ul id="cardList" class="cards">
             <li v-for="drifter in myDrifter" :key="drifter.id">
@@ -106,7 +105,7 @@ export default {
       let result = -1;
       axios.get("http://localhost:8088/writeDrifter",{
         params: {
-          ownerid: _this.userid,
+          ownerid:this.userid,
           title:_this.title,
           content:_this.content
         }
@@ -134,22 +133,8 @@ export default {
       }).catch((error)=>{
         console.log(error)
       });
-    },
-
-    myDrifterBT() {
-      let _this=this
-      let result=null;
-      axios.get("http://localhost:8088/getMyDrifter",{
-        params: {
-          pickerid:_this.userid
-        }
-      }).then((response)=>{
-        result = response.data;
-        _this.myDrifter=result
-        console.log(_this.myDrifter)
-      }).catch((error)=>{
-        console.log(error)
-      });
+      this.$refs["writeDrifter"].classList.add('hidden');
+      this.$refs["showDetail"].classList.remove('hidden');
     },
 
     deleteBT(id) {
@@ -239,7 +224,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 500px;
+  height: 700px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;

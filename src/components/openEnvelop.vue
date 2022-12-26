@@ -3,7 +3,8 @@
   <div class="container">
     <div class="back">
       <div class="paper">
-        <h1>{{content}}</h1>
+        <h1>the title</h1>
+        <p>嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀</p>
       </div>
       <div class="cover">
       </div>
@@ -68,6 +69,13 @@ h1 {
   color: #666;
   position: relative;
   z-index: 1;
+  transition: all 2.5s ease-in-out;
+}
+p {
+  color: #666;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
   transition: all 2.5s ease-in-out;
 }
 .container .cover {

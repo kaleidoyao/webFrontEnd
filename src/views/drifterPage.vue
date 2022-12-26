@@ -20,16 +20,18 @@
           <open-envelop></open-envelop>
         </div>
         <div ref="writeDrifter" class="writeDrifter">
-          <div class="title">
+          <div class="title" style="text-align: center;">
             <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">
           </div>
-          <div class="mainText">
+          <div class="mainText" style="text-align: center;">
             <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>
+          </div>
+          <div style="text-align: center;">
+            <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
           </div>
         </div>
       </span>
       <span class="throwAndCatch">
-        <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
         <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
         <div>
           <ul id="cardList" class="cards">
@@ -263,6 +265,52 @@ export default {
   border-radius: 10px;
   background-color: white;
   color: #575757;
+  cursor: pointer;
+}
+
+input {
+  height: 5vh;
+  width: 70%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 3vh;
+  border: 0;
+  outline: 0;
+  margin-top: 5vh;
+}
+input::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3vh;
+}
+textarea {
+  height: 40vh;
+  width: 70%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 0;
+  outline: 0;
+}
+textarea::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+}
+input, textarea {
+  font-family: 'Poppins', sans-serif;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 0 2px #63a4e0;
+}
+#throwButton {
+  color: #000;
+  padding: 1vh 10vh;
+  margin-top: 2vh;
+  border-radius: 36px;
+  font: 600 2vh 'Poppins';
+  letter-spacing: 1px;
   cursor: pointer;
 }
 </style>

@@ -18,13 +18,23 @@
         </div>
       </span>
       <span class="section2">
-        <div class="show-capsule">
+        <div class="write-capsule anim hidden">
+          <div class="title" style="text-align: center;">
+            <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">
+          </div>
+          <div class="mainText" style="text-align: center;">
+            <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>
+          </div>
+          <div style="text-align: center;">
+            <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
+          </div>
+        </div>
+        <div class="show-capsule anim">
           <open-capsule></open-capsule>
           <capsule-card></capsule-card>
         </div>
       </span>
       <span class="section3">
-<!--        <calendar-item></calendar-item>-->
         <el-calendar  />
       </span>
     </div>
@@ -47,7 +57,6 @@ import BackGround from "@/components/backGround";
 import HeaderTag from "@/components/headerTag";
 import TimeCapsule from "@/components/timeCapsule";
 import PersonalInfo from "@/components/personalInfo";
-// import CalendarItem from "@/components/calendarItem";
 import MenuButton from "@/components/menuButton";
 import router from "@/router";
 import OpenCapsule from "@/components/openCapsule";
@@ -76,7 +85,9 @@ export default {
   },
 
   methods:{
-    writeBT(){
+    writeBT() {
+      document.querySelector(".write-capsule").classList.remove("hidden");
+      document.querySelector(".show-capsule").classList.add("hidden");
       let _this=this
       let result = -1;
       axios.get("http://localhost:8088/makeCapsule",{
@@ -108,7 +119,9 @@ export default {
         console.log(error)
       });
     },
-    openBT(){
+    openBT() {
+      document.querySelector(".write-capsule").classList.add("hidden");
+      document.querySelector(".show-capsule").classList.remove("hidden");
       let _this=this
       let result=null;
       axios.get("http://localhost:8088/openCapsule",{
@@ -175,6 +188,51 @@ export default {
   vertical-align: top;
   margin: 5px;
 }
+.write-capsule input {
+  height: 5vh;
+  width: 70%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  font-size: 3vh;
+  border: 0;
+  outline: 0;
+  margin-top: 5vh;
+}
+.write-capsule input::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3vh;
+}
+.write-capsule textarea {
+  height: 40vh;
+  width: 70%;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 0;
+  outline: 0;
+}
+.write-capsule textarea::-webkit-input-placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+}
+input, textarea {
+  font-family: 'Poppins', sans-serif;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 0 2px #63a4e0;
+}
+.write-capsule #throwButton {
+  color: #000;
+  padding: 1vh 10vh;
+  margin-top: 2vh;
+  border-radius: 36px;
+  font: 600 2vh 'Poppins';
+  letter-spacing: 1px;
+  cursor: pointer;
+}
 .show-capsule {
   margin-top: 2vh;
   margin-bottom: 2vh;
@@ -190,5 +248,32 @@ export default {
   display: inline-block;
   vertical-align: top;
   margin: 5px;
+}
+.hidden {
+  display: none;
+}
+.anim {
+  -webkit-animation: bottom 0.8s both;
+  animation: bottom 0.8s both;
+}
+@-webkit-keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>

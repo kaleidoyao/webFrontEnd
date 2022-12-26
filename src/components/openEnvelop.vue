@@ -31,7 +31,7 @@ export default {
   position: relative;
   display: block;
   z-index: 0;
-  transition: all 1.5s ease-in-out;
+  transition: all 2.5s ease-in-out;
 }
 .back {
   display: block;
@@ -41,9 +41,9 @@ export default {
   width: 30em;
   height: 17em;
   content: "";
-  -webkit-transition: 1.5s ease-in-out;
-  -moz-transition: 1.5s ease-in-out;
-  transition: all 1.5s ease-in-out;
+  -webkit-transition: 2.5s ease-in-out;
+  -moz-transition: 2.5s ease-in-out;
+  transition: all 2.5s ease-in-out;
   box-shadow: 0 0 1em rgba(68, 68, 136, 0.15);
   z-index: 0;
 }
@@ -55,9 +55,9 @@ export default {
   top: 2em;
   left: 2.5em;
   background: #fff;
-  -webkit-transition: 1.5s ease-in-out;
-  -moz-transition: 1.5s ease-in-out;
-  transition: all 1.5s ease-in-out;
+  -webkit-transition: 2.5s ease-in-out;
+  -moz-transition: 2.5s ease-in-out;
+  transition: all 2.5s ease-in-out;
   z-index: 1;
   text-align: center;
   padding: 1em;
@@ -68,11 +68,11 @@ h1 {
   color: #666;
   position: relative;
   z-index: 1;
-  transition: all 1.5s ease-in-out;
+  transition: all 2.5s ease-in-out;
 }
 .container .cover {
   position: absolute;
-  top: 0em;
+  top: 0;
   left: 50%;
   height: 1em;
   display: block;
@@ -85,9 +85,9 @@ h1 {
   margin: 0 auto;
   border: 15em solid transparent;
   border-top: 10em solid white;
-  -webkit-transition: all 1.5s ease-in-out;
-  -moz-transition: all 1.5s ease-in-out;
-  transition: z-index 1.5s ease-in-out, transform 1.5s ease-in-out, border-top 1.5s ease-in-out;
+  -webkit-transition: all 2.5s ease-in-out;
+  -moz-transition: all 2.5s ease-in-out;
+  transition: z-index 2.5s ease-in-out, transform 2s ease-in-out, border-top 2s ease-in-out;
   transition-delay: 1.5s;
   z-index: 30;
 }
@@ -99,7 +99,7 @@ h1 {
   top: -15em;
   z-index: 45;
   height: 30em;
-  transition: z-index 1.5s ease-in-out, top 1.5s ease-in-out, height 1.5s ease-in-out;
+  transition: z-index 2.5s ease-in-out, top 2.5s ease-in-out, height 2.5s ease-in-out;
   transition-delay: 1.5s;
 }
 .container:hover .cover {
@@ -114,15 +114,15 @@ h1 {
   width: 0;
   margin: 0 auto;
   position: relative;
-  top: 0em;
+  top: 0;
   display: block;
   border-left: 15em solid #eee;
   border-right: 15em solid #eee;
   border-bottom: 7em solid #eee;
   border-top: 10em solid transparent;
-  -webkit-transition: 1.5s ease-in-out;
-  -moz-transition: 1.5s ease-in-out;
-  transition: 1.5s ease-in-out;
+  -webkit-transition: 2.5s ease-in-out;
+  -moz-transition: 2.5s ease-in-out;
+  transition: 2.5s ease-in-out;
   z-index: 100;
 }
 </style>

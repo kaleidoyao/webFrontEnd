@@ -30,7 +30,7 @@ export default {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   border: 2px solid black;
-  animation: moveRight 1s ease-in-out 0.5s forwards;
+  animation: moveRight 1s ease-in-out 1s forwards;
 }
 @keyframes moveRight {
   to {
@@ -44,7 +44,7 @@ export default {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border: 2px solid black;
-  animation: moveLeft 1s ease-in-out 0.5s forwards;
+  animation: moveLeft 1s ease-in-out 1s forwards;
 }
 @keyframes moveLeft {
   to {

@@ -19,6 +19,9 @@
       </span>
       <span class="section2">
         <div class="write-capsule anim hidden">
+          <div class="date-picker" style="text-align: center; margin-top: 3vh;">
+            <el-date-picker v-model="time" type="date" placeholder="Pick a day" />
+          </div>
           <div class="title" style="text-align: center;">
             <input v-model="title" type="text" placeholder="在此输入标题..." class="input1">
           </div>
@@ -52,8 +55,7 @@ import router from "@/router";
 import OpenCapsule from "@/components/openCapsule";
 import CapsuleCard from "@/components/capsuleCard";
 import {ElMessageBox} from "element-plus";
-
-class Capsule{
+class Capsule {
   capsuleid;
   userid;
   title;
@@ -62,7 +64,6 @@ class Capsule{
   opentime;
   isopened;
 }
-
 export default {
   name: "capsulePage",
   components: {CapsuleCard, OpenCapsule, MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
@@ -70,23 +71,21 @@ export default {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
-    console.log(this.userid);
   },
-
-  data(){
-    return{
-      title:"",
-      content:"",
-      userid:-1,
-      capsule:Capsule,
-      myCapsule:null,
-      openCapsule:null,
-      capsuleid:-1,
-      opentime:null,
+  data() {
+    return {
+      title: "",
+      content: "",
+      userid: -1,
+      capsule: Capsule,
+      myCapsule: null,
+      openCapsule: null,
+      capsuleid: -1,
+      opentime: null,
+      time: '',
     }
   },
-
-  methods:{
+  methods: {
     getdate() {
       var date = new Date();
       var seperator1 = "-";

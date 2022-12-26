@@ -31,14 +31,14 @@
       <span class="throwAndCatch">
         <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
         <button id="myDrifterButton" v-on:click="myDrifterBT"><span>我的漂流瓶</span></button>
-        <card-list></card-list>
-<!--          <div class="cardList" v-for="drifter in myDrifter" :key="drifter.id">-->
-<!--            <span class="dot"></span>-->
-<!--              <button class="delete-button" @click="deleteBT(drifter.id)">Delete</button>-->
-<!--            <div class="cardDetail">-->
-<!--              <card-list :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,authorid:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-list>-->
-<!--            </div>-->
-<!--          </div>-->
+        <div>
+          <ul id="cardList" class="cards">
+            <li>
+              <card-item></card-item>
+              <card-item></card-item>
+            </li>
+          </ul>
+        </div>
       </span>
     </div>
   </div>
@@ -46,8 +46,15 @@
 
 <script>
 import OpenEnvelop from "@/components/openEnvelop";
-
-class Drifter{
+import BackGround from "@/components/backGround";
+import HeaderTag from "@/components/headerTag";
+import DrifterBottle from "@/components/drifterBottle";
+import BottleButton from "@/components/bottleButton";
+import axios from "axios";
+import MenuButton from "@/components/menuButton";
+import router from "@/router";
+import CardItem from "@/components/cardItem";
+class Drifter {
   id;
   ownerid;
   time;
@@ -56,16 +63,8 @@ class Drifter{
   pickerid;
   ispicked;
 }
-import BackGround from "@/components/backGround";
-import HeaderTag from "@/components/headerTag";
-import DrifterBottle from "@/components/drifterBottle";
-import BottleButton from "@/components/bottleButton";
-import axios from "axios";
-import MenuButton from "@/components/menuButton";
-import router from "@/router";
-import CardList from "@/components/cardList";
 export default {
-  components: {CardList, MenuButton, OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
+  components: {CardItem, MenuButton, OpenEnvelop, BottleButton, DrifterBottle, HeaderTag, BackGround},
   mounted() {
     this.$refs.pick.addEventListener('click',this.pickBT);
     this.$refs.throw.addEventListener('click',this.displayWriteDrifter);
@@ -244,5 +243,18 @@ export default {
 }
 .hidden {
   display: none;
+}
+
+.cards {
+  padding: 0;
+  margin-top: 3vh;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+}
+.cards li {
+  display: block;
+  width: 100%;
+  padding-bottom: 10px;
 }
 </style>

@@ -100,6 +100,14 @@ export default {
   },
 
   methods:{
+    getdate() {
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      return year + seperator1 + month + seperator1 + strDate;
+    },
     throwBT() {
       let _this=this
       let result = -1;
@@ -107,7 +115,8 @@ export default {
         params: {
           ownerid:this.userid,
           title:_this.title,
-          content:_this.content
+          content:_this.content,
+          time:_this.getdate()
         }
       }).then((response)=>{
         result = response.data;

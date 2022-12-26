@@ -20,10 +20,10 @@
       <span class="section2">
         <div class="write-capsule anim hidden">
           <div class="title" style="text-align: center;">
-            <input type="text" placeholder="在此输入标题..." class="input1" @blur="inputTitle($event)">
+            <input v-model="title" type="text" placeholder="在此输入标题..." class="input1">
           </div>
           <div class="mainText" style="text-align: center;">
-            <textarea class="input2" placeholder="在此输入正文..." @blur="inputContent($event)"></textarea>
+            <textarea v-model="content" class="input2" placeholder="在此输入正文..."></textarea>
           </div>
           <div style="text-align: center;">
             <button id="throwButton" v-on:click="throwBT"><span>throw</span></button>
@@ -43,6 +43,15 @@
 
 <script>
 import axios from "axios";
+import BackGround from "@/components/backGround";
+import HeaderTag from "@/components/headerTag";
+import TimeCapsule from "@/components/timeCapsule";
+import PersonalInfo from "@/components/personalInfo";
+import MenuButton from "@/components/menuButton";
+import router from "@/router";
+import OpenCapsule from "@/components/openCapsule";
+import CapsuleCard from "@/components/capsuleCard";
+import {ElMessageBox} from "element-plus";
 
 class Capsule{
   capsuleid;
@@ -53,14 +62,7 @@ class Capsule{
   opentime;
   isopened;
 }
-import BackGround from "@/components/backGround";
-import HeaderTag from "@/components/headerTag";
-import TimeCapsule from "@/components/timeCapsule";
-import PersonalInfo from "@/components/personalInfo";
-import MenuButton from "@/components/menuButton";
-import router from "@/router";
-import OpenCapsule from "@/components/openCapsule";
-import CapsuleCard from "@/components/capsuleCard";
+
 export default {
   name: "capsulePage",
   components: {CapsuleCard, OpenCapsule, MenuButton,PersonalInfo, TimeCapsule, HeaderTag, BackGround},
@@ -85,24 +87,17 @@ export default {
   },
 
   methods:{
+    getdate() {
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      return year + seperator1 + month + seperator1 + strDate;
+    },
     writeBT() {
       document.querySelector(".write-capsule").classList.remove("hidden");
       document.querySelector(".show-capsule").classList.add("hidden");
-      let _this=this
-      let result = -1;
-      axios.get("http://localhost:8088/makeCapsule",{
-        params: {
-          userid: _this.userid,
-          title:_this.title,
-          content:_this.content,
-          opentime:_this.opentime
-        }
-      }).then((response)=>{
-        result = response.data;
-        console.log(result)
-      }).catch((error)=>{
-        console.log(error)
-      });
     },
     myCapsuleBT(){
       let _this=this
@@ -135,6 +130,34 @@ export default {
           console.log("还未到开启时间")
         }
         else console.log(_this.openCapsule)
+      }).catch((error)=>{
+        console.log(error)
+      });
+    },
+    throwBT(){
+      console.log(this.getdate())
+      let _this=this
+      let result = -1;
+      axios.get("http://localhost:8088/makeCapsule",{
+        params: {
+          userid: _this.userid,
+          title:_this.title,
+          content:_this.content,
+          writetime:this.getdate(),
+          opentime:_this.opentime
+        }
+      }).then((response)=>{
+        result = response.data;
+        console.log(result)
+        ElMessageBox.confirm('你成功埋下一个时间胶囊！','提示',{
+          confirmButtonText: '确定', //确定按钮的文本内容
+          showCancelButton: false, //是否可通过点击遮罩关闭
+          type: 'success', //消息类型，用于显示图标
+        }).then(() => {
+          router.go(0)
+        }).catch(() => {
+
+        });
       }).catch((error)=>{
         console.log(error)
       });

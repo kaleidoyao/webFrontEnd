@@ -7,7 +7,7 @@
     <div class="content" ref="content">
       <span class="section1">
         <div class="userCard">
-          <personal-info></personal-info>
+          <personal-info :username="this.username"></personal-info>
         </div>
         <div style="margin-left: 2vw; margin-top: 2vh; font-family: 'Poppins', sans-serif;">My Capsules</div>
         <div style="height: 1px; background-color: black; width: 90%; margin: 1vh auto;"></div>
@@ -36,7 +36,18 @@
         </div>
       </span>
       <span class="section3">
-        <el-calendar  />
+        <el-calendar>
+          <template  #date-cell="{data}">
+            <el-row>
+              <el-col>
+                <div class="calendar-day">{{ data.day.split('-').slice(2).join('-') }}</div>
+<!--                <div class="blue budge" v-if="dealMyDate(data.day)" style="width: 10px;height: 10px;-->
+<!--              border-radius: 5px;-->
+<!--              background-color: blue;"></div>-->
+              </el-col>
+            </el-row>
+          </template>
+        </el-calendar>
         <div style="text-align: center; margin-top: 2vh;">
           <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
         </div>
@@ -75,6 +86,13 @@ export default {
     this.userid = router.currentRoute.value.query.id;
     let _this=this
     let result=null;
+    axios.get("http://localhost:8088/getUserName",{
+      params:{
+        userid:_this.userid
+      }
+    }).then((response)=>{
+      this.username = response.data
+    })
     axios.get("http://localhost:8088/getMyCapsule",{
       params: {
         userid:_this.userid
@@ -82,6 +100,9 @@ export default {
     }).then((response)=>{
       result = response.data;
       _this.myCapsule=result
+      // for(let cap in this.myCapsule){
+      //   this.allTime.push(cap.opentime)
+      // }
       let capsules=[]
       let myCapsule=_this.myCapsule
       console.log(myCapsule.length)
@@ -109,9 +130,20 @@ export default {
       openCapsule: Capsule,
       capsuleid: -1,
       opentime: Date,
+      username:"",
     }
   },
   methods: {
+    // dealMyDate(v){
+    //   for(let cap in this.myCapsule){
+    //     console.log(cap.opentime)
+    //     if(cap.opentime === v){
+    //       console.log(v);
+    //       return true;
+    //     }
+    //   }
+    //   return false;
+    // },
     getdate() {
       var date = new Date();
       var seperator1 = "-";
@@ -200,7 +232,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 700px;
+  height: 800px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;
@@ -223,7 +255,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 45%;
-  height: 550px;
+  height: 800px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;
@@ -284,7 +316,7 @@ input:focus, textarea:focus {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 600px;
+  height: 800px;
   display: inline-block;
   vertical-align: top;
   margin: 5px;

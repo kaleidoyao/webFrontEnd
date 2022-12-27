@@ -40,14 +40,14 @@ Vue 3 + SpringBoot
 
 #### 后端
 
+- springboot：2.7.5
 - java：11
 - mysql：8.0.31
-    - 请打包.sql格式的数据库初始化文件
 
 ### 运行说明
 
 #### 前端运行说明
-在项目根目录下运行指令```npm run serve```
+在项目根目录下运行指令```npm run serve```（如果没有先安装依赖请先运行指令```npm install```）
 #### 后端运行说明
 - 启动mysql服务
 - 在```WebSpringApplication.java```文件中运行入口程序

@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
   <header-tag ref="header" :usrid=userid></header-tag>
-  <menu-button></menu-button>
+  <menu-button :usrid=userid></menu-button>
   <back-ground></back-ground>
   <div class="main__wrapper" ref="container">
     <main>

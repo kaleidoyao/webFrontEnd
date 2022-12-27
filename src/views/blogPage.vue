@@ -1,7 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
   <header-tag ref="header" :usrid=userid></header-tag>
-  <menu-button></menu-button>
+  <menu-button :usrid=userid></menu-button>
   <back-ground></back-ground>
   <div class="container" ref="container">
     <div class="sidebar">

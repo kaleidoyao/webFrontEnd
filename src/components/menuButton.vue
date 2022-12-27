@@ -45,6 +45,9 @@ import router from "@/router";
 
 export default {
   name: "menuButton",
+  props:{
+    usrid:Number
+  },
   mounted() {
     document.querySelector('.more-button').addEventListener('click', this.showDetail);
   },
@@ -67,12 +70,12 @@ export default {
     },
     toDrifter() {
       router.push({
-        name:"drifterPage",query:{id:this.userid}
+        name:"drifterPage",query:{id:this.usrid}
       })
     },
     toCapsule() {
       router.push({
-        name:"capsulePage",query:{id:this.userid}
+        name:"capsulePage",query:{id:this.usrid}
       })
     }
   }

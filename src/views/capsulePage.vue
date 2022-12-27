@@ -1,6 +1,6 @@
 <template>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
-  <menu-button></menu-button>
+  <menu-button :usrid=userid></menu-button>
   <back-ground></back-ground>
   <div class="body">
     <header-tag ref="header" :usrid=userid></header-tag>

@@ -7,13 +7,11 @@
     <div class="content" ref="content">
       <span class="section1">
         <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
-        <button id="myCapsuleButton" v-on:click="myCapsuleBT"><span>我的胶囊</span></button>
         <div class="userCard">
           <personal-info></personal-info>
         </div>
-        <div class="capsules">
-          <time-capsule v-on:click="openBT"></time-capsule>
-          <time-capsule v-on:click="openBT"></time-capsule>
+        <div class="capsules" v-for="capsule in myCapsule" :key="capsule.id">
+          <time-capsule :capsule="{title:capsule.title,content:capsule.content,writetime:capsule.writetime,opentime:capsule.opentime,capsuleid:capsule.capsuleid}" :userid="userid" v-on:click="openBT(capsule.capsuleid)"></time-capsule>
         </div>
       </span>
       <span class="section2">
@@ -33,7 +31,7 @@
         </div>
         <div class="show-capsule anim">
           <open-capsule></open-capsule>
-          <capsule-card></capsule-card>
+          <capsule-card :writetime="openCapsule.writetime" :title="openCapsule.title" :content="openCapsule.content"></capsule-card>
         </div>
       </span>
       <span class="section3">
@@ -71,6 +69,19 @@ export default {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["content"].style.marginTop = height + 'px';
     this.userid = router.currentRoute.value.query.id;
+    let _this=this
+    let result=null;
+    axios.get("http://localhost:8088/getMyCapsule",{
+      params: {
+        userid:_this.userid
+      }
+    }).then((response)=>{
+      result = response.data;
+      _this.myCapsule=result
+      console.log(_this.myCapsule)
+    }).catch((error)=>{
+      console.log(error)
+    });
   },
   data() {
     return {
@@ -79,7 +90,7 @@ export default {
       userid: -1,
       capsule: Capsule,
       myCapsule: null,
-      openCapsule: null,
+      openCapsule: Capsule,
       capsuleid: -1,
       opentime: Date,
     }
@@ -97,37 +108,30 @@ export default {
       document.querySelector(".write-capsule").classList.remove("hidden");
       document.querySelector(".show-capsule").classList.add("hidden");
     },
-    myCapsuleBT(){
-      let _this=this
-      let result=null;
-      axios.get("http://localhost:8088/getMyCapsule",{
-        params: {
-          userid:_this.userid
-        }
-      }).then((response)=>{
-        result = response.data;
-        _this.myCapsule=result
-        console.log(_this.myCapsule)
-      }).catch((error)=>{
-        console.log(error)
-      });
-    },
-    openBT() {
-      document.querySelector(".write-capsule").classList.add("hidden");
-      document.querySelector(".show-capsule").classList.remove("hidden");
+    openBT(id) {
       let _this=this
       let result=null;
       axios.get("http://localhost:8088/openCapsule",{
         params: {
-          capsuleid:_this.capsuleid
+          capsuleid:id
         }
       }).then((response)=>{
         result = response.data;
         _this.openCapsule=result
         if(result===""){
-          console.log("还未到开启时间")
+          ElMessageBox.confirm('还未到打开时间！','提示',{
+            confirmButtonText: '确定', //确定按钮的文本内容
+            showCancelButton: true,
+            cancelButtonText:'取消',
+            type: 'warning', //消息类型，用于显示图标
+          }).then(() => {
+          }).catch(() => {
+          })
         }
-        else console.log(_this.openCapsule)
+        else{
+          document.querySelector(".write-capsule").classList.add("hidden");
+          document.querySelector(".show-capsule").classList.remove("hidden");
+        }
       }).catch((error)=>{
         console.log(error)
       });

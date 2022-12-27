@@ -1,13 +1,33 @@
 <template>
   <span class="capsule">
-    <span class="year">2022/</span>
-    <span class="day">12/13</span>
+    <span class="year">{{year}}</span>
+    <span class="day">{{day}}</span>
   </span>
 </template>
 
 <script>
 export default {
-  name: "timeCapsule"
+  name: "timeCapsule",
+  props:{
+    capsule: {
+      title: String,
+      content: String,
+      writetime:String,
+      opentime: String,
+      capsuleid:String,
+    },
+    userid:Number
+  },
+  data(){
+    return {
+      year: "",
+      day: ""
+    }
+  },
+  mounted() {
+    this.year=this.capsule.opentime.substring(0,5)
+    this.day=this.capsule.opentime.substring(5)
+  }
 }
 </script>
 

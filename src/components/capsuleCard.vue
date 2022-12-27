@@ -2,8 +2,9 @@
   <div class="boundary">
     <div class="card-wrapper">
       <div class="card">
-        <h1>From 2022.12.24</h1>
-        <p>a letter from long long long long long long long long long long long long long long long ago!</p>
+        <h1>From {{writetime}}</h1>
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
       </div>
     </div>
   </div>
@@ -11,7 +12,13 @@
 
 <script>
 export default {
-  name: "capsuleCard"
+  name: "capsuleCard",
+
+  props:{
+    writetime:Date,
+    title:String,
+    content:String
+  },
 }
 </script>
 

@@ -2,8 +2,8 @@
   <div class="boundary">
     <div class="card-wrapper">
       <div class="card">
-        <h1>From 2022.12.24</h1>
-        <p>a letter from long long long long long long long long long long long long long long long ago!</p>
+        <h1>From 今天的时间</h1>
+        <p>在这里种下一颗时间胶囊<br />给未来的自己写封信吧！</p>
       </div>
     </div>
   </div>
@@ -64,6 +64,7 @@ p {
   font-size: 1.3rem;
   line-height: 140%;
   margin: 4vh 0;
+  text-align: center;
 }
 @keyframes showCard {
   to {

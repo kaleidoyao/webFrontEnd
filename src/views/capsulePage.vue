@@ -10,7 +10,10 @@
         <div class="userCard">
           <personal-info></personal-info>
         </div>
+        <div style="margin-left: 2vw; margin-top: 2vh; font-family: 'Poppins', sans-serif;">My Capsules</div>
+        <div style="height: 1px; background-color: black; width: 90%; margin: 1vh auto;"></div>
         <div class="capsules">
+          <time-capsule v-on:click="openBT"></time-capsule>
           <time-capsule v-on:click="openBT"></time-capsule>
           <time-capsule v-on:click="openBT"></time-capsule>
         </div>

@@ -13,8 +13,8 @@ export default {
 
 <style scoped>
 .capsule {
-  width: 45%;
-  height: 10vh;
+  width: 30%;
+  height: 6vh;
   background-image: url("../assets/imgs/timeCapsule.svg");
   background-size: 90%;
   background-position: center;
@@ -25,8 +25,10 @@ export default {
 }
 .year {
   color: #3970C0;
+  font-size: 2.3vh;
 }
 .day {
   color: white;
+  font-size: 2.3vh;
 }
 </style>

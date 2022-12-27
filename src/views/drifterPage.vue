@@ -37,6 +37,7 @@
         <div>
           <ul id="cardList" class="cards">
             <li v-for="drifter in myDrifter" :key="drifter.id">
+              <div class="blogTime">{{drifter.time}}</div>
               <div style="text-align: right; padding-right: 1vh;"><img src="../assets/icons/exit.png" style="width: 2vh; cursor: pointer;" alt="" @click="deleteBT(drifter.id)" /></div>
               <card-item :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,owner:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-item>
             </li>

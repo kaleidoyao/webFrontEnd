@@ -6,7 +6,6 @@
     <header-tag ref="header" :usrid=userid></header-tag>
     <div class="content" ref="content">
       <span class="section1">
-        <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
         <button id="myCapsuleButton" v-on:click="myCapsuleBT"><span>我的胶囊</span></button>
         <div class="userCard">
           <personal-info></personal-info>
@@ -38,6 +37,9 @@
       </span>
       <span class="section3">
         <el-calendar  />
+        <div style="text-align: center; margin-top: 2vh;">
+          <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
+        </div>
       </span>
     </div>
   </div>
@@ -295,5 +297,18 @@ input:focus, textarea:focus {
     opacity: 1;
     transform: none;
   }
+}
+#writeButton {
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  color: white;
+  background-color: #569bd7;
+  height: 5vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  font-weight: 600;
+  width: 10vw;
+  cursor: pointer;
 }
 </style>

@@ -37,8 +37,10 @@
         <div>
           <ul id="cardList" class="cards">
             <li v-for="drifter in myDrifter" :key="drifter.id">
-              <div class="blogTime">{{drifter.time}}</div>
-              <div style="text-align: right; padding-right: 1vh;"><img src="../assets/icons/exit.png" style="width: 2vh; cursor: pointer;" alt="" @click="deleteBT(drifter.id)" /></div>
+              <div class="border" style="padding-left: 2vh;">
+                <div style="display: inline-block; width: 20vw; font-family: 'Poppins', sans-serif;">From {{drifter.time}}</div>
+                <img src="../assets/icons/exit.png" style="display: inline-block; width: 2vh; cursor: pointer;" alt="" @click="deleteBT(drifter.id)" />
+              </div>
               <card-item :drifter="{title:drifter.title,content:drifter.content,time:drifter.time,owner:drifter.ownerid,drifterid:drifter.id}" :userid="userid"></card-item>
             </li>
           </ul>
@@ -222,6 +224,13 @@ export default {
   min-height: 100vh;
 }
 
+.border {
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 15px;
+  border-left: 2px solid rgba(255,255,255,0.7);
+  border-top: 2px solid rgba(255,255,255,0.7);
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
 .content {
   display: flex;
   justify-content: center;
@@ -275,7 +284,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 700px;
+  min-height: 80vh;
   display: inline-block;
   vertical-align: top;
   margin: 5px;

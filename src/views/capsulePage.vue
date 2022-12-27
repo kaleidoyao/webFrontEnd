@@ -6,12 +6,13 @@
     <header-tag ref="header" :usrid=userid></header-tag>
     <div class="content" ref="content">
       <span class="section1">
-        <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
         <div class="userCard">
           <personal-info></personal-info>
         </div>
+        <div style="margin-left: 2vw; margin-top: 2vh; font-family: 'Poppins', sans-serif;">My Capsules</div>
+        <div style="height: 1px; background-color: black; width: 90%; margin: 1vh auto;"></div>
         <div class="capsules" v-for="capsule in myCapsule" :key="capsule.id">
-          <time-capsule :capsule="{title:capsule.title,content:capsule.content,writetime:capsule.writetime,opentime:capsule.opentime,capsuleid:capsule.capsuleid}" :userid="userid" v-on:click="openBT(capsule.capsuleid)"></time-capsule>
+           <time-capsule :capsule="{title:capsule.title,content:capsule.content,writetime:capsule.writetime,opentime:capsule.opentime,capsuleid:capsule.capsuleid}" :userid="userid" v-on:click="openBT(capsule.capsuleid)"></time-capsule>
         </div>
       </span>
       <span class="section2">
@@ -36,6 +37,9 @@
       </span>
       <span class="section3">
         <el-calendar  />
+        <div style="text-align: center; margin-top: 2vh;">
+          <button id="writeButton" v-on:click="writeBT"><span>写一个</span></button>
+        </div>
       </span>
     </div>
   </div>
@@ -299,5 +303,18 @@ input:focus, textarea:focus {
     opacity: 1;
     transform: none;
   }
+}
+#writeButton {
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  color: white;
+  background-color: #569bd7;
+  height: 5vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  font-weight: 600;
+  width: 10vw;
+  cursor: pointer;
 }
 </style>

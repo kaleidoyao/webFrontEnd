@@ -5,6 +5,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
   <header-tag ref="header" :usrid=userid></header-tag>
+  <menu-button></menu-button>
   <back-ground></back-ground>
   <div class="main__wrapper" ref="container">
     <main>
@@ -71,10 +72,11 @@
 import HeaderTag from "@/components/headerTag";
 import BackGround from "@/components/backGround";
 import router from "@/router";
+import MenuButton from "@/components/menuButton";
 
 export default {
   name: "aboutPage",
-  components:{HeaderTag,BackGround},
+  components:{MenuButton, HeaderTag,BackGround},
   mounted() {
     let height = this.$refs.header.$el.offsetHeight;
     this.$refs["container"].style.marginTop = height + 'px';

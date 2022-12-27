@@ -71,6 +71,7 @@ p {
   font-size: 1.3rem;
   line-height: 140%;
   margin: 4vh 0;
+  text-align: center;
 }
 @keyframes showCard {
   to {

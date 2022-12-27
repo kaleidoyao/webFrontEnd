@@ -28,7 +28,7 @@
             <p class="item-text"><span class="item-data">{{blog.date}}</span></p>
           </div>
         </div>
-        <p><span class="drop-cap">{{blog.content.substring(0,1)}}</span>{{blog.content.substring(1)}}</p>
+        <p style="white-space: pre-line"><span class="drop-cap">{{blog.content.substring(0,1)}}</span>{{blog.content.substring(1)}}</p>
         <div class="buttons">
           <span><like-button :userid="userid" :blogid="blog.blogid"></like-button></span>
           <span><collect-button :userid="userid" :blogid="blog.blogid"></collect-button></span>

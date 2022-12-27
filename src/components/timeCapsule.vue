@@ -44,10 +44,12 @@ export default {
   justify-content: center;
 }
 .year {
+  font-family: 'Poppins', sans-serif;
   color: #3970C0;
   font-size: 2.3vh;
 }
 .day {
+  font-family: 'Poppins', sans-serif;
   color: white;
   font-size: 2.3vh;
 }

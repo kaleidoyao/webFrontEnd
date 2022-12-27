@@ -11,8 +11,8 @@
         </div>
         <div style="margin-left: 2vw; margin-top: 2vh; font-family: 'Poppins', sans-serif;">My Capsules</div>
         <div style="height: 1px; background-color: black; width: 90%; margin: 1vh auto;"></div>
-        <div class="capsules" v-for="capsule in myCapsule" :key="capsule.id">
-           <time-capsule :capsule="{title:capsule.title,content:capsule.content,writetime:capsule.writetime,opentime:capsule.opentime,capsuleid:capsule.capsuleid}" :userid="userid" v-on:click="openBT(capsule.capsuleid)"></time-capsule>
+        <div class="capsules" v-for="capsules in dividedCapsule" :key="capsules.id">
+           <time-capsule v-for="capsule in capsules" :key="capsule.id" :capsule="{title:capsule.title,content:capsule.content,writetime:capsule.writetime,opentime:capsule.opentime,capsuleid:capsule.capsuleid}" :userid="userid" v-on:click="openBT(capsule.capsuleid)"></time-capsule>
         </div>
       </span>
       <span class="section2">
@@ -82,10 +82,21 @@ export default {
     }).then((response)=>{
       result = response.data;
       _this.myCapsule=result
-      console.log(_this.myCapsule)
+      let capsules=[]
+      let myCapsule=_this.myCapsule
+      console.log(myCapsule.length)
+      for(let i=0;i<myCapsule.length;i++){
+        capsules.push(myCapsule[i])
+        if(capsules.length===3){
+          _this.dividedCapsule.push(capsules)
+          capsules=[]
+        }
+      }
+      if(capsules.length!==0) _this.dividedCapsule.push(capsules)
     }).catch((error)=>{
       console.log(error)
     });
+
   },
   data() {
     return {
@@ -93,7 +104,8 @@ export default {
       content: "",
       userid: -1,
       capsule: Capsule,
-      myCapsule: null,
+      myCapsule: [],
+      dividedCapsule:[],
       openCapsule: Capsule,
       capsuleid: -1,
       opentime: Date,

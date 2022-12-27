@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .capsule {
-  width: 30%;
+  width: 35%;
   height: 6vh;
   background-image: url("../assets/imgs/timeCapsule.svg");
   background-size: 90%;

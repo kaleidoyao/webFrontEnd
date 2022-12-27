@@ -3,8 +3,8 @@
   <div class="container">
     <div class="back">
       <div class="paper">
-        <h1>the title</h1>
-        <p>嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀嗨嗨嗨嗨嗨嗨嗨嗨嗨我精神很好呀</p>
+        <h1>{{this.title}}</h1>
+        <p>{{this.content}}</p>
       </div>
       <div class="cover">
       </div>
@@ -18,6 +18,7 @@
 export default {
   name: "openEnvelop",
   props:{
+    title:String,
     content:String
   }
 }

@@ -5,9 +5,9 @@
     <div id="header">
       <a href="/#" class="logoLand">WasteLand</a>
       <ul>
-        <li><a href="/#/blog">Blog</a></li>
-        <li><a href="/#/mine">Mine</a></li>
-        <li><a href="/#/about">About</a></li>
+        <li><a @click="toBlog">Blog</a></li>
+        <li><a @click="toMine">Mine</a></li>
+        <li><a @click="toAbout">About</a></li>
         <li><a href="/#/login">LOGIN</a></li>
       </ul>
     </div>
@@ -41,6 +41,7 @@
 <script>
 import GetStartedButton from "@/components/getStartedButton";
 import TagCloud from "@/components/tagCloud";
+import router from "@/router";
 export default {
   components: {TagCloud, GetStartedButton},
   data(){
@@ -50,6 +51,8 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.move);
+    this.userid = router.currentRoute.value.query.id;
+    console.log("the home page userid is"+this.userid)
   },
   methods:{
     move() {
@@ -62,6 +65,43 @@ export default {
       button.style.top = 50+top*0.1 + '%';
       birdLeft.style.left = top + 'px';
       birdRight.style.right = top + 'px';
+    },
+    toBlog(){
+      console.log(this.userid)
+      if(this.userid >= 0){
+        router.push({
+          name:"blogPage",query:{id:this.userid}
+        })
+      }else{
+        router.push({
+          name:"blogPage"
+        })
+      }
+
+    },
+    toMine(){
+      if(this.userid >= 0){
+        router.push({
+          name:"minePage",query:{id:this.userid}
+        })
+      }else{
+        router.push({
+          name:"minePage"
+        })
+      }
+
+    },
+    toAbout(){
+      if(this.userid >= 0){
+        router.push({
+          name:"aboutPage",query:{id:this.userid}
+        })
+      }else{
+        router.push({
+          name:"aboutPage"
+        })
+      }
+
     }
   },
   unmounted() {

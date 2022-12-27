@@ -17,7 +17,7 @@
       <span class="blogContent" ref="drifterContent">
         <div ref="showDetail" class="detail hidden">
           <h1>Letters From Afar</h1>
-          <open-envelop :content="drifter.content"></open-envelop>
+          <open-envelop :content="drifter.content" :title="drifter.title"></open-envelop>
         </div>
         <div ref="writeDrifter" class="writeDrifter">
           <div class="title" style="text-align: center;">

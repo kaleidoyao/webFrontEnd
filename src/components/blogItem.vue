@@ -28,14 +28,14 @@
             <p class="item-text"><span class="item-data">{{blog.date}}</span></p>
           </div>
         </div>
-        <p style="white-space: pre-line"><span class="drop-cap">{{blog.content.substring(0,1)}}</span>{{blog.content.substring(1)}}</p>
+        <p style="white-space: pre-line; font-family: 'Poppins', sans-serif;"><span class="drop-cap">{{blog.content.substring(0,1)}}</span>{{blog.content.substring(1)}}</p>
         <div class="buttons">
           <span><like-button :userid="userid" :blogid="blog.blogid"></like-button></span>
           <span><collect-button :userid="userid" :blogid="blog.blogid"></collect-button></span>
         </div>
         <div>
           <span><h1 class="comment-title">Comments</h1></span>
-          <span style="margin-left: 45vw;margin-right: 0vw"><button class="add-comment" @click.stop="addComment">add comment</button></span>
+          <span style="margin-left: 45vw;margin-right: 0"><button class="add-comment" @click.stop="addComment">add comment</button></span>
         </div>
         <div class="comment-divider"></div>
         <div class="comments" v-for="comment in comments" :key="comment.id">
@@ -236,8 +236,7 @@ export default {
   transition: all 0.25s ease-in-out;
 }
 .drop-cap {
-  font-size: 55px;
-  line-height: 28px;
+  font-size: 7vh;
 }
 
 .book__content {
@@ -328,6 +327,7 @@ export default {
   display: inline-block;
 }
 .add-comment {
+  margin-top: 2vh;
   display: inline-block;
   border: 1px solid #000000;
   border-radius: 25px;

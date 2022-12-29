@@ -35,7 +35,7 @@
         </div>
         <div>
           <span><h1 class="comment-title">Comments</h1></span>
-          <span style="margin-left: 39vw"><button class="add-comment" @click.stop="addComment">add comment</button></span>
+          <span style="margin-left: 45vw;margin-right: 0vw"><button class="add-comment" @click.stop="addComment">add comment</button></span>
         </div>
         <div class="comment-divider"></div>
         <div class="comments" v-for="comment in comments" :key="comment.id">
@@ -324,6 +324,7 @@ export default {
   margin-bottom: 2vh;
   margin-left: 1vw;
   font-family: 'Poppins', sans-serif;
+  font-size: 30px;
   display: inline-block;
 }
 .add-comment {
@@ -394,8 +395,9 @@ textarea {
   line-height: 35px;
   border-radius: 15px;
   background-color: #f8f8f8;
-  padding: 0 20px;
+  padding: 5px 20px;
   font-size: 1.5em;
+  font-family: "Poppins", sans-serif;
   border: 0;
   outline: 0;
 }

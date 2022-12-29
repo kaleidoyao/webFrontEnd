@@ -18,34 +18,16 @@
         </div>
       </div>
       <div class="under-box left">
-        <h2>Welcome To</h2>
+        <h3 class="title">Welcome To Wasteland</h3>
         <img src="../assets/imgs/Login_Lighthouse.svg" width="200">
-        <p>已有账号</p>
+        <p style="color: #808080; font-size: 0.9rem;">已有账号</p>
         <button ref="login">Go To Login</button>
       </div>
       <div class="under-box right">
-        <h2>Welcome To</h2>
+        <h3 class="title">Welcome To Wasteland</h3>
         <img src="../assets/imgs/Login_Boat.gif" width="200">
-        <p>暂无账号</p>
+        <p style="color: #808080; font-size: 0.9rem;">暂无账号</p>
         <button ref="register">Go To Register</button>
-      </div>
-    </div>
-    <div class="modify-wrapper">
-      <div class="modify">
-        <div class="modify-main">
-          <h2 class="form-title">Modification</h2>
-          <div class="form-holder">
-            <input type="text" class="input" placeholder="Username" @blur="inputModifyName($event)" />
-            <input type="email" class="input" placeholder="Your Password" v-on:input="inputModifyPass" />
-            <input type="password" class="input" placeholder="Verify Password" v-on:input="inputModifyVerPass"/>
-          </div>
-          <button class="submit-btn" v-on:click="submitBT">submit</button>
-        </div>
-        <div class="exit">
-          <div class="center">
-            <img src="../assets/icons/exit.png" alt="" style="width: 4vh; cursor: pointer;" @click="exit">
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -145,7 +127,6 @@ export default {
           }).then(() => {
             _this.userid = result
             console.log(_this.userid)
-            // console.log(getCurrentInstance().appContext.config.globalProperties.$usrname)
             router.push({
               name:"blogPage",query:{id:_this.userid}
             })
@@ -203,18 +184,18 @@ export default {
 }
 .container {
   position: relative;
-  width: 650px;
-  height: 415px;
+  width: 50vw;
+  height: 70vh;
   background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 5px #f3f1f1;
+  box-shadow: 0 0 5px 5px #f3f1f1;
 }
 .container-box {
   position: absolute;
-  top: -10%;
+  top: -7%;
   left: 5%;
-  width: 320px;
-  height: 500px;
+  width: 25vw;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,14 +220,14 @@ export default {
 }
 .container-box button {
   width: 50%;
-  height: 35px;
+  height: 6vh;
   border: 0;
   border-radius: 100px;
   display: inline-block;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
-  margin-top: 50px;
+  margin-top: 10vh;
   font: 600 14px 'Poppins';
   text-align: center;
   transition: all 0.5s;
@@ -263,11 +244,11 @@ export default {
   position: absolute;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -3vh;
   transition: 0.5s;
 }
 .container-box button:hover span {
-  padding-right: 25px;
+  padding-right: 4vh;
 }
 .container-box button:hover span:after {
   opacity: 1;
@@ -278,17 +259,17 @@ export default {
 }
 h1 {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 6vh;
   color: #ffffff;
   letter-spacing: 5px;
 }
 input {
   width: 65%;
-  line-height: 35px;
+  line-height: 6vh;
   border-radius: 15px;
   background-color: rgba(240, 248, 255, 0.9);
   padding: 0 20px;
-  margin-bottom: 10px;
+  margin-bottom: 2vh;
   font-size: 14px;
   border: 0;
   outline: 0;
@@ -317,94 +298,15 @@ input::placeholder {
   display: inline-block;
   overflow: hidden;
   color: #000;
-  margin: 50px 0;
-  padding: 10px 30px;
+  margin: 3vh 0;
+  padding: 1vh 3vh;
   border-radius: 36px;
   font: 600 15px 'Poppins';
   letter-spacing: 1px;
 }
-
-.modify-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-.modify {
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-  height: 70vh;
-  width: 45vw;
-  position: relative;
-  overflow: hidden;
-}
-.modify .modify-main {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  width: 65%;
-  z-index: 5;
-  -webkit-transition: all 0.3s ease;
-}
-.modify .modify-main .form-title {
-  color: black;
+.title {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.7em;
-  text-align: center;
-  margin-top: 1vh;
-}
-.modify .modify-main .form-holder .input {
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  padding: 8px 15px;
-  border-bottom: 1px solid #eee;
-  width: 100%;
-}
-.modify .modify-main .submit-btn {
-  width: 70%;
-  cursor: pointer;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  color: #000;
-  margin: 3vh auto;
-  padding: 10px 30px;
-  border-radius: 36px;
-  font: 600 15px 'Poppins';
-  letter-spacing: 1px;
-}
-.modify .exit {
-  position: absolute;
-  top: 90%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 5;
-}
-.modify .exit::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -20px;
-  -webkit-transform: translate(-50%, 0);
-  background-color: #F4F4F4;
-  width: 200%;
-  height: 250px;
-  border-radius: 50%;
-  z-index: 4;
-  -webkit-transition: all 0.3s ease;
-}
-.modify .exit .center {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  -webkit-transform: translate(-50%, 0%);
-  z-index: 5;
+  font-size: 1.2em;
+  margin-bottom: 6vh;
 }
 </style>

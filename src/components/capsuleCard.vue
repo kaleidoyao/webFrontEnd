@@ -13,11 +13,10 @@
 <script>
 export default {
   name: "capsuleCard",
-
   props:{
-    writetime:Date,
-    title:String,
-    content:String
+    writetime: Date,
+    title: String,
+    content: String
   },
 }
 </script>
@@ -58,13 +57,17 @@ export default {
 }
 h1 {
   display: inline-block;
-  margin: 2vh 0 2vh -5.3vh;
+  margin: 2vh 0 2vh -5.5vh;
   padding: 1vh 2vh 1vh 5vh;
   background: #bf2010;
   border-width: 1px 1px 1px 0px;
   border-style: dashed;
   color: #fff;
   box-shadow: 2px 0 0 2px #bf2010, 2px 2px 0 2px #bf2010, 2px -2px 0 2px #bf2010, inset 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 p {
   font-family: 'Poppins', sans-serif;

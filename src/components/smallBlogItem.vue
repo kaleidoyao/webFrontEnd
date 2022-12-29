@@ -8,7 +8,7 @@
           <span class="title-wrap">
             <h1 class="article-title">{{blog.title}}</h1>
             <p class="book__cover-exerpt">
-              {{blog.content.substring(0,200)}}
+              {{blog.content.substring(0,200)}}...
             </p>
           </span>
         </div>

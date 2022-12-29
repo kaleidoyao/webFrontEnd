@@ -2,22 +2,59 @@
   <div class="boundary">
     <div class="card-wrapper">
       <div class="card">
+        <span v-if="!open">
+        <h1>From {{nowDate}}</h1>
+        <p>在这里种下一颗时间胶囊<br />给未来的自己写封信吧！</p>
+        </span>
+        <span v-else>
         <h1>From {{writetime}}</h1>
         <h2>{{title}}</h2>
         <p>{{content}}</p>
+        </span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "capsuleCard",
   props:{
     writetime: Date,
     title: String,
-    content: String
+    content: String,
   },
+  data(){
+    return{
+      open:false,
+      nowDate:""
+    }
+  },
+  watch:{
+    title:'change',
+    content:'change'
+  },
+  mounted() {
+    this.nowDate=this.getdate()
+    if(this.title===undefined&&this.content===undefined) this.open=false
+    else this.open=true
+  },
+
+  methods:{
+    getdate() {
+      var date = new Date();
+      var seperator1 = "-";
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      return year + seperator1 + month + seperator1 + strDate;
+    },
+    change(){
+      if(this.title===undefined&&this.content===undefined) this.open=false
+      else this.open=true
+    },
+  }
 }
 </script>
 

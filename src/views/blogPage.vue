@@ -34,9 +34,8 @@
       </div>
       <div class="hidden" id="trending">
         <div class="main-header anim" style="--delay: 0s">Trending</div>
-        <div class="anim" style="--delay: 0.1s; margin-bottom: 2vh;">
-<!--          <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>-->
-          <blog-item :userid="userid" :blog="{title:'Merry Christmas',content:'Merry Christmas and Happy New Year!',date:'2022-12-25',authorid:1,blogid:0}"></blog-item>
+        <div v-for="blog in trends" :key="blog.id" class="anim" style="--delay: 0.1s; margin-bottom: 2vh;">
+          <blog-item :blog="{title:blog.title,content:blog.content,date:blog.date,authorid:blog.userid,blogid:blog.blogid}" :userid="userid"></blog-item>
         </div>
       </div>
       <div class="hidden" id="collection">
@@ -63,7 +62,8 @@ export default {
     return{
       userid:-1,
       blogs:[],
-      collections:[]
+      collections:[],
+      trends:[]
     }
   },
   mounted() {
@@ -86,6 +86,13 @@ export default {
       }
     }).then((response)=>{
       this.collections=response.data
+    })
+    axios.get("http://localhost:8088/trending",{
+      params:{
+        n:10
+      }
+    }).then((response)=>{
+      this.trends=response.data
     })
   },
   methods: {

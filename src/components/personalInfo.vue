@@ -62,48 +62,6 @@ export default {
   },
 
   mounted() {
-    // function load(){
-    //   let _this=this
-    //   let result=0
-    //   console.log(this.username)
-    //   axios.get("http://localhost:8088/getUserId",{
-    //     params:{
-    //       username:this.username
-    //     }
-    //   }).then((response)=>{
-    //     this.userid = response.data
-    //   })
-    //
-    //   console.log(this.userid)
-    //
-    //   axios.get("http://localhost:8088/getBlogNumber",{
-    //     params:{
-    //       userid:_this.userid,
-    //     }
-    //   }).then((response)=>{
-    //     result=response.data
-    //     _this.postNum=result
-    //   })
-    //
-    //   axios.get("http://localhost:8088/getLikes",{
-    //     params:{
-    //       userid:_this.userid,
-    //     }
-    //   }).then((response)=>{
-    //     result=response.data
-    //     _this.likeNum=result
-    //   })
-    //
-    //   axios.get("http://localhost:8088/getCollect",{
-    //     params:{
-    //       userid:_this.userid,
-    //     }
-    //   }).then((response)=>{
-    //     result=response.data
-    //     _this.collectNum=result
-    //   })
-    // }
-    // setTimeout(load(),1000)
   },
 
   methods:{

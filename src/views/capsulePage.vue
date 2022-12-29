@@ -134,16 +134,6 @@ export default {
     }
   },
   methods: {
-    // dealMyDate(v){
-    //   for(let cap in this.myCapsule){
-    //     console.log(cap.opentime)
-    //     if(cap.opentime === v){
-    //       console.log(v);
-    //       return true;
-    //     }
-    //   }
-    //   return false;
-    // },
     getdate() {
       var date = new Date();
       var seperator1 = "-";

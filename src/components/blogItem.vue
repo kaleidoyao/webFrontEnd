@@ -105,7 +105,7 @@ export default {
     }).then((response)=>{
       this.comments = response.data;
     })
-    this.readtime = Math.ceil(this.blog.content.length/150);
+    this.readtime = Math.ceil(this.blog.content.length/500);
   },
   methods: {
     changeStatus() {

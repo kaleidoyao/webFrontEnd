@@ -59,7 +59,7 @@ export default {
 .container {
   position: relative;
   width: 20vw;
-  height: 335px;
+  height: 50vh;
   background: linear-gradient(to bottom, #96C7CC 0%, #C3DDD8 30%, #C3DDD8 100%);
   border-radius: 50px;
   overflow: hidden;
@@ -68,7 +68,7 @@ export default {
 
 .gradientContainer {
   margin-top: 95px;
-  height: 300px;
+  height: 40vh;
   overflow: hidden;
   background: linear-gradient(to bottom, #C3E5E5, #0D3F53);
   position: absolute;
@@ -77,7 +77,7 @@ export default {
 
 .overlay {
   width: 100%;
-  height: 240px;
+  height: 40vh;
   position: absolute;
 }
 .overlay.one {
@@ -87,7 +87,7 @@ export default {
 
 .gradient {
   margin-top: -100px;
-  width: 620px;
+  width: 800px;
   height: 400px;
   transform: translateX(-50px) rotate(20deg);
   -webkit-animation-name: gradient;
@@ -672,7 +672,7 @@ export default {
 
 .cPos {
   position: relative;
-  top: 30%;
+  top: 20%;
   z-index: 9;
   transform: translateY(0) scale(1);
   -webkit-animation-name: sunset;
@@ -743,8 +743,8 @@ export default {
   position: absolute;
 }
 .rocks .rock.one {
-  top: 285px;
-  left: -5%;
+  top: 44vh;
+  left: -3%;
   width: 98px;
   height: 50px;
   -webkit-clip-path: polygon(0 0, 56% 10%, 80% 100%, 0% 100%);
@@ -753,7 +753,7 @@ export default {
   z-index: 2000;
 }
 .rocks .rock.two {
-  top: 290px;
+  top: 44.5vh;
   left: 20%;
   width: 95px;
   height: 60px;
@@ -763,7 +763,7 @@ export default {
   z-index: 1000;
 }
 .rocks .rock.three {
-  top: 285px;
+  top: 44vh;
   left: 50%;
   width: 95px;
   height: 60px;
@@ -773,9 +773,9 @@ export default {
   z-index: 3000;
 }
 .rocks .rock.four {
-  top: 265px;
+  top: 43vh;
   left: 80%;
-  width: 60px;
+  width: 65px;
   height: 65px;
   -webkit-clip-path: polygon(0 100%, 20% 45%, 100% 12%, 100% 100%, 0 100%);
   clip-path: polygon(0 100%, 20% 45%, 100% 12%, 100% 100%, 0 100%);
@@ -1745,7 +1745,7 @@ export default {
 
 .triangleBar {
   width: 1000px;
-  height: 7px;
+  height: 12px;
   position: absolute;
   z-index: 1500;
   background: linear-gradient(to bottom, #E7F9F3, #F5FFF9);

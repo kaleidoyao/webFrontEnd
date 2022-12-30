@@ -242,7 +242,7 @@ export default {
   border-top: 2px solid rgba(255,255,255,0.7);
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   width: 25%;
-  height: 500px;
+  /*height: 800px;*/
   display: inline-block;
   vertical-align: top;
   margin: 5px;

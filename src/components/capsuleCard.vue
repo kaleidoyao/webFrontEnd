@@ -4,12 +4,12 @@
       <div class="card">
         <span v-if="!open">
         <h1>From {{nowDate}}</h1>
-        <p>在这里种下一颗时间胶囊<br />给未来的自己写封信吧！</p>
+        <p style="font-size: 1.3rem;">在这里种下一颗时间胶囊<br />给未来的自己写封信吧！</p>
         </span>
         <span v-else>
         <h1>From {{writetime}}</h1>
         <h2>{{title}}</h2>
-        <p>{{content}}</p>
+        <p style="white-space: pre-line;">{{content}}</p>
         </span>
       </div>
     </div>
@@ -108,7 +108,7 @@ h2 {
 }
 p {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1rem;
   line-height: 140%;
   margin: 4vh 0;
   text-align: center;
